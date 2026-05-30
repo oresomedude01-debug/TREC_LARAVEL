@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'google_drive' => [
+        'api_key'   => env('GOOGLE_DRIVE_API_KEY'),
+        'folder_id' => env('GOOGLE_DRIVE_GALLERY_FOLDER_ID'),
+    ],
+
 ];

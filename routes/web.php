@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ImageProxyController;
 
 // Public pages
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -25,3 +26,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/blog', [AdminController::class, 'blog'])->name('admin.blog');
     Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin.gallery');
 });
+
+// Image proxy route for Google Drive images
+Route::get('/image/proxy/{fileId}', [ImageProxyController::class, 'googleDrive'])->name('image.proxy');
