@@ -10,9 +10,22 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
+
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // 1. Trust Cloudflare proxies to safely handle headers
+        $middleware->trustProxies(at: '*');
+
+        // 2. Force all generated URLs and assets to use HTTPS in production
+        if (env('APP_ENV') === 'production') {
+            $middleware->alias([
+                // You can add route aliases here if needed later
+            ]);
+            
+            // Force HTTPS scheme on all requests globally
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
     })
+
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
