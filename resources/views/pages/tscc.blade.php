@@ -346,9 +346,10 @@
 }
 .tscc-vision-mission {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin: 3.5rem 0;
+  align-items: start;
 }
 .vm-panel {
   background: rgba(255,255,255,0.7);
@@ -363,6 +364,10 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  grid-column: span 2;
+}
+.vm-panel:nth-child(2) {
+  grid-column: span 2;
 }
 .vm-panel:hover {
   background: #fff;
@@ -424,6 +429,200 @@
   margin-bottom: 1rem;
 }
 
+/* ══════════════════════════════════════
+   CINEMATIC VIDEO SHOWCASE (PORTRAIT FORMAT)
+   ══════════════════════════════════════ */
+.tscc-intro-row {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+.tscc-intro-row .tscc-editorial-intro {
+  margin-bottom: 0;
+}
+.tscc-video-section {
+  position: relative;
+  margin: 0 auto;
+  max-width: 380px;
+  width: 100%;
+}
+
+/* Ambient glow rings behind the video */
+.video-glow-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: videoGlowPulse 6s ease-in-out infinite alternate;
+}
+.vgr-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(229,105,24,0.22) 0%, transparent 70%);
+  top: -80px; left: -120px;
+}
+.vgr-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(216,45,55,0.18) 0%, transparent 70%);
+  bottom: -60px; right: -100px;
+  animation-delay: -3s;
+}
+@keyframes videoGlowPulse {
+  0%   { transform: scale(1) translate(0, 0);    opacity: 0.8; }
+  100% { transform: scale(1.15) translate(10px, 10px); opacity: 1;   }
+}
+
+/* The actual video container */
+.tscc-video-container {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 9 / 16; /* Perfect portrait aspect ratio */
+  width: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.1);
+}
+.tscc-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Custom overlay shown before play */
+.tscc-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(10,10,20,0.8) 0%,
+    rgba(229,105,24,0.3) 50%,
+    rgba(10,10,20,0.85) 100%
+  );
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transition: opacity 0.45s ease, visibility 0.45s;
+  cursor: pointer;
+}
+.tscc-video-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Glassmorphic label above play button */
+.video-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 100px;
+  padding: 0.5rem 1.25rem;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.video-label .lucide {
+  width: 14px; height: 14px;
+  color: var(--orange);
+}
+
+/* Pulsing play button */
+.video-play-btn {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--red));
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+  box-shadow: 0 0 0 0 rgba(229,105,24,0.5);
+  animation: playPulse 2.5s ease-in-out infinite;
+  cursor: pointer;
+}
+.video-play-btn .lucide {
+  width: 30px; height: 30px;
+  margin-left: 4px; /* optical centre for play icon */
+}
+@keyframes playPulse {
+  0%   { box-shadow: 0 0 0 0   rgba(229,105,24,0.6); }
+  70%  { box-shadow: 0 0 0 20px rgba(229,105,24,0);   }
+  100% { box-shadow: 0 0 0 0   rgba(229,105,24,0);   }
+}
+.tscc-video-overlay:hover .video-play-btn {
+  transform: scale(1.1);
+  box-shadow: 0 12px 40px rgba(229,105,24,0.7);
+  animation: none;
+}
+
+/* Caption bar below video */
+.tscc-video-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: rgba(30,30,40,0.04);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+  margin-top: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.video-caption-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.4;
+}
+.video-caption-text .lucide {
+  width: 16px; height: 16px;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.video-caption-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(229,105,24,0.1);
+  border: 1px solid rgba(229,105,24,0.2);
+  border-radius: 100px;
+  padding: 0.3rem 0.8rem;
+}x;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(229,105,24,0.12);
+  border: 1px solid rgba(229,105,24,0.25);
+  border-radius: 100px;
+  padding: 0.35rem 0.9rem;
+}
+
 /* ── OBJECTIVES GRID ── */
 .objectives-grid {
   display: grid;
@@ -432,56 +631,81 @@
   margin: 3rem 0;
 }
 .obj-card {
-  background: #fff;
-  border-top: 4px solid var(--mid);
-  padding: 2.25rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 4px solid rgba(229, 105, 24, 0.15); /* Soft theme accent */
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+.obj-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(229,105,24,0.06), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
 }
 .obj-card:hover {
   border-top-color: var(--orange);
-  box-shadow: 0 15px 35px rgba(229,105,24,0.08);
+  box-shadow: 0 20px 45px rgba(229,105,24,0.06), 0 0 0 1px rgba(229,105,24,0.04);
+}
+.obj-card:hover::after {
+  opacity: 1;
 }
 .obj-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: rgba(229,105,24,0.08);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(229, 105, 24, 0.08);
+  border: 1px solid rgba(229, 105, 24, 0.15);
   color: var(--orange);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
 }
 .obj-card-icon .lucide {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 .obj-card:hover .obj-card-icon {
-  background: var(--orange);
+  background: linear-gradient(135deg, var(--orange), var(--red));
+  border-color: transparent;
   color: #fff;
   transform: translateZ(30px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(229, 105, 24, 0.3);
 }
 .obj-card-num {
   position: absolute;
   top: 1.5rem;
-  right: 1.5rem;
+  right: 1.75rem;
   font-family: var(--font-h);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 800;
   color: var(--mid);
-  opacity: 0.5;
-  transition: all 0.3s ease;
+  opacity: 0.12;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateZ(10px);
+  z-index: 1;
 }
 .obj-card:hover .obj-card-num {
   color: var(--orange);
-  opacity: 0.2;
+  opacity: 0.25;
+  transform: translateZ(35px) scale(1.1);
 }
 .obj-card h4 {
   font-family: var(--font-h);
@@ -489,13 +713,23 @@
   font-weight: 700;
   color: var(--black);
   margin-top: 0.25rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.obj-card:hover h4 {
+  transform: translateZ(20px);
 }
 .obj-card p {
   font-size: 0.9rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
   line-height: 1.65;
   margin: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.obj-card:hover p {
+  transform: translateZ(15px);
 }
 
 /* ── TARGET AUDIENCE ── */
@@ -1255,12 +1489,24 @@
     padding-right: 0;
   }
   
-  .tscc-vision-mission {
+  .tscc-intro-row {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  .tscc-vision-mission {
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }
+  .vm-panel {
+    grid-column: span 1 !important;
+  }
+  .tscc-video-container {
+    border-radius: 18px;
   }
   .objectives-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
   .audience-grid {
     grid-template-columns: 1fr;
@@ -1318,6 +1564,19 @@
     padding-right: 1.25rem;
   }
   
+  .tscc-vision-mission {
+    grid-template-columns: 1fr;
+  }
+  .vm-panel {
+    grid-column: span 1 !important;
+  }
+  .tscc-video-container {
+    border-radius: 14px;
+  }
+  .tscc-video-section {
+    margin: 2.5rem auto;
+  }
+  
   .objectives-grid {
     grid-template-columns: 1fr;
   }
@@ -1332,6 +1591,13 @@
   .gallery-item.gi-large, .gallery-item.gi-wide, .gallery-item.gi-tall {
     grid-column: span 1 !important;
     grid-row: span 1 !important;
+  }
+  .video-play-btn {
+    width: 66px;
+    height: 66px;
+  }
+  .tscc-video-caption {
+    padding: 1rem 1.25rem;
   }
   .feat-grid {
     grid-template-columns: 1fr;
@@ -1449,12 +1715,48 @@
     </div>
     
     <div class="tscc-content-box reveal">
-      <div class="tscc-editorial-intro">
-        <p style="font-size:1.15rem;color:var(--black);line-height:1.8;font-weight:400;margin-bottom:1.5rem">
-          <strong>TSCC is the flagship conference of The Ripple Effect Consult (TREC), designed to reposition school counselling from a support function to a strategic driver of school transformation.</strong>
-        </p>
-        <p>TSCC serves as a premier platform that brings together school owners, school leaders, counsellors, psychologists, teachers, parents, policymakers, development partners, corporate sponsors, and education stakeholders to explore how counselling systems can improve student wellbeing, strengthen school culture, enhance staff effectiveness, and improve overall school outcomes.</p>
-        <p>The conference is built on the belief that counselling should not operate as an isolated department but as a central system that aligns people, processes, and outcomes within educational institutions.</p>
+      <div class="tscc-intro-row">
+        <div class="tscc-editorial-intro">
+          <p style="font-size:1.15rem;color:var(--black);line-height:1.8;font-weight:400;margin-bottom:1.5rem">
+            <strong>TSCC is the flagship conference of The Ripple Effect Consult (TREC), designed to reposition school counselling from a support function to a strategic driver of school transformation.</strong>
+          </p>
+          <p>TSCC serves as a premier platform that brings together school owners, school leaders, counsellors, psychologists, teachers, parents, policymakers, development partners, corporate sponsors, and education stakeholders to explore how counselling systems can improve student wellbeing, strengthen school culture, enhance staff effectiveness, and improve overall school outcomes.</p>
+          <p>The conference is built on the belief that counselling should not operate as an isolated department but as a central system that aligns people, processes, and outcomes within educational institutions.</p>
+        </div>
+
+        <!-- ══ CINEMATIC VIDEO SHOWCASE ══ -->
+        <div class="tscc-video-section reveal" style="transition-delay:0.15s">
+          <!-- Ambient glows -->
+          <div class="video-glow-ring vgr-1"></div>
+          <div class="video-glow-ring vgr-2"></div>
+
+          <!-- Video player -->
+          <div class="tscc-video-container">
+            <video id="tsccEssenceVideo" preload="metadata" playsinline webkit-playsinline>
+              <source src="{{ asset('tscc-essence.mp4') }}" type="video/mp4">
+            </video>
+
+            <!-- Custom play overlay -->
+            <div class="tscc-video-overlay" id="videoOverlay">
+              <div class="video-label">
+                <i data-lucide="clapperboard"></i>
+                Conference Highlight Reel
+              </div>
+              <button class="video-play-btn" id="videoPlayBtn" aria-label="Play TSCC Essence video">
+                <i data-lucide="play"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Caption bar -->
+          <div class="tscc-video-caption">
+            <div class="video-caption-text">
+              <i data-lucide="film"></i>
+              The Essence of TSCC
+            </div>
+            <span class="video-caption-badge">Official Film</span>
+          </div>
+        </div>
       </div>
 
       <div class="tscc-vision-mission">
@@ -1473,6 +1775,7 @@
           <h3>Mission</h3>
           <p>To empower schools with the knowledge, tools, frameworks, partnerships, and strategies needed to build sustainable counselling and wellbeing systems that support students, strengthen staff capacity, engage parents, and improve educational outcomes.</p>
         </div>
+
       </div>
 
       <div class="tscc-why-matters">
@@ -2022,6 +2325,51 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
     });
   });
+  // ── Cinematic Video Player
+  const videoEl    = document.getElementById('tsccEssenceVideo');
+  const overlay    = document.getElementById('videoOverlay');
+  const playBtn    = document.getElementById('videoPlayBtn');
+
+  function startVideo() {
+    if (videoEl) {
+      videoEl.play();
+      videoEl.setAttribute('controls', 'true');
+    }
+    if (overlay) {
+      overlay.classList.add('hidden');
+    }
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      startVideo();
+    });
+  }
+  if (overlay) {
+    overlay.addEventListener('click', startVideo);
+  }
+
+  if (videoEl) {
+    // Toggle play/pause on click
+    videoEl.addEventListener('click', (e) => {
+      if (!videoEl.paused) {
+        videoEl.pause();
+      } else {
+        startVideo();
+      }
+    });
+
+    videoEl.addEventListener('pause', () => {
+      overlay.classList.remove('hidden');
+      videoEl.removeAttribute('controls');
+    });
+    videoEl.addEventListener('ended', () => {
+      videoEl.currentTime = 0;
+      overlay.classList.remove('hidden');
+      videoEl.removeAttribute('controls');
+    });
+  }
 });
 </script>
 @endsection
