@@ -11,7 +11,7 @@
 /* ── Hero base ── */
 .hero {
   position: relative;
-  height: 80vh;
+  height: 750px;
   background-image: url('/hero-counsellor.png');
   background-size: cover;
   background-position: 50% center;
@@ -26,6 +26,7 @@
 /* Prevent image cropping of faces on medium screens */
 @media (max-width: 1200px) {
   .hero {
+    height: 720px;
     background-position: 45% center;
   }
 }
@@ -33,14 +34,14 @@
 /* Ensure hero doesn't push content off-screen and allows peek of next section */
 @media (max-width: 1024px) {
   .hero {
-    height: 75vh;
+    height: 680px;
     background-position: 40% center;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    height: 70vh;
+    height: 640px;
     background-attachment: scroll;
     background-position: 35% center;
   }
@@ -48,7 +49,7 @@
 
 @media (max-width: 640px) {
   .hero {
-    min-height: 60vh;
+    min-height: 600px;
     height: auto;
     background-position: center center;
     background-size: cover;
@@ -1086,6 +1087,253 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
 @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ══════════════════════════════════════
+   WHO WE ARE — PREMIUM REDESIGN
+══════════════════════════════════════ */
+.who-section {
+  background: var(--cream);
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.who-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.who-grid {
+  display: grid;
+  grid-template-columns: 43% 57%;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+/* Left Column: Human-Centered Image */
+@keyframes bounceScroll {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-15px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.who-image-box {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+  aspect-ratio: 16 / 9;
+  background: var(--light);
+}
+
+.who-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.who-image-box.reveal-left.visible img {
+  animation: bounceScroll 1.2s ease-out;
+}
+
+.who-image-box:hover img {
+  transform: scale(1.03);
+}
+
+.who-description-accent {
+  border-left: 4px solid var(--orange);
+  padding-left: 20px;
+}
+
+.who-image-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(107, 143, 26, 0.05) 0%, transparent 65%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Right Column: Premium Content */
+.who-content-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.who-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.who-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.who-heading {
+  font-family: var(--font-h);
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  font-weight: 900;
+  color: var(--black);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+.who-heading span {
+  color: var(--green);
+}
+
+.who-description {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--charcoal);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+/* Feature grid */
+.who-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.who-feature-card {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  padding: 1.25rem 0;
+  display: flex;
+  gap: 1.1rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.who-feature-card:hover {
+  border-bottom: 1px solid rgba(107, 143, 26, 0.4);
+}
+
+.who-feature-icon-wrapper {
+  color: var(--green);
+  background: rgba(107, 143, 26, 0.07);
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.45s var(--ease-spring);
+}
+
+.who-feature-icon-wrapper .lucide {
+  width: 20px;
+  height: 20px;
+}
+
+.who-feature-card:hover .who-feature-icon-wrapper {
+  transform: perspective(100px) rotateX(-5deg) rotateY(10deg) scale(1.12);
+  box-shadow: 2px 4px 12px rgba(107, 143, 26, 0.15);
+}
+
+.who-feature-info h4 {
+  font-family: var(--font-h);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 0.35rem;
+}
+
+.who-feature-info p {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+/* Learn More Button */
+.who-learn-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green);
+  border: 1.5px solid var(--green);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.who-learn-btn:hover {
+  background: var(--green);
+  color: #fff;
+  gap: 10px;
+}
+
+/* ── RESPONSIVE OVERRIDES ── */
+@media(max-width: 1024px) {
+  .who-section {
+    padding: 3.5rem 2rem;
+  }
+  .who-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  .who-image-box {
+    max-width: 500px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 10;
+  }
+  .who-content-block {
+    align-items: center;
+    text-align: center;
+  }
+  .who-eyebrow {
+    justify-content: center;
+  }
+  .who-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media(max-width: 640px) {
+  .who-section {
+    padding: 3rem 1.25rem;
+  }
+  .who-features {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .who-feature-card {
+    text-align: left;
+  }
+}
+
+
+/* ══════════════════════════════════════
    SERVICES
 ══════════════════════════════════════ */
 .svc-grid {
@@ -1284,9 +1532,9 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
       </div>
 
       <h1 class="hero-headline reveal" style="transition-delay:.14s">
-        Transforming Lives Through<br>
-        <span class="hl-accent">Counselling,</span><br>
-        <span class="hl-green">Wellbeing</span> &amp; Education
+        Transform Lives,<br>
+        <span class="hl-accent">Build</span><br>
+        <span class="hl-green">Futures</span>
       </h1>
 
       <p class="hero-supporting reveal" style="transition-delay:.20s">
@@ -1386,7 +1634,8 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         <g class="nf1" filter="url(#glow)">
           <rect x="18" y="68" width="168" height="72" rx="14" fill="url(#ng1)" stroke="rgba(216,45,55,0.55)" stroke-width="1.5"/>
           <rect x="18" y="68" width="6" height="72" rx="3" fill="#D82D37"/>
-          <text x="36" y="95" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(216,45,55,0.90)" letter-spacing="1">🧠  COUNSELLING</text>
+          <g transform="translate(28, 85)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(216,45,55,0.90)" stroke-width="2"><path d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11z"/><path d="M12 16c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/><path d="M5.5 20c.5-1.5 1-2 2-2.5M18.5 20c-.5-1.5-1-2-2-2.5"/></svg></g>
+          <text x="48" y="95" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(216,45,55,0.90)" letter-spacing="1">COUNSELLING</text>
           <text x="36" y="113" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Individual</text>
           <text x="36" y="129" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Sessions</text>
         </g>
@@ -1396,7 +1645,8 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         <g class="nf2" filter="url(#glow)">
           <rect x="336" y="68" width="166" height="72" rx="14" fill="url(#ng2)" stroke="rgba(107,143,26,0.55)" stroke-width="1.5"/>
           <rect x="496" y="68" width="6" height="72" rx="3" fill="#6b8f1a"/>
-          <text x="348" y="95" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(107,143,26,0.90)" letter-spacing="1">💼  TRAINING</text>
+          <g transform="translate(348, 85)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(107,143,26,0.90)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M9 11h6M9 15h6"/></svg></g>
+          <text x="368" y="95" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(107,143,26,0.90)" letter-spacing="1">TRAINING</text>
           <text x="348" y="113" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Corporate</text>
           <text x="348" y="129" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Programmes</text>
         </g>
@@ -1406,7 +1656,8 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         <g class="nf3" filter="url(#glow)">
           <rect x="340" y="238" width="166" height="72" rx="14" fill="url(#ng3)" stroke="rgba(229,105,24,0.55)" stroke-width="1.5"/>
           <rect x="500" y="238" width="6" height="72" rx="3" fill="#E56918"/>
-          <text x="352" y="265" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(229,105,24,0.90)" letter-spacing="1">🎤  EVENTS</text>
+          <g transform="translate(352, 255)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(229,105,24,0.90)" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" stroke-linejoin="round"/></svg></g>
+          <text x="372" y="265" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(229,105,24,0.90)" letter-spacing="1">EVENTS</text>
           <text x="352" y="283" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">TSCC</text>
           <text x="352" y="299" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Conference</text>
         </g>
@@ -1416,7 +1667,8 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         <g class="nf4" filter="url(#glow)">
           <rect x="330" y="398" width="168" height="72" rx="14" fill="url(#ng4)" stroke="rgba(216,45,55,0.55)" stroke-width="1.5"/>
           <rect x="492" y="398" width="6" height="72" rx="3" fill="#D82D37"/>
-          <text x="342" y="425" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(216,45,55,0.90)" letter-spacing="1">🏫  WELLBEING</text>
+          <g transform="translate(342, 415)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(216,45,55,0.90)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></g>
+          <text x="362" y="425" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(216,45,55,0.90)" letter-spacing="1">WELLBEING</text>
           <text x="342" y="443" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">School</text>
           <text x="342" y="459" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Programmes</text>
         </g>
@@ -1426,7 +1678,8 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         <g class="nf5" filter="url(#glow)">
           <rect x="20" y="398" width="166" height="72" rx="14" fill="url(#ng5)" stroke="rgba(107,143,26,0.55)" stroke-width="1.5"/>
           <rect x="20" y="398" width="6" height="72" rx="3" fill="#6b8f1a"/>
-          <text x="38" y="425" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(107,143,26,0.90)" letter-spacing="1">👨‍👩‍👧  FAMILY</text>
+          <g transform="translate(30, 415)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(107,143,26,0.90)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></g>
+          <text x="48" y="425" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(107,143,26,0.90)" letter-spacing="1">FAMILY</text>
           <text x="38" y="443" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Parenting</text>
           <text x="38" y="459" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Workshops</text>
         </g>
@@ -1436,9 +1689,10 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         <g class="nf6" filter="url(#glow)">
           <rect x="0" y="238" width="110" height="72" rx="14" fill="url(#ng6)" stroke="rgba(229,105,24,0.55)" stroke-width="1.5"/>
           <rect x="0" y="238" width="6" height="72" rx="3" fill="#E56918"/>
-          <text x="14" y="262" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(229,105,24,0.90)" letter-spacing="0.5">👥 GROUP</text>
-          <text x="14" y="280" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Group</text>
-          <text x="14" y="296" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Sessions</text>
+          <g transform="translate(8, 255)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(229,105,24,0.90)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></g>
+          <text x="26" y="270" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(229,105,24,0.90)" letter-spacing="0.5">GROUP</text>
+          <text x="14" y="288" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Group</text>
+          <text x="14" y="304" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Sessions</text>
         </g>
         <circle class="conn-dot" cx="55" cy="275" r="4" fill="#E56918"/>
 
@@ -1457,24 +1711,96 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
 <!-- ══ MARQUEE STRIP ══ -->
 <div class="marquee-strip" aria-hidden="true">
   <div class="marquee-track">
-    <div class="marquee-item">Individual Counselling</div>
-    <div class="marquee-item">Corporate Training</div>
-    <div class="marquee-item">School Wellbeing</div>
-    <div class="marquee-item">TSCC Conference</div>
-    <div class="marquee-item">Group Counselling</div>
-    <div class="marquee-item">Parenting Workshops</div>
-    <div class="marquee-item">Mental Health Advocacy</div>
-    <div class="marquee-item">People · Purpose · Impact</div>
-    <div class="marquee-item">Individual Counselling</div>
-    <div class="marquee-item">Corporate Training</div>
-    <div class="marquee-item">School Wellbeing</div>
-    <div class="marquee-item">TSCC Conference</div>
-    <div class="marquee-item">Group Counselling</div>
-    <div class="marquee-item">Parenting Workshops</div>
-    <div class="marquee-item">Mental Health Advocacy</div>
-    <div class="marquee-item">People · Purpose · Impact</div>
+    <div class="marquee-item">500+ Individuals Supported</div>
+    <div class="marquee-item">50+ Schools Partnered</div>
+    <div class="marquee-item">8 Years of Professional Practice</div>
+    <div class="marquee-item">6 Successful TSCC Conferences</div>
+    <div class="marquee-item">Trusted by Organisations Nationwide</div>
+    <div class="marquee-item">Proven Results · Real Impact</div>
+    <div class="marquee-item">500+ Individuals Supported</div>
+    <div class="marquee-item">50+ Schools Partnered</div>
+    <div class="marquee-item">8 Years of Professional Practice</div>
+    <div class="marquee-item">6 Successful TSCC Conferences</div>
+    <div class="marquee-item">Trusted by Organisations Nationwide</div>
+    <div class="marquee-item">Proven Results · Real Impact</div>
   </div>
 </div>
+
+<!-- ══ WHO WE ARE ══ -->
+<section class="who-section" aria-label="Who We Are">
+  <div class="who-image-bg-glow"></div>
+  <div class="who-container">
+    <div class="who-grid">
+      
+      <!-- Left Column: Content Block -->
+      <div class="who-content-block">
+        <div class="who-eyebrow reveal-left">Who We Are</div>
+        <h2 class="who-heading reveal-left" style="transition-delay: 0.1s;">
+          Building Positive <span>Change</span> Through Counselling and Education
+        </h2>
+        <p class="who-description who-description-accent reveal-left" style="transition-delay: 0.2s;">
+          At TREC, we empower individuals and organisations across Nigeria to build resilience, cultivate healthier minds, and create positive transformation through counselling and education.
+        </p>
+        
+        <!-- Feature Highlights Grid -->
+        <div class="who-features reveal-stagger" style="transition-delay: 0.3s;">
+          
+          <div class="who-feature-card">
+            <div class="who-feature-icon-wrapper">
+              <i data-lucide="heart"></i>
+            </div>
+            <div class="who-feature-info">
+              <h4>Professional Counselling</h4>
+              <p>Confidential therapy and mental health support for individuals and groups.</p>
+            </div>
+          </div>
+          
+          <div class="who-feature-card">
+            <div class="who-feature-icon-wrapper">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="who-feature-info">
+              <h4>School Wellbeing Programs</h4>
+              <p>Integrating emotional health frameworks directly into school culture.</p>
+            </div>
+          </div>
+          
+          <div class="who-feature-card">
+            <div class="who-feature-icon-wrapper">
+              <i data-lucide="users"></i>
+            </div>
+            <div class="who-feature-info">
+              <h4>Parent & Family Support</h4>
+              <p>Empowering parents to raise confident and emotionally resilient children.</p>
+            </div>
+          </div>
+          
+          <div class="who-feature-card">
+            <div class="who-feature-icon-wrapper">
+              <i data-lucide="briefcase"></i>
+            </div>
+            <div class="who-feature-info">
+              <h4>Organisational Development</h4>
+              <p>Bespoke training to cultivate psychologically safe and productive workplaces.</p>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Learn More Button -->
+        <div class="who-cta reveal-left" style="transition-delay: 0.4s; margin-top: 2rem;">
+          <a href="{{ route('about') }}" class="who-learn-btn">Learn More About Us →</a>
+        </div>
+      </div>
+      
+      <!-- Right Column: Image -->
+      <div class="who-image-box reveal-right">
+        <img src="{{ asset('IMG_7061.JPG') }}" alt="Professional warm counselling session at TREC office" loading="lazy">
+      </div>
+      
+    </div>
+  </div>
+</section>
 
 <!-- ══ SERVICES OVERVIEW ══ -->
 <section class="sec" style="background:var(--white)">
@@ -1515,14 +1841,14 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
       </div>
       <div class="svc-card">
         <div class="svc-num">05</div>
-        <div class="svc-icon si-r">👨‍👩‍👧</div>
+        <div class="svc-icon si-r"><i data-lucide="baby"></i></div>
         <h3>Parenting Workshops</h3>
         <p>Evidence-based workshops empowering intentional parents to raise confident, emotionally resilient children.</p>
         <a href="{{ route('services') }}" class="svc-more">Learn more →</a>
       </div>
       <div class="svc-card">
         <div class="svc-num">06</div>
-        <div class="svc-icon si-o">🎤</div>
+        <div class="svc-icon si-o"><i data-lucide="mic"></i></div>
         <h3>TSCC & Education Events</h3>
         <p>Nigeria's premier school counselling conference and strategic education events — driving sector-wide change.</p>
         <a href="{{ route('tscc') }}" class="svc-more">Learn more →</a>

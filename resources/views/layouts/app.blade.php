@@ -6,7 +6,7 @@
 <title>@yield('title') – TREC</title>
 <meta name="description" content="@yield('meta_desc', 'The Ripple Effect Consult — Professional counselling, training & consultation creating lasting change across individuals, schools, and organisations.')">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 /* ── RESET & ROOT ── */
@@ -15,8 +15,8 @@
   --red:#D82D37;--orange:#E56918;--green:#6B8F1A;
   --black:#0D0D0D;--charcoal:#414042;--white:#FFFFFF;
   --cream:#FAF9F6;--light:#F2F1EE;--mid:#E8E7E3;
-  --font-h:'Fraunces',Georgia,serif;
-  --font-b:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-h:'Cormorant Garamond',Georgia,serif;
+  --font-b:'Outfit',system-ui,sans-serif;
   --ease:cubic-bezier(.4,0,.2,1);
   --ease-spring:cubic-bezier(.34,1.56,.64,1);
   --nav-h:70px;
