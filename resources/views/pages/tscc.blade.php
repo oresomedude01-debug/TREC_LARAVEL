@@ -2185,7 +2185,7 @@
 <!-- ── REGISTER CTA ── -->
 <section class="tscc-cta">
   <div class="reveal" style="position:relative;z-index:1">
-    <h2 style="font-family:var(--font-h);color:#fff;font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-1px;margin-bottom:1rem">Be Part of TSCC 2025</h2>
+    <h2 style="font-family:var(--font-display);color:#fff;font-size:clamp(2rem,4vw,3rem);font-weight:400;letter-spacing:-.5px;margin-bottom:1rem">Be Part of TSCC 2025</h2>
     <p style="color:rgba(255,255,255,.7);font-size:1rem;font-weight:300;max-width:440px;margin:0 auto 2.5rem;line-height:1.85">Join hundreds of school counsellors, educators, and mental health advocates shaping the future of wellbeing in Nigerian schools.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
       <a href="{{ route('contact') }}" class="btn-wh">Register Interest</a>
@@ -2197,7 +2197,7 @@
 <!-- ── CONNECT WITH US ── -->
 <section class="social-links-sec">
   <div class="wrap reveal" style="position:relative;z-index:1">
-    <h3 style="font-family:var(--font-h);color:rgba(255,255,255,.85);font-size:1.3rem;font-weight:700;margin:0 0 1rem">Stay Connected</h3>
+    <h3 style="font-family:var(--font-display);color:rgba(255,255,255,.85);font-size:1.3rem;font-weight:400;margin:0 0 1rem">Stay Connected</h3>
     <p style="color:rgba(255,255,255,.55);font-size:.95rem;margin-bottom:1.5rem">Follow TSCC on social media for updates, speaker announcements, and event highlights.</p>
     <div class="social-btns">
       <a href="https://www.facebook.com/profile.php?id=100063916400380" target="_blank" class="social-btn sb-facebook">

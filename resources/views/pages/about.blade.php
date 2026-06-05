@@ -30,7 +30,7 @@
 }
 .ab-hero-label::before{content:'';width:20px;height:2px;background:var(--orange)}
 .ab-hero h1{
-  font-family:var(--font-h);font-size:clamp(2.8rem,5vw,4.5rem);
+  font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.5rem);
   font-weight:900;color:#fff;line-height:1.0;letter-spacing:-2px;
   margin-bottom:1.5rem;
 }
@@ -46,11 +46,11 @@
   background:linear-gradient(90deg,var(--orange),var(--red));
 }
 .ab-quote-big{
-  font-family:var(--font-h);font-size:4rem;color:rgba(255,255,255,.1);
+  font-family:var(--font-display);font-size:4rem;color:rgba(255,255,255,.1);
   line-height:.7;margin-bottom:1rem;
 }
 .ab-quote-card blockquote{
-  font-family:var(--font-h);font-size:1.4rem;font-weight:600;
+  font-family:var(--font-display);font-size:1.4rem;font-weight:400;letter-spacing:-.3px;
   color:#fff;line-height:1.5;font-style:italic;margin-bottom:1.5rem;
 }
 .ab-quote-card cite{font-size:12px;font-style:normal;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
@@ -60,7 +60,7 @@
 .story-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:6rem;align-items:start}
 .story-body p{font-size:1rem;font-weight:300;line-height:1.95;color:var(--charcoal);margin-bottom:1.5rem}
 .story-body p:first-of-type::first-letter{
-  font-family:var(--font-h);font-size:3.5rem;font-weight:900;
+  font-family:var(--font-display);font-size:3.5rem;font-weight:400;
   color:var(--red);float:left;line-height:.85;margin:0 .1em .1em 0;
 }
 
@@ -95,7 +95,7 @@
 .mvv-label.lr{color:var(--red)}
 .mvv-label.lo{color:var(--orange)}
 .mvv-label.lg{color:var(--green)}
-.mvv-card h3{font-family:var(--font-h);font-size:1.5rem;font-weight:900;color:var(--black);margin-bottom:.75rem}
+.mvv-card h3{font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--black);margin-bottom:.75rem}
 .mvv-card p{font-size:.9rem;font-weight:300;line-height:1.85;color:var(--charcoal)}
 
 /* ── CORE VALUES PILLARS ── */
@@ -103,7 +103,7 @@
 .pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--mid);margin-top:3rem;border-radius:12px;overflow:hidden}
 .pillar{background:var(--white);padding:2rem 1.5rem;transition:background .3s}
 .pillar:hover{background:var(--cream)}
-.pillar-num{font-family:var(--font-h);font-size:2rem;font-weight:900;margin-bottom:.5rem}
+.pillar-num{font-family:var(--font-display);font-size:2rem;font-weight:400;margin-bottom:.5rem}
 .pn-r{color:var(--red)}
 .pn-o{color:var(--orange)}
 .pn-g{color:var(--green)}
@@ -461,19 +461,19 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem" class="reveal-stagger">
       <div style="text-align:center;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
-        <div style="font-family:var(--font-h);font-size:2.8rem;font-weight:900;color:var(--red);line-height:1" data-count="500" data-suffix="+">500+</div>
+        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--red);line-height:1" data-count="500" data-suffix="+">500+</div>
         <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">Individuals Counselled</div>
       </div>
       <div style="text-align:center;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
-        <div style="font-family:var(--font-h);font-size:2.8rem;font-weight:900;color:var(--orange);line-height:1" data-count="50" data-suffix="+">50+</div>
+        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--orange);line-height:1" data-count="50" data-suffix="+">50+</div>
         <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">Schools Supported</div>
       </div>
       <div style="text-align:center;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
-        <div style="font-family:var(--font-h);font-size:2.8rem;font-weight:900;color:var(--green);line-height:1" data-count="6" data-suffix="">6</div>
+        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--green);line-height:1" data-count="6" data-suffix="">6</div>
         <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">TSCC Conferences</div>
       </div>
       <div style="text-align:center;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
-        <div style="font-family:var(--font-h);font-size:2.8rem;font-weight:900;color:var(--charcoal);line-height:1" data-count="8" data-suffix=" Yrs">8 Yrs</div>
+        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--charcoal);line-height:1" data-count="8" data-suffix=" Yrs">8 Yrs</div>
         <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">Professional Practice</div>
       </div>
     </div>
@@ -484,7 +484,7 @@
 <div class="team-cta">
   <div class="reveal" style="position:relative;z-index:1">
     <div class="eyebrow" style="justify-content:center;color:rgba(255,255,255,.35);margin-bottom:1rem">The People</div>
-    <h2 style="font-family:var(--font-h);font-size:clamp(2rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:1rem;letter-spacing:-1px">
+    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:400;color:#fff;margin-bottom:1rem;letter-spacing:-.5px">
       Behind Every Ripple,<br>There's a Person.
     </h2>
     <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:440px;margin:0 auto 2rem;line-height:1.85">

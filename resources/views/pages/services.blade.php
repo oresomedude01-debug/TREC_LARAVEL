@@ -17,7 +17,7 @@
 }
 .svc-hero-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--orange),var(--green))}
 .svc-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.svc-hero h1{font-family:var(--font-h);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;color:#fff;line-height:1.0;letter-spacing:-2px;margin-bottom:1.25rem}
+.svc-hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:400;color:#fff;line-height:1.0;letter-spacing:-2px;margin-bottom:1.25rem}
 .svc-hero p{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.55);max-width:500px;line-height:1.9}
 
 /* Floating badge list */
@@ -47,7 +47,7 @@
 }
 .svc-item:last-child{border-bottom:none}
 .svc-item-num{
-  font-family:var(--font-h);font-size:4rem;font-weight:900;
+  font-family:var(--font-display);font-size:4rem;font-weight:400;
   color:var(--light);line-height:1;user-select:none;
   transition:color .3s;
 }
@@ -93,7 +93,7 @@
 .proc-num{
   width:64px;height:64px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-h);font-size:1.3rem;font-weight:900;
+  font-family:var(--font-display);font-size:1.3rem;font-weight:400;
   margin:0 auto 1.25rem;color:#fff;
 }
 .ps-r{background:var(--red);box-shadow:0 4px 20px rgba(216,45,55,.3)}
@@ -320,7 +320,7 @@
 <!-- ── CTA ── -->
 <section class="svc-cta">
   <div class="reveal" style="position:relative;z-index:1">
-    <h2 style="font-family:var(--font-h);color:#fff;font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-1px;margin-bottom:1rem">Ready to Get Started?</h2>
+    <h2 style="font-family:var(--font-display);color:#fff;font-size:clamp(2rem,4vw,3rem);font-weight:400;letter-spacing:-.5px;margin-bottom:1rem">Ready to Get Started?</h2>
     <p style="color:rgba(255,255,255,.55);font-size:1rem;font-weight:300;max-width:440px;margin:0 auto 2.5rem;line-height:1.85">One conversation can be the beginning of lasting change. Book a free consultation with our team today.</p>
     <a href="{{ route('contact') }}" class="btn-red" style="padding:16px 44px;font-size:15px">Book a Free Consultation</a>
   </div>

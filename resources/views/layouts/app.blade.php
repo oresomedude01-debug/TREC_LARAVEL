@@ -6,7 +6,8 @@
 <title>@yield('title') – TREC</title>
 <meta name="description" content="@yield('meta_desc', 'The Ripple Effect Consult — Professional counselling, training & consultation creating lasting change across individuals, schools, and organisations.')">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 /* ── RESET & ROOT ── */
@@ -15,8 +16,10 @@
   --red:#D82D37;--orange:#E56918;--green:#6B8F1A;
   --black:#0D0D0D;--charcoal:#414042;--white:#FFFFFF;
   --cream:#FAF9F6;--light:#F2F1EE;--mid:#E8E7E3;
-  --font-h:'Cormorant Garamond',Georgia,serif;
-  --font-b:'Outfit',system-ui,sans-serif;
+  --font-display:'DM Serif Display',Georgia,serif;
+  --font-h:'Lora',Georgia,serif;
+  --font-b:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-ui:'Space Grotesk',system-ui,sans-serif;
   --ease:cubic-bezier(.4,0,.2,1);
   --ease-spring:cubic-bezier(.34,1.56,.64,1);
   --nav-h:70px;
@@ -26,8 +29,9 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--font-b);background:var(--white);color:var(--charcoal);overflow-x:hidden;line-height:1.6;opacity:0;transition:opacity .45s var(--ease)}
 body.loaded{opacity:1}
+
 a{text-decoration:none;color:inherit}
-button{font-family:var(--font-b);cursor:pointer;border:none;background:none}
+button{font-family:var(--font-ui);cursor:pointer;border:none;background:none}
 img{max-width:100%;display:block}
 
 /* ── SCROLL PROGRESS BAR ── */
@@ -60,13 +64,13 @@ nav.scrolled{
 .logo-area:hover{opacity:.85}
 .logo-img{height:42px;width:auto;flex-shrink:0;object-fit:contain}
 .logo-wordmark{line-height:1}
-.logo-wordmark strong{display:block;font-family:var(--font-h);font-size:18px;font-weight:900;color:var(--black);letter-spacing:-.5px}
-.logo-wordmark span{font-size:9px;font-weight:400;color:var(--charcoal);letter-spacing:2.5px;text-transform:uppercase;opacity:.65}
+.logo-wordmark strong{display:block;font-family:var(--font-display);font-size:18px;font-weight:400;color:var(--black);letter-spacing:-.5px}
+.logo-wordmark span{font-size:9px;font-weight:500;color:var(--charcoal);letter-spacing:2.5px;text-transform:uppercase;opacity:.65;font-family:var(--font-ui)}
 
 /* Desktop links */
 .nav-links{display:flex;align-items:center;gap:2px}
 .nav-links a{
-  font-size:13px;font-weight:500;color:var(--charcoal);
+  font-family:var(--font-ui);font-size:13px;font-weight:500;color:var(--charcoal);
   padding:8px 13px;border-radius:8px;
   transition:all .2s var(--ease);white-space:nowrap;position:relative;
 }
@@ -81,7 +85,7 @@ nav.scrolled{
 
 /* CTA button */
 .nav-btn{
-  background:var(--red);color:#fff;
+  background:var(--red);color:#fff;font-family:var(--font-ui);
   padding:10px 22px;font-size:13px;font-weight:600;
   border-radius:8px;letter-spacing:.3px;
   transition:all .25s var(--ease);flex-shrink:0;
@@ -107,7 +111,7 @@ nav.scrolled{
 }
 .mob-menu.open{opacity:1;pointer-events:all}
 .mob-menu a{
-  font-family:var(--font-h);font-size:2.2rem;font-weight:700;
+  font-family:var(--font-display);font-size:2.2rem;font-weight:400;
   color:var(--black);padding:.6rem 2rem;letter-spacing:-.5px;
   transition:color .2s;text-align:center;
   transform:translateY(20px);opacity:0;
@@ -129,40 +133,40 @@ nav.scrolled{
 .sec{padding:5.5rem 2rem}
 .wrap{max-width:1200px;margin:0 auto}
 .eyebrow{
-  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
   color:var(--red);margin-bottom:.9rem;
   display:flex;align-items:center;gap:10px;
 }
 .eyebrow::before{content:'';width:20px;height:2px;background:currentColor;flex-shrink:0}
-h2.stitle{font-family:var(--font-h);font-size:clamp(2rem,3.5vw,2.75rem);font-weight:900;color:var(--black);line-height:1.1;margin-bottom:1.25rem}
+h2.stitle{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.75rem);font-weight:400;color:var(--black);line-height:1.1;margin-bottom:1.25rem}
 h2.stitle.wh{color:#fff}
 .slead{font-size:1rem;font-weight:300;color:var(--charcoal);max-width:520px;line-height:1.85}
 .slead.wh{color:rgba(255,255,255,.65)}
 
 /* ── BUTTONS ── */
 .btn-red{
-  background:var(--red);color:#fff;
+  background:var(--red);color:#fff;font-family:var(--font-ui);
   padding:13px 30px;font-size:14px;font-weight:600;letter-spacing:.3px;
   transition:all .25s var(--ease);display:inline-block;cursor:pointer;border:none;
   border-radius:8px;box-shadow:0 4px 14px rgba(216,45,55,.22);
 }
 .btn-red:hover{background:#b8242e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(216,45,55,.35)}
 .btn-ghost{
-  background:transparent;color:var(--black);
+  background:transparent;color:var(--black);font-family:var(--font-ui);
   padding:13px 30px;font-size:14px;font-weight:500;
   border:1.5px solid rgba(13,13,13,.25);display:inline-block;
   transition:all .25s var(--ease);cursor:pointer;border-radius:8px;
 }
 .btn-ghost:hover{background:var(--black);color:#fff;border-color:var(--black)}
 .btn-wh{
-  background:#fff;color:var(--red);
+  background:#fff;color:var(--red);font-family:var(--font-ui);
   padding:13px 30px;font-size:14px;font-weight:700;
   display:inline-block;transition:all .25s var(--ease);
   cursor:pointer;border:none;border-radius:8px;
 }
 .btn-wh:hover{background:var(--cream);transform:translateY(-2px)}
 .btn-orange{
-  background:var(--orange);color:#fff;
+  background:var(--orange);color:#fff;font-family:var(--font-ui);
   padding:13px 30px;font-size:14px;font-weight:600;letter-spacing:.3px;
   transition:all .25s var(--ease);display:inline-block;cursor:pointer;border:none;
   border-radius:8px;box-shadow:0 4px 14px rgba(229,105,24,.22);
@@ -202,8 +206,8 @@ footer{background:var(--black);padding:5rem 2rem 0}
 }
 .ft-social-link:hover{background:var(--red);border-color:var(--red);color:#fff}
 .ft-social-link svg{width:15px;height:15px;fill:currentColor}
-.ft-col h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.25rem}
-.ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);cursor:pointer;margin-bottom:9px;font-weight:300;transition:color .2s}
+.ft-col h4{font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.25rem}
+.ft-col a{font-family:var(--font-b);display:block;font-size:13px;color:rgba(255,255,255,.45);cursor:pointer;margin-bottom:9px;font-weight:300;transition:color .2s}
 .ft-col a:hover{color:#fff}
 .ft-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1.5rem 0 2rem}
 .ft-bottom p{font-size:12px;color:rgba(255,255,255,.22);font-weight:300}
@@ -624,17 +628,17 @@ footer{background:var(--black);padding:5rem 2rem 0}
         </div>
         <p>Professional counselling, training & consultation creating lasting ripples across individuals, schools, and organisations.</p>
         <div class="ft-socials">
-          <a href="https://www.linkedin.com/company/trec-ripple-effect-consult" target="_blank" class="ft-social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/rippleeffectconsult" target="_blank" class="ft-social-link" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/rippleeffectconsult" target="_blank" class="ft-social-link" aria-label="Facebook">
+          <a href="https://www.facebook.com/people/The-Ripple-Effect-Consult/100063916400380/" target="_blank" class="ft-social-link" aria-label="Facebook">
             <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
-          <a href="https://twitter.com/ripple_effect_c" target="_blank" class="ft-social-link" aria-label="Twitter/X">
+          <a href="https://www.instagram.com/tscc2026?igsh=cDU4bzV3NjF6cTB6&utm_source=qr" target="_blank" class="ft-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://x.com/Theschoolcon" target="_blank" class="ft-social-link" aria-label="Twitter/X">
             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.735-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@theschoolcounsellingcon0" target="_blank" class="ft-social-link" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></svg>
           </a>
         </div>
       </div>
@@ -854,64 +858,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getBotResponse(query) {
     const q = query.toLowerCase().trim();
-    
-    // Greetings
-    if (q.match(/\b(hi|hello|hey|greetings|howdy|counselor|bot|assistant)\b/)) {
-      return "Hello! Welcome to The Ripple Effect Consult. How can I help you today?";
-    }
-    
-    // Booking
-    if (q.includes('book') || q.includes('appointment') || q.includes('schedule') || q.includes('session') || q.includes('consult')) {
-      return "You can easily book a counselling session directly through our website! Visit our <a href='/contact'>Contact Page</a> to fill out our interactive booking form. You can select your desired service (Individual, Group, Corporate, etc.) and complete your details.";
+
+    // ── GREETINGS ──
+    if (q.match(/\b(hi|hello|hey|greetings|howdy|good morning|good afternoon|good evening|counselor|bot|assistant)\b/)) {
+      return "Hello and welcome to The Ripple Effect Consult! 👋 I'm your TREC assistant. Whether you need personal counselling, school wellbeing support, or want to attend our flagship TSCC Conference — we're here to help. What can I do for you today?";
     }
 
-    // TSCC
-    if (q.includes('tscc') || q.includes('conference') || q.includes('annual')) {
-      return "The School Counselling Conference (TSCC) is Nigeria's premier annual conference for school counsellors and educators. It provides professional capacity building, expert keynotes, CPD workshops, and networking. Visit our dedicated <a href='/tscc'>TSCC Page</a> to learn more about the next conference or to enquire about sponsorship!";
+    // ── FOUNDER ──
+    if (q.includes('founder') || q.includes('faatimah') || q.includes('samuel') || q.includes('ceo') || q.includes('director') || q.includes('lead') || q.includes('who started') || q.includes('who founded')) {
+      return "TREC was founded by <b>Faatimah Samuel</b> — a distinguished counselling psychologist, certified school counsellor, and mental health advocate with over a decade of experience transforming lives across Nigeria.<br><br>She holds the prestigious <b>MCASSON</b> (Member, Counselling Association of Nigeria) and <b>FPMC</b> (Fellow, Professional Mentoring Council) certifications. Faatimah is also the visionary behind the annual <b>School Counselling Conference (TSCC)</b>.<br><br>🔗 <a href='https://ng.linkedin.com/in/faatimah-samuel-mcasson-fpmc-619a79173' target='_blank'>Connect with her on LinkedIn</a><br><br>Would you like to <a href='/contact'>book a consultation</a> with our team today?";
     }
 
-    // Sponsorship
-    if (q.includes('sponsor') || q.includes('partnership') || q.includes('partner')) {
-      return "Want to partner with us or sponsor the TSCC Conference? We would love to hear from you. Please fill out our sponsorship enquiry section on the <a href='/contact'>Contact Page</a> or email us at <a href='mailto:rippleeffectconsult@gmail.com'>rippleeffectconsult@gmail.com</a>.";
+    // ── SOCIAL MEDIA ──
+    if (q.includes('social') || q.includes('instagram') || q.includes('facebook') || q.includes('twitter') || q.includes('tiktok') || q.includes('follow') || q.includes('handle') || q.includes('linkedin')) {
+      return "Follow TREC and TSCC on social media for mental health tips, event updates, and counselling insights:<br><ul><li>📘 <b>Facebook:</b> <a href='https://www.facebook.com/people/The-Ripple-Effect-Consult/100063916400380/' target='_blank'>The Ripple Effect Consult</a></li><li>📸 <b>Instagram:</b> <a href='https://www.instagram.com/tscc2026' target='_blank'>@tscc2026</a></li><li>🐦 <b>Twitter/X:</b> <a href='https://x.com/Theschoolcon' target='_blank'>@Theschoolcon</a></li><li>🎵 <b>TikTok:</b> <a href='https://www.tiktok.com/@theschoolcounsellingcon0' target='_blank'>@theschoolcounsellingcon0</a></li><li>💼 <b>LinkedIn (Founder):</b> <a href='https://ng.linkedin.com/in/faatimah-samuel-mcasson-fpmc-619a79173' target='_blank'>Faatimah Samuel</a></li></ul>While you're here — would you like to <a href='/contact'>book a free consultation</a>?";
     }
 
-    // Services
-    if (q.includes('service') || q.includes('offer') || q.includes('counselling') || q.includes('therapy') || q.includes('training') || q.includes('corporate') || q.includes('parenting')) {
-      return "TREC offers professional counselling, training, and consultation services:<ul><li><b>Individual Counselling:</b> One-on-one therapy for anxiety, depression, grief, and relationships.</li><li><b>Group Counselling:</b> Peer support groups and grief circles.</li><li><b>Corporate Training:</b> Stress management and leadership wellbeing.</li><li><b>School Wellbeing:</b> Student counselling and staff wellbeing.</li><li><b>Parenting Workshops:</b> Practical tools for emotional resilience.</li></ul>You can learn more on our <a href='/services'>Services Page</a>.";
+    // ── BOOKING ──
+    if (q.includes('book') || q.includes('appointment') || q.includes('schedule') || q.includes('session') || q.includes('consult') || q.includes('register') || q.includes('sign up') || q.includes('enroll')) {
+      return "Great choice! Taking that first step is the most important one. 🌟<br><br>You can book a session in just a few clicks on our <a href='/contact'><b>Contact / Booking Page</b></a>. We offer:<ul><li>✅ <b>Free initial consultation</b></li><li>✅ Individual & Group Counselling</li><li>✅ Corporate & School Wellbeing packages</li></ul>Our team will get back to you promptly. Ready to start your journey? <a href='/contact'>Book now →</a>";
     }
 
-    // Pricing / Price / Cost
-    if (q.includes('price') || q.includes('cost') || q.includes('pricing') || q.includes('fee') || q.includes('charge') || q.includes('pay') || q.includes('free')) {
-      return "We believe in making mental health support accessible. We offer a <b>free initial consultation</b>. To enquire about detailed rates for ongoing individual sessions, group workshops, corporate packages, or school wellbeing audits, please get in touch with us via our <a href='/contact'>Contact Page</a>.";
+    // ── TSCC ──
+    if (q.includes('tscc') || q.includes('conference') || q.includes('annual') || q.includes('2026')) {
+      return "🎓 <b>The School Counselling Conference (TSCC) 2026</b> is Nigeria's premier annual event for school counsellors, educators, and mental health professionals!<br><br>It features:<ul><li>🎤 Expert Keynote Speakers</li><li>📚 CPD-accredited Workshops</li><li>🤝 Networking with 400+ delegates</li><li>🏫 Collaboration with 50+ schools</li></ul>Don't miss out — visit our <a href='/tscc'>TSCC Page</a> to register or enquire about <b>sponsorship opportunities</b>. Sponsoring TSCC puts your brand in front of Nigeria's top education leaders!";
     }
 
-    // Contact / phone / email / address / hours / map
-    if (q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('number') || q.includes('call') || q.includes('address') || q.includes('location') || q.includes('where') || q.includes('hour') || q.includes('time') || q.includes('office') || q.includes('map')) {
-      return "Here is how you can reach TREC Nigeria:<ul><li><b>Phone:</b> +234 905 605 7502 or +234 808 063 9507</li><li><b>Email:</b> <a href='mailto:rippleeffectconsult@gmail.com'>rippleeffectconsult@gmail.com</a></li><li><b>Office Address:</b> 11 Raji Crescent, Baruwa, Ipaja, Lagos, Nigeria.</li><li><b>Hours:</b> Monday - Friday, 9:00 AM - 5:00 PM.</li></ul>You can also view our interactive map on the <a href='/contact'>Contact Page</a>.";
+    // ── SPONSORSHIP ──
+    if (q.includes('sponsor') || q.includes('partnership') || q.includes('partner') || q.includes('brand') || q.includes('advertise') || q.includes('exhibit')) {
+      return "💼 Partnering with TREC or sponsoring the TSCC Conference is a powerful way to reach Nigeria's education and mental health community!<br><br>Benefits include:<ul><li>🌍 Brand exposure to 400+ educators and counsellors</li><li>📢 Featured promotions across our social media platforms</li><li>🤝 Strategic partnerships with top schools</li></ul>Reach us now to secure your spot: <a href='/contact'>Submit a sponsorship enquiry →</a> or email <a href='mailto:rippleeffectconsult@gmail.com'>rippleeffectconsult@gmail.com</a>";
     }
 
-    // About / Story / Founder / Team / Who
-    if (q.includes('about') || q.includes('who') || q.includes('story') || q.includes('team') || q.includes('trec') || q.includes('ripple') || q.includes('founder') || q.includes('found')) {
-      return "The Ripple Effect Consult (TREC) was founded in 2017 in Lagos, Nigeria. We are a multidisciplinary team committed to making mental health support accessible, impactful, and sustainable. Our core values are Integrity, Compassion, Excellence, and Impact. Over the last 8 years, we have counselled 500+ individuals and supported 50+ schools.";
+    // ── SERVICES ──
+    if (q.includes('service') || q.includes('offer') || q.includes('counselling') || q.includes('therapy') || q.includes('training') || q.includes('corporate') || q.includes('parenting') || q.includes('what do you do')) {
+      return "TREC provides world-class counselling, training, and consultation services:<ul><li>🧠 <b>Individual Counselling:</b> Anxiety, depression, grief, relationships — one-on-one with a certified therapist.</li><li>👥 <b>Group Counselling:</b> Peer support groups and grief circles.</li><li>🏢 <b>Corporate Training:</b> Stress management, leadership wellbeing, and employee wellness.</li><li>🏫 <b>School Wellbeing:</b> Full audits, student counselling, staff training, and policy development.</li><li>👨‍👩‍👧 <b>Parenting Workshops:</b> Practical tools to raise emotionally resilient children.</li></ul>Each service is tailored to your unique needs. <a href='/contact'><b>Book a free consultation today →</b></a>";
     }
 
-    // Wellbeing
-    if (q.includes('wellbeing') || q.includes('school package') || q.includes('teacher') || q.includes('student')) {
-      return "Our School Wellbeing package is a holistic framework that embeds emotional health into school culture. It includes wellbeing audits, student counselling, staff training, and policy development. Read all about it on our dedicated <a href='/wellbeing'>Wellbeing Page</a>.";
+    // ── PRICING ──
+    if (q.includes('price') || q.includes('cost') || q.includes('pricing') || q.includes('fee') || q.includes('charge') || q.includes('pay') || q.includes('free') || q.includes('how much')) {
+      return "We believe impactful mental health support should be accessible. Here's how we work:<ul><li>🎁 <b>Free Initial Consultation</b> — no strings attached!</li><li>💳 Flexible pricing for individual, group, and corporate packages.</li><li>🏫 Custom school wellbeing packages tailored to your institution's needs.</li></ul>To get a personalised quote, <a href='/contact'><b>contact us here →</b></a> — our team responds within 24 hours.";
     }
 
-    // Blog
-    if (q.includes('blog') || q.includes('article') || q.includes('post') || q.includes('resource') || q.includes('read')) {
-      return "We share mental health resources, coping strategies, and articles on our blog. Check out our latest posts on the <a href='/blog'>Blog Page</a>!";
+    // ── CONTACT / LOCATION ──
+    if (q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('number') || q.includes('call') || q.includes('address') || q.includes('location') || q.includes('where') || q.includes('hour') || q.includes('time') || q.includes('office') || q.includes('map') || q.includes('reach')) {
+      return "Here's how to reach TREC Nigeria:<ul><li>📞 <b>Phone:</b> <a href='tel:+2349056057502'>+234 905 605 7502</a> or <a href='tel:+2348080639507'>+234 808 063 9507</a></li><li>📧 <b>Email:</b> <a href='mailto:rippleeffectconsult@gmail.com'>rippleeffectconsult@gmail.com</a></li><li>📍 <b>Address:</b> 11 Raji Crescent, Baruwa, Ipaja, Lagos, Nigeria.</li><li>🕘 <b>Hours:</b> Monday – Friday, 9:00 AM – 5:00 PM.</li></ul>Or <a href='/contact'><b>fill our online form</b></a> and we'll get back to you within 24 hours!";
     }
 
-    // Thank you
-    if (q.includes('thank') || q.includes('thanks') || q.includes('appreciate') || q.includes('good')) {
-      return "You're very welcome! If you have any other questions, feel free to ask. Have a wonderful day!";
+    // ── ABOUT / WHO ARE YOU ──
+    if (q.includes('about') || q.includes('who') || q.includes('story') || q.includes('team') || q.includes('trec') || q.includes('ripple') || q.includes('history') || q.includes('background')) {
+      return "The Ripple Effect Consult (TREC) was founded in <b>2017</b> in Lagos, Nigeria by <b>Faatimah Samuel (MCASSON, FPMC)</b> — a passionate mental health advocate.<br><br>Over 8 years, we've:<ul><li>🧠 Counselled <b>500+ individuals</b></li><li>🏫 Supported <b>50+ schools</b></li><li>🎓 Trained <b>200+ professionals</b></li></ul>Our mission is to make mental health support accessible, sustainable, and impactful across Nigeria. <a href='/about'>Learn our full story →</a><br><br>Ready to experience the TREC difference? <a href='/contact'><b>Book a session →</b></a>";
     }
 
-    // Fallback
-    return "I'm not sure I understand that question entirely. Could you please clarify? You can ask about our services, booking a session, the TSCC conference, contact details, or check out our <a href='/contact'>Contact Page</a> to send a direct message to our team.";
+    // ── SCHOOL / WELLBEING ──
+    if (q.includes('wellbeing') || q.includes('school package') || q.includes('teacher') || q.includes('student') || q.includes('school counsell')) {
+      return "Our <b>School Wellbeing Package</b> is a comprehensive, 6-step framework:<ol><li>📋 Wellbeing Audit</li><li>📄 Policy Development</li><li>🧠 Student Counselling</li><li>👩‍🏫 Staff Training</li><li>👪 Parent Engagement</li><li>🔄 Review & Evaluation</li></ol>This embeds lasting emotional health into your school's culture. Many schools report dramatic improvements in student behaviour and staff retention.<br><br><a href='/contact'><b>Request a school wellbeing consultation →</b></a>";
+    }
+
+    // ── BLOG ──
+    if (q.includes('blog') || q.includes('article') || q.includes('post') || q.includes('resource') || q.includes('read') || q.includes('tip')) {
+      return "We regularly share evidence-based mental health resources, coping strategies, and industry insights on our <a href='/blog'><b>Blog</b></a>. 📚 Great for parents, educators, and individuals on their wellness journey. Check it out — and while you're at it, why not <a href='/contact'>book a free consultation?</a>";
+    }
+
+    // ── THANK YOU ──
+    if (q.includes('thank') || q.includes('thanks') || q.includes('appreciate') || q.includes('great') || q.includes('awesome') || q.includes('perfect')) {
+      return "You're very welcome! 😊 It was our pleasure. Remember, taking care of your mental health is one of the best investments you can make. <a href='/contact'><b>Book a free session</b></a> anytime — our team is always here for you!";
+    }
+
+    // ── FALLBACK (sales-driven) ──
+    return "Thanks for reaching out! I want to make sure I point you in the right direction. 🙂 You can ask me about our <b>services</b>, <b>booking a session</b>, the <b>TSCC Conference</b>, our <b>founder</b>, <b>social media</b>, or our <b>contact details</b>.<br><br>Or simply <a href='/contact'><b>send us a message directly →</b></a> and our team will personally assist you within 24 hours!";
   }
 
   // Open chatbot

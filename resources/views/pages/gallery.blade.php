@@ -14,7 +14,7 @@
   position:absolute;inset:0;
   background:radial-gradient(ellipse 60% 70% at 80% 50%,rgba(229,105,24,.12),transparent 60%);
 }
-.gal-hero h1{font-family:var(--font-h);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;color:#fff;line-height:1.0;letter-spacing:-2px;margin-bottom:1rem}
+.gal-hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:400;color:#fff;line-height:1.0;letter-spacing:-2px;margin-bottom:1rem}
 .gal-hero p{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.5);max-width:520px;line-height:1.9}
 
 /* ── FILTERS ── */

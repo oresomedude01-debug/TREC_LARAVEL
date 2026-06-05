@@ -17,7 +17,7 @@
   pointer-events:none;
 }
 .blog-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2}
-.blog-hero h1{font-family:var(--font-h);font-size:clamp(2.8rem,5vw,4rem);font-weight:900;color:var(--black);line-height:1.0;letter-spacing:-2px;margin-bottom:1rem}
+.blog-hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4rem);font-weight:400;color:var(--black);line-height:1.0;letter-spacing:-2px;margin-bottom:1rem}
 .blog-hero p{font-size:1.05rem;font-weight:300;max-width:480px;line-height:1.9;color:var(--charcoal)}
 
 /* Featured badge */
@@ -125,7 +125,7 @@
   max-width:640px;margin:0 auto;text-align:center;
   position:relative;z-index:1;
 }
-.newsletter-inner h3{font-family:var(--font-h);font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:.75rem;letter-spacing:-.5px}
+.newsletter-inner h3{font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:.75rem;letter-spacing:-.3px}
 .newsletter-inner p{font-size:.93rem;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:1.75rem;line-height:1.8}
 .newsletter-form{display:flex;gap:.75rem;max-width:420px;margin:0 auto}
 .newsletter-form input{

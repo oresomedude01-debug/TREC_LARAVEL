@@ -1656,7 +1656,7 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
 .step-num{
   width:40px;height:40px;border-radius:10px;
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-h);font-size:1rem;font-weight:900;color:#fff;
+  font-family:var(--font-ui);font-size:1rem;font-weight:700;color:#fff;
   flex-shrink:0;
 }
 .sn1{background:var(--red)}
