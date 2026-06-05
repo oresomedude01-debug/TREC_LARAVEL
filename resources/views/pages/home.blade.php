@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
-@section('meta_desc', 'The Ripple Effect Consult — Professional counselling, training, and consultation transforming individuals, schools, and organisations in Nigeria.')
+@section('title', 'Home - TREC Mental Health Counselling & Consultation')
+@section('meta_desc', 'TREC (The Ripple Effect Consult) - Professional mental health counselling, psychological consultation, and wellness training for individuals, schools, and organisations. Expert mental health services in Nigeria.')
+@section('meta_keywords', 'TREC, The Ripple Effect Consult, mental health counselling, counseling services, mental health support, psychological consultation, stress management, anxiety support, mental wellness, school counselling, workplace mental health, professional consultation, psychotherapy, emotional wellbeing, mental health Nigeria')
+@section('og_title', 'TREC - Professional Mental Health Counselling & Consultation Services')
+@section('og_desc', 'TREC (The Ripple Effect Consult) provides expert mental health counselling, psychological consultation, and wellness programs for individuals, schools, and organisations.')
+@section('breadcrumb_title', 'Home')
 @section('styles')
 <style>
 /* ══════════════════════════════════════

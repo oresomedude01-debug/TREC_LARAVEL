@@ -133,8 +133,19 @@ class PageController extends Controller
 
     public function blog(): View
     {
-        $posts = BlogPost::orderBy('published_at', 'desc')->get();
+        $posts = BlogPost::where('published_at', '!=', null)->orderBy('published_at', 'desc')->get();
         return view('pages.blog', compact('posts'));
+    }
+
+    public function showBlog(string $slug): View
+    {
+        $post = BlogPost::where('slug', $slug)->firstOrFail();
+        $relatedPosts = BlogPost::where('id', '!=', $post->id)
+            ->where('published_at', '!=', null)
+            ->orderBy('published_at', 'desc')
+            ->limit(3)
+            ->get();
+        return view('pages.blog-show', compact('post', 'relatedPosts'));
     }
 
     public function contact(): View

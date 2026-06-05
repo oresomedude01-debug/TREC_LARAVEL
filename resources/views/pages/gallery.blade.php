@@ -1,6 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Gallery')
-@section('meta_desc', 'Moments of impact — a visual story of TREC\'s work across conferences, workshops, counselling sessions, and the communities we serve.')
+@section('title', 'Gallery - TREC Mental Health & Counselling Services Events')
+@section('meta_desc', 'TREC Gallery: View photos from our mental health counselling sessions, training programs, community events, and organisational wellness initiatives.')
+@section('meta_keywords', 'TREC gallery, counselling photos, mental health events, training programs, wellness initiatives, community engagement, professional services gallery, event photos')
+@section('og_title', 'TREC Gallery - Mental Health Services & Events')
+@section('og_desc', 'Explore our gallery showcasing TREC mental health counselling, training programs, and community wellness events.')
+@section('breadcrumb_title', 'Gallery')
 
 @section('styles')
 <style>

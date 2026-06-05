@@ -23,3 +23,52 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<!-- SEO OPTIMIZATION: Enable Gzip Compression -->
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+</IfModule>
+
+<!-- SEO OPTIMIZATION: Browser Caching Headers -->
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Cache images for 1 year
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+
+    # Cache CSS and JavaScript for 1 month
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+
+    # Cache fonts for 1 year
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/eot "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+
+    # Default expiry
+    ExpiresDefault "access plus 2 days"
+</IfModule>
+
+<!-- SEO OPTIMIZATION: Security & Performance Headers -->
+<IfModule mod_headers.c>
+    # Enable HSTS for HTTPS sites
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Security headers
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Performance optimization
+    Header set Cache-Control "public, must-revalidate"
+</IfModule>
+

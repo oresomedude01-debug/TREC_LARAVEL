@@ -3,12 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>@yield('title') – TREC</title>
-<meta name="description" content="@yield('meta_desc', 'The Ripple Effect Consult — Professional counselling, training & consultation creating lasting change across individuals, schools, and organisations.')">
+<meta name="author" content="The Ripple Effect Consult (TREC)">
+<meta name="keywords" content="@yield('meta_keywords', 'TREC, The Ripple Effect Consult, mental health counselling, psychological consultation, mental wellness, stress management, anxiety support, counseling services, professional consultation, mental health training, organisational wellness, school counseling, workplace mental health, psychotherapy, personal development, emotional wellbeing, mental health support')">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="revisit-after" content="7 days">
+<meta name="language" content="English">
+<meta name="copyright" content="The Ripple Effect Consult">
+<title>@yield('title', 'TREC - Mental Health Counselling & Professional Consultation') – The Ripple Effect Consult</title>
+<meta name="description" content="@yield('meta_desc', 'TREC (The Ripple Effect Consult) provides professional mental health counselling, psychological consultation, and wellness training for individuals, schools, and organisations. Expert mental health support and consultation services.')">
+<meta property="og:type" content="@yield('og_type', 'website')">
+<meta property="og:title" content="@yield('og_title', 'TREC - The Ripple Effect Consult | Mental Health & Counselling')">
+<meta property="og:description" content="@yield('og_desc', 'Professional mental health counselling, psychological consultation, and wellness services. TREC creates lasting positive change through expert mental health support.')">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:site_name" content="TREC - The Ripple Effect Consult">
+<meta property="og:image" content="@yield('og_image', url('tscc-images/trec-og-image.png'))">
+<meta property="og:image:alt" content="TREC - The Ripple Effect Consult Mental Health Services">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="@yield('og_title', 'TREC - Mental Health Counselling & Professional Consultation')">
+<meta name="twitter:description" content="@yield('og_desc', 'Professional mental health counselling, psychological consultation, and wellness services. TREC creates lasting positive change.')">
+<meta name="twitter:image" content="@yield('og_image', url('tscc-images/trec-og-image.png'))">
+<link rel="canonical" href="{{ url()->current() }}">
+<link rel="alternate" hreflang="en" href="{{ url()->current() }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<!-- JSON-LD Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TREC - The Ripple Effect Consult",
+  "alternateName": ["The Ripple Effect Consult", "TREC", "Ripple Effect"],
+  "description": "Professional mental health counselling, psychological consultation, and wellness training services",
+  "url": "{{ url('/') }}",
+  "logo": "{{ url('tscc-images/logo.png') }}",
+  "sameAs": [
+    "{{ url('/') }}"
+  ],
+  "knowsAbout": [
+    "Mental Health Counselling",
+    "Psychological Consultation",
+    "Stress Management",
+    "Anxiety Support",
+    "Mental Wellness",
+    "Workplace Mental Health",
+    "School Counselling",
+    "Organisational Development",
+    "Personal Development",
+    "Emotional Wellbeing"
+  ],
+  "serviceType": [
+    "Mental Health Counselling",
+    "Professional Consultation",
+    "Training & Development",
+    "Wellness Programs"
+  ]
+}
+</script>
+
+<!-- Services Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "TREC - The Ripple Effect Consult",
+  "image": "{{ url('tscc-images/logo.png') }}",
+  "description": "Professional mental health counselling and psychological consultation services",
+  "medicalSpecialty": [
+    "Mental Health Counselling",
+    "Psychological Services",
+    "Wellness Coaching"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "name": "TREC - The Ripple Effect Consult"
+  }
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "@yield('breadcrumb_title', 'Page')",
+      "item": "{{ url()->current() }}"
+    }
+  ]
+}
+</script>
 <style>
 /* ── RESET & ROOT ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -580,7 +676,7 @@ footer{background:var(--black);padding:5rem 2rem 0}
   <a href="{{ route('services') }}">Services</a>
   <a href="{{ route('tscc') }}">TSCC</a>
   <a href="{{ route('gallery') }}">Gallery</a>
-  <a href="{{ route('blog') }}">Blog</a>
+  <a href="{{ route('blog') }}">Insights</a>
   <a href="{{ route('contact') }}" class="mob-cta">Book a Session</a>
 </div>
 
@@ -600,7 +696,7 @@ footer{background:var(--black);padding:5rem 2rem 0}
       <a href="{{ route('services') }}" class="{{ request()->routeIs('services') ? 'act' : '' }}">Services</a>
       <a href="{{ route('tscc') }}" class="{{ request()->routeIs('tscc') ? 'act' : '' }}">TSCC</a>
       <a href="{{ route('gallery') }}" class="{{ request()->routeIs('gallery') ? 'act' : '' }}">Gallery</a>
-      <a href="{{ route('blog') }}" class="{{ request()->routeIs('blog') ? 'act' : '' }}">Blog</a>
+      <a href="{{ route('blog') }}" class="{{ request()->routeIs('blog') ? 'act' : '' }}">Insights</a>
     </div>
     <a href="{{ route('contact') }}" class="nav-btn">Book a Session</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -656,7 +752,7 @@ footer{background:var(--black);padding:5rem 2rem 0}
         <a href="{{ route('tscc') }}">TSCC Conference</a>
         <a href="{{ route('tscc') }}">Sponsorship</a>
         <a href="{{ route('gallery') }}">Gallery</a>
-        <a href="{{ route('blog') }}">Blog & Resources</a>
+        <a href="{{ route('blog') }}">Insights & Resources</a>
       </div>
       <div class="ft-col">
         <h4>Contact</h4>
@@ -914,9 +1010,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return "Our <b>School Wellbeing Package</b> is a comprehensive, 6-step framework:<ol><li>📋 Wellbeing Audit</li><li>📄 Policy Development</li><li>🧠 Student Counselling</li><li>👩‍🏫 Staff Training</li><li>👪 Parent Engagement</li><li>🔄 Review & Evaluation</li></ol>This embeds lasting emotional health into your school's culture. Many schools report dramatic improvements in student behaviour and staff retention.<br><br><a href='/contact'><b>Request a school wellbeing consultation →</b></a>";
     }
 
-    // ── BLOG ──
-    if (q.includes('blog') || q.includes('article') || q.includes('post') || q.includes('resource') || q.includes('read') || q.includes('tip')) {
-      return "We regularly share evidence-based mental health resources, coping strategies, and industry insights on our <a href='/blog'><b>Blog</b></a>. 📚 Great for parents, educators, and individuals on their wellness journey. Check it out — and while you're at it, why not <a href='/contact'>book a free consultation?</a>";
+    // ── INSIGHTS ──
+    if (q.includes('blog') || q.includes('insight') || q.includes('article') || q.includes('post') || q.includes('resource') || q.includes('read') || q.includes('tip')) {
+      return "We regularly share evidence-based mental health resources, coping strategies, and industry insights on our <a href='/insights'><b>Insights</b></a> page. 📚 Great for parents, educators, and individuals on their wellness journey. Check it out — and while you're at it, why not <a href='/contact'>book a free consultation?</a>";
     }
 
     // ── THANK YOU ──

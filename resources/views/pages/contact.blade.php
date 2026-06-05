@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us')
-@section('meta_desc', 'Get in touch with The Ripple Effect Consult — book a counselling session, request a proposal, or enquire about TSCC sponsorship.')
+@section('title', 'Contact TREC - Mental Health Counselling & Consultation Services')
+@section('meta_desc', 'Contact TREC (The Ripple Effect Consult) for professional mental health counselling, psychological consultation, or to discuss wellness programs for your organisation.')
+@section('meta_keywords', 'contact TREC, mental health counselling contact, consultation booking, reach out counselling services, contact mental health professional, counselling inquiry, mental wellness contact')
+@section('og_title', 'Contact TREC - Get in Touch for Mental Health Services')
+@section('og_desc', 'Contact TREC today to inquire about our mental health counselling, psychological consultation, or organisational wellness programs.')
+@section('breadcrumb_title', 'Contact')
 
 @section('styles')
 <style>

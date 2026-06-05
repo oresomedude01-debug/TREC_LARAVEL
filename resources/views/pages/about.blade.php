@@ -1,6 +1,10 @@
 @extends('layouts.app')
-@section('title', 'About')
-@section('meta_desc', 'Learn about The Ripple Effect Consult — our story, mission, vision, values and the passionate team behind TREC.')
+@section('title', 'About TREC - The Ripple Effect Consult Mental Health Organisation')
+@section('meta_desc', 'About TREC: Learn about The Ripple Effect Consult\'s mission to provide professional mental health counselling, psychological consultation, and wellness services creating lasting positive change.')
+@section('meta_keywords', 'about TREC, The Ripple Effect Consult, mental health organisation, professional counselling firm, psychological services provider, mental health company, wellness programs, counselling practice, mental health experts')
+@section('og_title', 'About TREC - The Ripple Effect Consult')
+@section('og_desc', 'Discover TREC\'s mission, values, and commitment to providing professional mental health counselling and psychological consultation services.')
+@section('breadcrumb_title', 'About')
 
 @section('styles')
 <style>

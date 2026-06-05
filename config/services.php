@@ -40,4 +40,9 @@ return [
         'folder_id' => env('GOOGLE_DRIVE_GALLERY_FOLDER_ID'),
     ],
 
+    'google_sheets' => [
+        'url' => env('GOOGLE_SHEETS_URL'),
+    ],
+
 ];
+

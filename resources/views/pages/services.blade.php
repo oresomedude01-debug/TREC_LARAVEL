@@ -1,6 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Services')
-@section('meta_desc', 'Explore TREC\'s full range of counselling, training, and consultation services — designed to create lasting change for individuals, schools, and organisations.')
+@section('title', 'Services - TREC Mental Health Counselling, Training & Consultation')
+@section('meta_desc', 'TREC Services: Professional mental health counselling, psychological consultation, training programs, stress management, anxiety support, and wellness coaching for individuals, schools, and organisations.')
+@section('meta_keywords', 'counselling services, mental health counselling, psychological consultation, stress management training, anxiety support, workplace wellness, school counselling, professional consultation, mental health support, counseling therapy')
+@section('og_title', 'TREC Services - Mental Health Counselling & Professional Consultation')
+@section('og_desc', 'Explore TREC comprehensive services: mental health counselling, psychological consultation, training programs, and wellness initiatives designed for individuals, schools, and organisations.')
+@section('breadcrumb_title', 'Services')
 
 @section('styles')
 <style>

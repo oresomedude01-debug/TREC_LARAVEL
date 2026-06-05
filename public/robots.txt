@@ -1,2 +1,25 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /admin-login
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /*.env*
+Disallow: /bootstrap/
+Disallow: /config/
+Disallow: /database/
+Disallow: /routes/
+Disallow: /tests/
+
+# Allow Google images
+User-agent: Googlebot-Image
+Allow: /
+
+# Fast crawling allowed
+User-agent: *
+Crawl-delay: 0
+Request-rate: 30/60
+
+# Sitemap location
+Sitemap: https://trec.com/sitemap.xml
+
