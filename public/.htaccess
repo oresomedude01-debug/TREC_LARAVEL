@@ -24,12 +24,19 @@
     RewriteRule ^ index.php [L]
 </IfModule>
 
-<!-- SEO OPTIMIZATION: Enable Gzip Compression -->
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the "ea-php84" package as the default "PHP" programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php84 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
+# SEO OPTIMIZATION: Enable Gzip Compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
 </IfModule>
 
-<!-- SEO OPTIMIZATION: Browser Caching Headers -->
+# SEO OPTIMIZATION: Browser Caching Headers
 <IfModule mod_expires.c>
     ExpiresActive On
 
@@ -57,7 +64,7 @@
     ExpiresDefault "access plus 2 days"
 </IfModule>
 
-<!-- SEO OPTIMIZATION: Security & Performance Headers -->
+# SEO OPTIMIZATION: Security & Performance Headers
 <IfModule mod_headers.c>
     # Enable HSTS for HTTPS sites
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
@@ -71,4 +78,3 @@
     # Performance optimization
     Header set Cache-Control "public, must-revalidate"
 </IfModule>
-
