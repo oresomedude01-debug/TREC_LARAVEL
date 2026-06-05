@@ -33,7 +33,7 @@
 <!-- JSON-LD Schema Markup -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "Organization",
   "name": "TREC - The Ripple Effect Consult",
   "alternateName": ["The Ripple Effect Consult", "TREC", "Ripple Effect"],
@@ -67,7 +67,7 @@
 <!-- Services Schema -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "MedicalBusiness",
   "name": "TREC - The Ripple Effect Consult",
   "image": "{{ url('tscc-images/logo.png') }}",
@@ -87,7 +87,7 @@
 <!-- Breadcrumb Schema -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     {
