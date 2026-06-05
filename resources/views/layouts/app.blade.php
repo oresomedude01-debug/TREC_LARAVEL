@@ -189,41 +189,174 @@ nav.scrolled{
 }
 .nav-btn:hover{background:#b8242e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(216,45,55,.35)}
 
-/* Mobile hamburger */
-.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;gap:5px;cursor:pointer;flex-shrink:0;border-radius:8px;transition:background .2s}
-.hamburger:hover{background:var(--light)}
-.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .35s var(--ease);transform-origin:center}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* ═══ MODERN DRAWER SYSTEM ═══ */
 
-/* Mobile menu overlay */
+/* Hamburger button with modern morphing animation */
+.hamburger{
+  display:none;position:relative;width:44px;height:44px;
+  cursor:pointer;flex-shrink:0;border:none;background:none;
+  border-radius:12px;transition:all .3s var(--ease);
+  padding:8px;box-sizing:content-box;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;
+}
+.hamburger:hover{background:rgba(13,13,13,.06)}
+.hamburger span{
+  display:block;width:18px;height:2px;background:var(--black);
+  border-radius:2px;transition:all .35s cubic-bezier(.3,.8,.6,1);
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;width:0}
+.hamburger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+
+/* Backdrop scrim */
+.mob-backdrop{
+  position:fixed;inset:0;z-index:998;background:rgba(0,0,0,0);
+  backdrop-filter:blur(0px);opacity:0;pointer-events:none;
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+}
+.mob-backdrop.open{
+  background:rgba(0,0,0,.45);backdrop-filter:blur(6px);
+  opacity:1;pointer-events:all;
+}
+
+/* Modern side drawer */
 .mob-menu{
-  position:fixed;inset:0;z-index:999;
-  background:rgba(250,249,246,.97);backdrop-filter:blur(20px);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
-  opacity:0;pointer-events:none;transition:opacity .35s var(--ease);
-  padding-top:var(--nav-h);
+  position:fixed;top:0;right:0;bottom:0;z-index:999;
+  width:min(380px,85vw);height:100vh;max-height:100vh;
+  background:linear-gradient(135deg,#f9f8f5 0%,#faf9f6 100%);
+  display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.12);
+  transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  pointer-events:none;overflow:hidden;border-left:1px solid rgba(13,13,13,.05);
 }
-.mob-menu.open{opacity:1;pointer-events:all}
-.mob-menu a{
-  font-family:var(--font-display);font-size:2.2rem;font-weight:400;
-  color:var(--black);padding:.6rem 2rem;letter-spacing:-.5px;
-  transition:color .2s;text-align:center;
-  transform:translateY(20px);opacity:0;
-  transition:color .2s,transform .4s var(--ease),opacity .4s var(--ease);
+.mob-menu.open{transform:translateX(0);pointer-events:all}
+
+/* Drawer header with accent bar */
+.mob-menu::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;flex-shrink:0;
+  background:linear-gradient(90deg,var(--red),var(--orange),var(--green),#0066ff);
+  z-index:2;
 }
-.mob-menu.open a{transform:translateY(0);opacity:1}
-.mob-menu.open a:nth-child(1){transition-delay:.05s}
-.mob-menu.open a:nth-child(2){transition-delay:.10s}
-.mob-menu.open a:nth-child(3){transition-delay:.15s}
-.mob-menu.open a:nth-child(4){transition-delay:.20s}
-.mob-menu.open a:nth-child(5){transition-delay:.25s}
-.mob-menu.open a:nth-child(6){transition-delay:.30s}
-.mob-menu.open a:nth-child(7){transition-delay:.35s}
-.mob-menu a:hover{color:var(--red)}
-.mob-cta{margin-top:2rem;background:var(--red);color:#fff;padding:14px 40px;font-size:15px;font-weight:600;font-family:var(--font-b) !important;border-radius:8px;transform:translateY(20px);opacity:0;transition-delay:.4s !important}
-.mob-menu.open .mob-cta{transform:translateY(0);opacity:1}
+
+/* Header section */
+.mob-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.5rem;border-bottom:1px solid rgba(13,13,13,.08);
+  flex-shrink:0;margin-top:4px;
+}
+.mob-logo{display:flex;align-items:center;gap:10px;flex:1}
+.mob-logo img{height:36px;width:auto;object-fit:contain}
+.mob-logo-text{font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--black);letter-spacing:-.4px}
+.mob-close{
+  width:40px;height:40px;border-radius:10px;border:none;
+  background:rgba(13,13,13,.06);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .25s var(--ease);color:var(--black);font-size:20px;
+}
+.mob-close:hover{background:rgba(216,45,55,.1);color:var(--red)}
+
+/* Nav section */
+.mob-nav-section{
+  flex:1;min-height:0;display:flex;flex-direction:column;
+  padding:1.2rem 0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+.mob-nav-section::-webkit-scrollbar{width:6px}
+.mob-nav-section::-webkit-scrollbar-track{background:transparent}
+.mob-nav-section::-webkit-scrollbar-thumb{background:rgba(13,13,13,.15);border-radius:3px}
+.mob-nav-item{
+  position:relative;display:flex;align-items:center;gap:12px;
+  font-family:var(--font-display);font-size:1.05rem;font-weight:400;color:var(--black);
+  padding:0.9rem 1.5rem;margin:0 0.5rem;letter-spacing:-.3px;
+  text-decoration:none;cursor:pointer;transition:all .25s var(--ease);
+  border-radius:10px;overflow:hidden;
+}
+.mob-nav-item::before{
+  content:'';position:absolute;left:1.5rem;bottom:0;width:0;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--orange));
+  transition:width .35s cubic-bezier(.3,.8,.6,1);
+}
+.mob-nav-item:hover{background:rgba(13,13,13,.04);color:var(--red);padding-left:1.7rem}
+.mob-nav-item:hover::before{width:18px}
+.mob-nav-item.active{
+  background:linear-gradient(135deg,rgba(216,45,55,.08),rgba(229,105,24,.08));
+  color:var(--red);font-weight:500;
+}
+.mob-nav-item.active::before{width:18px;background:var(--red)}
+.mob-nav-icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;opacity:.6}
+
+/* Divider with accent */
+.mob-nav-divider{
+  height:1px;background:linear-gradient(90deg,transparent,rgba(13,13,13,.1),transparent);
+  margin:0.8rem 1.5rem;position:relative;
+}
+.mob-nav-divider::before{
+  content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:4px;height:4px;border-radius:50%;background:var(--red);
+}
+
+/* CTA section */
+.mob-cta-section{
+  padding:1.2rem 1.5rem;flex-shrink:0;
+  border-top:1px solid rgba(13,13,13,.08);
+}
+.mob-cta-btn{
+  display:block;width:100%;text-align:center;
+  background:linear-gradient(135deg,var(--red),#d42d48);
+  color:#fff;font-family:var(--font-ui);font-size:14px;font-weight:700;
+  padding:14px;border-radius:10px;border:none;cursor:pointer;letter-spacing:.4px;
+  box-shadow:0 8px 20px rgba(216,45,55,.25);transition:all .3s var(--ease);
+  transform:translateY(0);opacity:1;
+}
+.mob-cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(216,45,55,.35)}
+
+/* Footer info */
+.mob-footer{
+  padding:1rem 1.5rem;border-top:1px solid rgba(13,13,13,.08);
+  background:linear-gradient(180deg,transparent,rgba(13,13,13,.01));
+  flex-shrink:0;
+}
+.mob-socials{
+  display:flex;justify-content:center;gap:0.6rem;margin-bottom:0.9rem;
+}
+.mob-social-link{
+  width:36px;height:36px;border-radius:8px;border:1.5px solid rgba(13,13,13,.12);
+  background:rgba(13,13,13,.04);display:flex;align-items:center;justify-content:center;
+  color:var(--charcoal);text-decoration:none;font-weight:700;font-size:11px;
+  letter-spacing:.5px;transition:all .25s var(--ease);
+}
+.mob-social-link:hover{
+  background:var(--red);color:#fff;border-color:var(--red);
+  transform:translateY(-2px);box-shadow:0 4px 12px rgba(216,45,55,.25);
+}
+.mob-footer-text{
+  font-size:11px;color:var(--charcoal);text-align:center;opacity:.6;
+  font-weight:300;line-height:1.6;
+}
+
+/* Animation sequences */
+.mob-menu.open .mob-nav-item{
+  animation:slideInNav .5s cubic-bezier(.2,.8,.2,1) forwards;
+}
+@keyframes slideInNav{
+  from{opacity:0;transform:translateX(20px)}
+  to{opacity:1;transform:translateX(0)}
+}
+.mob-menu.open .mob-nav-item:nth-child(1){animation-delay:.08s}
+.mob-menu.open .mob-nav-item:nth-child(2){animation-delay:.12s}
+.mob-menu.open .mob-nav-item:nth-child(3){animation-delay:.16s}
+.mob-menu.open .mob-nav-item:nth-child(4){animation-delay:.20s}
+.mob-menu.open .mob-nav-item:nth-child(5){animation-delay:.24s}
+.mob-menu.open .mob-nav-item:nth-child(6){animation-delay:.28s}
+.mob-menu.open .mob-nav-item:nth-child(7){animation-delay:.32s}
+.mob-menu.open .mob-cta-btn{
+  animation:slideInNav .5s cubic-bezier(.2,.8,.2,1) .40s forwards;
+}
+.mob-menu.open .mob-footer{
+  animation:fadeInUp .5s cubic-bezier(.2,.8,.2,1) .45s forwards;
+  opacity:0;transform:translateY(10px);
+}
+@keyframes fadeInUp{
+  to{opacity:1;transform:translateY(0)}
+}
 
 /* ── GLOBAL SECTIONS ── */
 .sec{padding:5.5rem 2rem}
@@ -669,15 +802,46 @@ footer{background:var(--black);padding:5rem 2rem 0}
 <!-- SCROLL PROGRESS -->
 <div id="scroll-progress"></div>
 
-<!-- MOBILE MENU OVERLAY -->
+<!-- BACKDROP -->
+<div class="mob-backdrop" id="mobBackdrop"></div>
+
+<!-- MODERN DRAWER -->
 <div class="mob-menu" id="mobMenu">
-  <a href="{{ route('home') }}">Home</a>
-  <a href="{{ route('about') }}">About</a>
-  <a href="{{ route('services') }}">Services</a>
-  <a href="{{ route('tscc') }}">TSCC</a>
-  <a href="{{ route('gallery') }}">Gallery</a>
-  <a href="{{ route('blog') }}">Insights</a>
-  <a href="{{ route('contact') }}" class="mob-cta">Book a Session</a>
+  <!-- Header -->
+  <div class="mob-header">
+    <div class="mob-logo">
+      <img src="{{ asset('logo.png') }}" alt="TREC" onerror="this.onerror=null;this.style.display='none'" style="max-height:38px;object-fit:contain">
+      <div class="mob-logo-text">TREC</div>
+    </div>
+    <button class="mob-close" id="mobClose" aria-label="Close menu">×</button>
+  </div>
+
+  <!-- Navigation -->
+  <div class="mob-nav-section">
+    <a href="{{ route('home') }}" class="mob-nav-item {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+    <a href="{{ route('about') }}" class="mob-nav-item {{ request()->routeIs('about') ? 'active' : '' }}">About</a>
+    <a href="{{ route('services') }}" class="mob-nav-item {{ request()->routeIs('services') ? 'active' : '' }}">Services</a>
+    <a href="{{ route('tscc') }}" class="mob-nav-item {{ request()->routeIs('tscc') ? 'active' : '' }}">TSCC</a>
+    <a href="{{ route('gallery') }}" class="mob-nav-item {{ request()->routeIs('gallery') ? 'active' : '' }}">Gallery</a>
+    <a href="{{ route('blog') }}" class="mob-nav-item {{ request()->routeIs('blog') ? 'active' : '' }}">Insights</a>
+    <div class="mob-nav-divider"></div>
+    <a href="{{ route('contact') }}" class="mob-nav-item">Contact</a>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="mob-cta-section">
+    <button class="mob-cta-btn" onclick="window.location.href='{{ route('contact') }}'; closeMobMenu()">✦ Book a Session</button>
+  </div>
+
+  <!-- Footer -->
+  <div class="mob-footer">
+    <div class="mob-socials">
+      <a href="https://www.facebook.com/people/The-Ripple-Effect-Consult/100063916400380/" target="_blank" class="mob-social-link" title="Facebook">FB</a>
+      <a href="https://www.instagram.com/tscc2026" target="_blank" class="mob-social-link" title="Instagram">IG</a>
+      <a href="https://x.com/Theschoolcon" target="_blank" class="mob-social-link" title="Twitter">X</a>
+    </div>
+    <p class="mob-footer-text">The Ripple Effect Consult © 2024</p>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -699,7 +863,7 @@ footer{background:var(--black);padding:5rem 2rem 0}
       <a href="{{ route('blog') }}" class="{{ request()->routeIs('blog') ? 'act' : '' }}">Insights</a>
     </div>
     <a href="{{ route('contact') }}" class="nav-btn">Book a Session</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1105,25 +1269,41 @@ window.addEventListener('scroll', () => {
 const nav = document.getElementById('mainNav');
 if ((document.documentElement.scrollTop || document.body.scrollTop) > 40) nav.classList.add('scrolled');
 
-// ── Hamburger menu
+// ── Modern drawer with backdrop
 const hamburger = document.getElementById('hamburger');
 const mobMenu = document.getElementById('mobMenu');
+const mobBackdrop = document.getElementById('mobBackdrop');
+const mobClose = document.getElementById('mobClose');
 let menuOpen = false;
 
-hamburger.addEventListener('click', () => {
-  menuOpen = !menuOpen;
-  hamburger.classList.toggle('open', menuOpen);
-  mobMenu.classList.toggle('open', menuOpen);
-  document.body.style.overflow = menuOpen ? 'hidden' : '';
-});
+function openMobMenu() {
+  menuOpen = true;
+  hamburger.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  mobMenu.classList.add('open');
+  mobBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
-mobMenu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    menuOpen = false;
-    hamburger.classList.remove('open');
-    mobMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+function closeMobMenu() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  mobMenu.classList.remove('open');
+  mobBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () => menuOpen ? closeMobMenu() : openMobMenu());
+if (mobClose) mobClose.addEventListener('click', closeMobMenu);
+if (mobBackdrop) mobBackdrop.addEventListener('click', closeMobMenu);
+
+// Close on nav link click
+mobMenu.querySelectorAll('.mob-nav-item').forEach(a => a.addEventListener('click', () => setTimeout(closeMobMenu, 100)));
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menuOpen) closeMobMenu();
 });
 
 // ── Scroll reveal (IntersectionObserver)
