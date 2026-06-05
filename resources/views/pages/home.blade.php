@@ -1498,6 +1498,379 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
   .svc-grid { grid-template-columns: 1fr; }
   .impact-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── FOUNDER SECTION ── */
+.founder-sec {
+  background: var(--cream);
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+.founder-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4.5rem;
+  align-items: center;
+  background: #fff;
+  border-radius: 24px;
+  padding: 3.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+.founder-image-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.founder-glow-sphere {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(229,105,24,0.18) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+.founder-img-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 2;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+.founder-portrait-img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+}
+.founder-badge {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--red), var(--orange));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  box-shadow: 0 6px 20px rgba(216, 45, 55, 0.25);
+  white-space: nowrap;
+  font-family: var(--font-h);
+}
+.founder-content-area {
+  display: flex;
+  flex-direction: column;
+}
+.founder-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+.founder-title {
+  font-family: var(--font-h);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--black);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+}
+.founder-credentials {
+  font-family: var(--font-b);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--charcoal);
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.founder-bio {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+.founder-bio:last-of-type {
+  margin-bottom: 2rem;
+}
+.founder-footer {
+  display: flex;
+  align-items: center;
+}
+.founder-linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #0077b5;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 119, 181, 0.2);
+}
+.founder-linkedin-btn:hover {
+  background: #006097;
+  transform: translateY(-2px);
+}
+.linkedin-svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ── PACKAGE STEPS ── */
+.package-sec{background:var(--white);padding:6rem 2rem}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.step-card{
+  background: #fff;
+  border-radius:14px;padding:2rem;
+  position:relative;overflow:hidden;
+  border:1px solid var(--mid);
+  transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;
+}
+.step-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.08)}
+.step-card:nth-child(1):hover{border-color:rgba(216,45,55,.3)}
+.step-card:nth-child(2):hover{border-color:rgba(229,105,24,.3)}
+.step-card:nth-child(3):hover{border-color:rgba(107,143,26,.3)}
+.step-card:nth-child(4):hover{border-color:rgba(216,45,55,.3)}
+.step-card:nth-child(5):hover{border-color:rgba(229,105,24,.3)}
+.step-card:nth-child(6):hover{border-color:rgba(107,143,26,.3)}
+.step-num-wrap{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+.step-num{
+  width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-h);font-size:1rem;font-weight:900;color:#fff;
+  flex-shrink:0;
+}
+.sn1{background:var(--red)}
+.sn2{background:var(--orange)}
+.sn3{background:var(--green)}
+.sn4{background:var(--red)}
+.sn5{background:var(--orange)}
+.sn6{background:var(--green)}
+.step-connector{flex:1;height:1px;background:var(--mid)}
+.step-card h4{font-family:var(--font-h);font-size:1.1rem;font-weight:700;color:var(--black);margin-bottom:.6rem}
+.step-card p{font-size:.87rem;font-weight:300;color:var(--charcoal);line-height:1.8}
+
+@media(max-width:960px){
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .founder-card {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+  .founder-image-area {
+    margin-bottom: 1rem;
+  }
+}
+/* ── TSCC HIGHLIGHT SECTION ── */
+.tscc-highlight-sec {
+  background: var(--black);
+  padding: 6.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.tscc-highlight-sec::before {
+  content: ''; position: absolute;
+  top: 0; right: 0; width: 450px; height: 450px;
+  background: radial-gradient(circle, rgba(229,105,24,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.tscc-highlight-sec::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(216,45,55,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.tscc-highlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+.tscc-highlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(229,105,24,0.12);
+  border: 1px solid rgba(229,105,24,0.25);
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.tscc-highlight-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: badgePulse 2s infinite;
+}
+.tscc-highlight-sec h2 {
+  font-family: var(--font-h);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.5rem;
+}
+.tscc-highlight-sec h2 span {
+  background: linear-gradient(135deg, var(--orange), var(--red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.tscc-highlight-text {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.tscc-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.tscc-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.tscc-feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.tscc-feature-icon .lucide {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.25;
+}
+.tscc-feature-info h4 {
+  font-family: var(--font-h);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+.tscc-feature-info p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+.tscc-visual-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease);
+}
+.tscc-visual-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(229, 105, 24, 0.2);
+}
+.tscc-visual-accent {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(229,105,24,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.tscc-visual-year {
+  font-family: var(--font-h);
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+.tscc-visual-title {
+  font-family: var(--font-h);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.tscc-visual-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--orange);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.tscc-visual-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2rem;
+}
+.tscc-stat-box h5 {
+  font-family: var(--font-h);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+.tscc-stat-box p {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+@media (max-width: 960px) {
+  .tscc-highlight-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
 </style>
 @endsection
 
@@ -1802,56 +2175,94 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
   </div>
 </section>
 
-<!-- ══ SERVICES OVERVIEW ══ -->
-<section class="sec" style="background:var(--white)">
+<!-- ══ MEET THE FOUNDER ══ -->
+<section class="founder-sec reveal">
+  <div class="wrap">
+    <div class="founder-card">
+      <div class="founder-image-area">
+        <div class="founder-glow-sphere"></div>
+        <div class="founder-img-wrapper" style="background: transparent; border: none; box-shadow: none;">
+          <svg viewBox="0 0 120 120" class="founder-portrait-img" style="width: 100%; height: auto; border-radius: 50%; display: block; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);">
+            <defs>
+              <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f88923" />
+                <stop offset="100%" stop-color="#d82d37" />
+              </linearGradient>
+              <linearGradient id="hijabGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1f2937" />
+                <stop offset="100%" stop-color="#111827" />
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a16207" />
+                <stop offset="100%" stop-color="#78350f" />
+              </linearGradient>
+            </defs>
+            <circle cx="60" cy="60" r="56" fill="url(#avatarGrad)" />
+            <path d="M60 22 C34 22 28 36 28 64 C28 85 40 102 60 102 C80 102 92 85 92 64 C92 36 86 22 60 22 Z" fill="url(#hijabGrad)" />
+            <path d="M28 80 C28 80 20 95 20 110 C20 115 100 115 100 110 C100 95 92 80 92 80 C80 95 40 95 28 80 Z" fill="url(#hijabGrad)" />
+          </svg>
+          <div class="founder-badge">Founder & Lead Consultant</div>
+        </div>
+      </div>
+      <div class="founder-content-area">
+        <div class="founder-eyebrow">Leadership</div>
+        <h2 class="founder-title">Meet Faatimah Samuel</h2>
+        <div class="founder-credentials">MCASSON, FPMC</div>
+        <p class="founder-bio">
+          Faatimah Samuel is the Founder and Lead Consultant at The Ripple Effect Consult (TREC). As an experienced counsellor, educational consultant, and family wellbeing advocate, she has dedicated over a decade to helping individuals, schools, and organisations build emotional resilience and psychological safety.
+        </p>
+        <p class="founder-bio">
+          Under her leadership, TREC has grown into a multidisciplinary consultancy producing Nigeria's foremost school counselling platform — the TSCC. She is committed to bridging the gap between mental health awareness and meaningful action, ensuring that every transformation ripples outward into the community.
+        </p>
+        <div class="founder-footer">
+          <a href="https://www.linkedin.com/in/faatimah-samuel-mcasson-fpmc-619a79173" target="_blank" class="founder-linkedin-btn" aria-label="LinkedIn Profile">
+            <svg viewBox="0 0 24 24" class="linkedin-svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE SIX COMPONENTS ══ -->
+<section class="package-sec" id="wellbeing-package">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">What We Offer</div>
-      <h2 class="stitle">Our Core Services</h2>
-      <p class="slead">A comprehensive range of counselling, training, and consultation programmes designed to create lasting, meaningful change.</p>
+      <div class="eyebrow">The Six Components</div>
+      <h2 class="stitle">The Complete Package</h2>
+      <p class="slead">End-to-end support — from assessment and policy through implementation to ongoing review and reporting.</p>
     </div>
-    <div class="svc-grid reveal-stagger">
-      <div class="svc-card">
-        <div class="svc-num">01</div>
-        <div class="svc-icon si-r"><i data-lucide="brain"></i></div>
-        <h3>Individual Counselling</h3>
-        <p>Confidential one-on-one therapeutic support tailored to each person's unique journey — healing, growth, and transformation.</p>
-        <a href="{{ route('services') }}" class="svc-more">Learn more →</a>
+    <div class="steps-grid reveal-stagger">
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num sn1">01</div><div class="step-connector"></div></div>
+        <h4>Wellbeing Audit & Needs Assessment</h4>
+        <p>We begin with a comprehensive assessment of your school's current mental health landscape — surveying students, staff, and leadership to identify needs, gaps, and strengths.</p>
       </div>
-      <div class="svc-card">
-        <div class="svc-num">02</div>
-        <div class="svc-icon si-g"><i data-lucide="users"></i></div>
-        <h3>Group Counselling</h3>
-        <p>Facilitated group sessions harnessing collective healing, peer support, and shared experience for transformative growth.</p>
-        <a href="{{ route('services') }}" class="svc-more">Learn more →</a>
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num sn2">02</div><div class="step-connector"></div></div>
+        <h4>Customised Wellbeing Policy</h4>
+        <p>Drawing on audit findings, we co-create a bespoke wellbeing policy with your leadership team — grounded in best practice and tailored to your school's unique culture and context.</p>
       </div>
-      <div class="svc-card">
-        <div class="svc-num">03</div>
-        <div class="svc-icon si-o"><i data-lucide="briefcase"></i></div>
-        <h3>Corporate Training</h3>
-        <p>Bespoke workplace mental health training — emotional intelligence, resilience, and psychologically safe organisations.</p>
-        <a href="{{ route('services') }}" class="svc-more">Learn more →</a>
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num sn3">03</div><div class="step-connector"></div></div>
+        <h4>Student Counselling Sessions</h4>
+        <p>Qualified counsellors provide regular individual and group sessions for students — creating a consistent, trusted support system within your school community.</p>
       </div>
-      <div class="svc-card">
-        <div class="svc-num">04</div>
-        <div class="svc-icon si-g"><i data-lucide="school"></i></div>
-        <h3>School Wellbeing Programs</h3>
-        <p>Holistic frameworks embedding emotional health into school culture — for students, staff, and school leadership alike.</p>
-        <a href="{{ route('wellbeing') }}" class="svc-more">Learn more →</a>
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num sn4">04</div><div class="step-connector"></div></div>
+        <h4>Teacher & Staff Training</h4>
+        <p>Equip your entire staff with mental health literacy, safe conversation skills, and early intervention strategies — transforming every adult in your school into a wellbeing ally.</p>
       </div>
-      <div class="svc-card">
-        <div class="svc-num">05</div>
-        <div class="svc-icon si-r"><i data-lucide="baby"></i></div>
-        <h3>Parenting Workshops</h3>
-        <p>Evidence-based workshops empowering intentional parents to raise confident, emotionally resilient children.</p>
-        <a href="{{ route('services') }}" class="svc-more">Learn more →</a>
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num sn5">05</div><div class="step-connector"></div></div>
+        <h4>Parent Engagement Programme</h4>
+        <p>Workshops and communication strategies that bring parents into the wellbeing conversation — strengthening the home-school partnership that is essential for lasting student wellbeing.</p>
       </div>
-      <div class="svc-card">
-        <div class="svc-num">06</div>
-        <div class="svc-icon si-o"><i data-lucide="mic"></i></div>
-        <h3>TSCC & Education Events</h3>
-        <p>Nigeria's premier school counselling conference and strategic education events — driving sector-wide change.</p>
-        <a href="{{ route('tscc') }}" class="svc-more">Learn more →</a>
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num sn6">06</div><div class="step-connector"></div></div>
+        <h4>Quarterly Reviews & Reporting</h4>
+        <p>Regular check-ins and detailed impact reports help you track progress, demonstrate value to stakeholders, and continuously improve your school's wellbeing programme over time.</p>
       </div>
     </div>
   </div>
@@ -1881,6 +2292,90 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         <div class="impact-num in-w" data-count="8" data-suffix=" Yrs">8 Yrs</div>
         <div class="impact-label">Of Professional Practice</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TSCC HIGHLIGHT SECTION ══ -->
+<section class="tscc-highlight-sec">
+  <div class="wrap">
+    <div class="tscc-highlight-grid">
+      
+      <!-- Left: Content -->
+      <div class="reveal-left">
+        <div class="tscc-highlight-badge">
+          <span class="tscc-highlight-badge-dot"></span>
+          Annual Strategic Event
+        </div>
+        <h2>The School Counselling<br><span>Conference (TSCC)</span></h2>
+        <p class="tscc-highlight-text">
+          TSCC is Nigeria’s premier annual conference driving sector-wide conversations, building professional capacity, and creating a community of practice for school counsellors, educators, and leaders nationwide.
+        </p>
+        
+        <div class="tscc-feature-list">
+          
+          <div class="tscc-feature-item">
+            <div class="tscc-feature-icon">
+              <i data-lucide="mic"></i>
+            </div>
+            <div class="tscc-feature-info">
+              <h4>Expert Keynote Speakers</h4>
+              <p>Learn from leading regional and international voices in child psychology and educational leadership.</p>
+            </div>
+          </div>
+          
+          <div class="tscc-feature-item">
+            <div class="tscc-feature-icon">
+              <i data-lucide="award"></i>
+            </div>
+            <div class="tscc-feature-info">
+              <h4>CPD Certified Workshops</h4>
+              <p>Acquire hands-on training, practical tools, and continuous professional development (CPD) credits.</p>
+            </div>
+          </div>
+          
+          <div class="tscc-feature-item">
+            <div class="tscc-feature-icon">
+              <i data-lucide="network"></i>
+            </div>
+            <div class="tscc-feature-info">
+              <h4>Advocacy & Collaboration</h4>
+              <p>Connect with a powerful network of delegates, policymakers, and educational advocates.</p>
+            </div>
+          </div>
+          
+        </div>
+        
+        <a href="{{ route('tscc') }}" class="btn-orange" style="padding: 14px 32px; font-size: 13px;">
+          Explore TSCC Conference →
+        </a>
+      </div>
+      
+      <!-- Right: Interactive Graphic -->
+      <div class="reveal-right">
+        <div class="tscc-visual-card">
+          <div class="tscc-visual-accent"></div>
+          <div class="tscc-visual-year">TSCC</div>
+          <div class="tscc-visual-title">6th Annual Edition</div>
+          <div class="tscc-visual-subtitle">Lagos & Hybrid Format</div>
+          
+          <div class="tscc-visual-stats">
+            <div class="tscc-stat-box">
+              <h5>400+</h5>
+              <p>Delegates</p>
+            </div>
+            <div class="tscc-stat-box">
+              <h5>50+</h5>
+              <p>School Partners</p>
+            </div>
+            <div class="tscc-stat-box">
+              <h5>15+</h5>
+              <p>CPD Sessions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </div>
 </section>

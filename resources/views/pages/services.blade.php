@@ -223,7 +223,7 @@
           <span class="svc-bullet">Staff Training</span>
           <span class="svc-bullet">Policy Development</span>
         </div>
-        <a href="{{ route('wellbeing') }}" class="svc-item-cta">See Full Package →</a>
+        <a href="{{ route('home') }}#wellbeing-package" class="svc-item-cta">See Full Package →</a>
       </div>
     </div>
 

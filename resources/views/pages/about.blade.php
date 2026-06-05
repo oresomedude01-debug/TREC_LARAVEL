@@ -127,6 +127,150 @@
   .story-inner{grid-template-columns:1fr}
   .mvv-grid{grid-template-columns:1fr}
   .pillars-grid{grid-template-columns:1fr 1fr}
+  .founder-card {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+  .founder-image-area {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ── FOUNDER SECTION ── */
+.founder-sec {
+  background: var(--cream);
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+.founder-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4.5rem;
+  align-items: center;
+  background: #fff;
+  border-radius: 24px;
+  padding: 3.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+.founder-image-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.founder-glow-sphere {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(229,105,24,0.18) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+.founder-img-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 2;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+.founder-portrait-img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+}
+.founder-badge {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--red), var(--orange));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  box-shadow: 0 6px 20px rgba(216, 45, 55, 0.25);
+  white-space: nowrap;
+  font-family: var(--font-h);
+}
+.founder-content-area {
+  display: flex;
+  flex-direction: column;
+}
+.founder-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+.founder-title {
+  font-family: var(--font-h);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--black);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+}
+.founder-credentials {
+  font-family: var(--font-b);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--charcoal);
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.founder-bio {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+.founder-bio:last-of-type {
+  margin-bottom: 2rem;
+}
+.founder-footer {
+  display: flex;
+  align-items: center;
+}
+.founder-linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #0077b5;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 119, 181, 0.2);
+}
+.founder-linkedin-btn:hover {
+  background: #006097;
+  transform: translateY(-2px);
+}
+.linkedin-svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 </style>
 @endsection
@@ -246,6 +390,63 @@
         <div class="pillar-num pn-b">04</div>
         <h4>Impact</h4>
         <p>Measuring our success not in sessions delivered, but in lives genuinely transformed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MEET THE FOUNDER ══ -->
+<section class="founder-sec reveal">
+  <div class="wrap">
+    <div class="founder-card">
+      <div class="founder-image-area">
+        <div class="founder-glow-sphere"></div>
+        <div class="founder-img-wrapper" style="background: transparent; border: none; box-shadow: none;">
+          <svg viewBox="0 0 120 120" class="founder-portrait-img" style="width: 100%; height: auto; border-radius: 50%; display: block; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);">
+            <defs>
+              <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f88923" />
+                <stop offset="100%" stop-color="#d82d37" />
+              </linearGradient>
+              <linearGradient id="hijabGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1f2937" />
+                <stop offset="100%" stop-color="#111827" />
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a16207" />
+                <stop offset="100%" stop-color="#78350f" />
+              </linearGradient>
+            </defs>
+            <circle cx="60" cy="60" r="56" fill="url(#avatarGrad)" />
+            <path d="M60 22 C34 22 28 36 28 64 C28 85 40 102 60 102 C80 102 92 85 92 64 C92 36 86 22 60 22 Z" fill="url(#hijabGrad)" />
+            <ellipse cx="60" cy="58" rx="22" ry="28" fill="url(#skinGrad)" />
+            <path d="M60 22 C44 22 41 38 41 58 C41 78 50 86 60 86 C70 86 79 78 79 58 C79 38 76 22 60 22 Z" fill="none" stroke="url(#hijabGrad)" stroke-width="4" />
+            <path d="M43 45 C50 35 70 35 77 45" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M41 58 C50 65 70 65 79 58" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M50 54 Q54 57 55 54" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M70 54 Q66 57 65 54" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M56 68 Q60 71 64 68" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M28 80 C28 80 20 95 20 110 C20 115 100 115 100 110 C100 95 92 80 92 80 C80 95 40 95 28 80 Z" fill="url(#hijabGrad)" />
+          </svg>
+          <div class="founder-badge">Founder & Lead Consultant</div>
+        </div>
+      </div>
+      <div class="founder-content-area">
+        <div class="founder-eyebrow">Leadership</div>
+        <h2 class="founder-title">Meet Faatimah Samuel</h2>
+        <div class="founder-credentials">MCASSON, FPMC</div>
+        <p class="founder-bio">
+          Faatimah Samuel is the Founder and Lead Consultant at The Ripple Effect Consult (TREC). As an experienced counsellor, educational consultant, and family wellbeing advocate, she has dedicated over a decade to helping individuals, schools, and organisations build emotional resilience and psychological safety.
+        </p>
+        <p class="founder-bio">
+          Under her leadership, TREC has grown into a multidisciplinary consultancy producing Nigeria's foremost school counselling platform — the TSCC. She is committed to bridging the gap between mental health awareness and meaningful action, ensuring that every transformation ripples outward into the community.
+        </p>
+        <div class="founder-footer">
+          <a href="https://www.linkedin.com/in/faatimah-samuel-mcasson-fpmc-619a79173" target="_blank" class="founder-linkedin-btn" aria-label="LinkedIn Profile">
+            <svg viewBox="0 0 24 24" class="linkedin-svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Connect on LinkedIn
+          </a>
+        </div>
       </div>
     </div>
   </div>

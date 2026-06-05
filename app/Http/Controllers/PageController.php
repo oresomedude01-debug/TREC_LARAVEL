@@ -25,11 +25,6 @@ class PageController extends Controller
         return view('pages.services');
     }
 
-    public function wellbeing(): View
-    {
-        return view('pages.wellbeing');
-    }
-
     public function tscc(): View
     {
         return view('pages.tscc');

@@ -267,6 +267,300 @@ footer{background:var(--black);padding:5rem 2rem 0}
 @keyframes iconBounce{0%,100%{transform:scale(1) rotate(0deg)}40%{transform:scale(1.3) rotate(10deg)}70%{transform:scale(.9) rotate(-5deg)}}
 /* Dash-flow for SVG connection lines */
 @keyframes dashFlow{from{stroke-dashoffset:20}to{stroke-dashoffset:0}}
+
+/* ── FLOATING CONTACT WIDGET (SPEED DIAL) ── */
+.trec-contact-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  font-family: var(--font-b);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.trec-widget-trigger {
+  width: 48px; /* Slightly smaller, more refined trigger button */
+  height: 48px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(107, 143, 26, 0.35), 0 0 0 1px rgba(107, 143, 26, 0.1);
+  transition: transform 0.35s var(--ease-spring), background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  border: none;
+  outline: none;
+}
+.trec-widget-trigger:hover {
+  transform: scale(1.08);
+  background: #5b7a16;
+  box-shadow: 0 6px 20px rgba(107, 143, 26, 0.45);
+}
+.trec-widget-trigger .lucide {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.4s var(--ease-spring);
+}
+.trec-widget-trigger.active .lucide-message-circle {
+  transform: rotate(90deg) scale(0);
+  display: none !important;
+}
+.trec-widget-trigger .lucide-x {
+  display: none;
+  transform: rotate(-90deg) scale(0);
+}
+.trec-widget-trigger.active .lucide-x {
+  display: block;
+  transform: rotate(0) scale(1);
+}
+
+/* Pulsing Badge */
+.trec-widget-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: var(--red);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 0 rgba(216,45,55,0.7);
+  animation: badgePulse 2s infinite;
+  transition: opacity 0.3s ease;
+}
+@keyframes badgePulse {
+  0% { box-shadow: 0 0 0 0 rgba(216,45,55,0.7); }
+  70% { box-shadow: 0 0 0 5px rgba(216,45,55,0); }
+  100% { box-shadow: 0 0 0 0 rgba(216,45,55,0); }
+}
+
+/* Speed Dial Container */
+.trec-widget-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(15px) scale(0.9);
+  transition: transform 0.35s var(--ease-spring), opacity 0.3s ease;
+  z-index: 9;
+}
+.trec-widget-options.open {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Circular Option Buttons */
+.trec-widget-option-btn {
+  width: 40px; /* Refined option button size */
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.2s;
+  position: relative;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: var(--black);
+}
+.trec-widget-option-btn .lucide {
+  width: 18px;
+  height: 18px;
+}
+.trec-widget-option-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Tooltips */
+.trec-widget-option-btn::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  background: rgba(13, 13, 13, 0.9);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.2s var(--ease), opacity 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.trec-widget-option-btn:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Option Colors */
+.opt-whatsapp { background: #25D366; }
+.opt-phone { background: var(--green); }
+.opt-booking { background: var(--red); }
+.opt-tscc { background: var(--orange); }
+.opt-chat { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+
+@media(max-width: 450px) {
+  .trec-contact-widget {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+/* ══════════════════════════════════════
+   TREC CHATBOT PANEL
+══════════════════════════════════════ */
+.trec-chatbot-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 1.75rem;
+  width: 360px;
+  max-height: 540px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.96);
+  transform-origin: bottom right;
+  transition: opacity 0.35s var(--ease), transform 0.35s cubic-bezier(0.34,1.4,0.64,1);
+}
+.trec-chatbot-panel.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
+}
+.chatbot-header {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+.chatbot-avatar {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--red), var(--orange));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.chatbot-avatar .lucide { width: 20px; height: 20px; stroke-width: 2; color: #fff; }
+.chatbot-header-info { flex: 1; }
+.chatbot-name { font-family: var(--font-h); font-size: 1rem; font-weight: 700; color: #fff; line-height: 1.2; }
+.chatbot-status {
+  font-size: 11px; color: rgba(255,255,255,0.55);
+  display: flex; align-items: center; gap: 0.35rem; margin-top: 2px;
+}
+.chatbot-status-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #4ade80;
+  animation: badgePulse 2s infinite; flex-shrink: 0;
+}
+.chatbot-close {
+  background: rgba(255,255,255,0.1); border: none; border-radius: 8px;
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: rgba(255,255,255,0.7); transition: all 0.2s;
+}
+.chatbot-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
+.chatbot-close .lucide { width: 16px; height: 16px; stroke-width: 2; }
+.chatbot-messages {
+  flex: 1; overflow-y: auto; padding: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.85rem;
+  background: #f8f8fb; scroll-behavior: smooth;
+}
+.chatbot-messages::-webkit-scrollbar { width: 4px; }
+.chatbot-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+.chat-bubble {
+  max-width: 85%; padding: 0.7rem 1rem; border-radius: 16px;
+  font-size: 13px; line-height: 1.6;
+  animation: bubbleIn 0.3s cubic-bezier(0.34,1.4,0.64,1) forwards;
+}
+@keyframes bubbleIn {
+  from { opacity: 0; transform: scale(0.85) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.chat-bubble.bot {
+  background: #fff; color: var(--charcoal);
+  border: 1px solid rgba(0,0,0,0.07); border-bottom-left-radius: 4px;
+  align-self: flex-start; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+.chat-bubble.user {
+  background: linear-gradient(135deg, var(--red), #e85d66);
+  color: #fff; border-bottom-right-radius: 4px; align-self: flex-end;
+  box-shadow: 0 4px 14px rgba(216,45,55,0.25);
+}
+.chat-bubble a { color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; opacity: 0.9; }
+.chat-typing {
+  align-self: flex-start; background: #fff; border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 16px; border-bottom-left-radius: 4px;
+  padding: 0.75rem 1rem; display: flex; gap: 5px; align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+.chat-typing span {
+  width: 6px; height: 6px; border-radius: 50%; background: #c0c0c8;
+  animation: typingDot 1.2s infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingDot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%            { transform: translateY(-5px); opacity: 1; }
+}
+.chat-quick-replies {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 0.25rem; align-self: flex-start; max-width: 100%;
+}
+.chat-qr-btn {
+  font-size: 11.5px; font-weight: 600; padding: 5px 12px;
+  border: 1.5px solid rgba(216,45,55,0.3); border-radius: 100px;
+  color: var(--red); background: rgba(216,45,55,0.04);
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.chat-qr-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.chatbot-input-bar {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1rem; background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.06); flex-shrink: 0;
+}
+.chatbot-input {
+  flex: 1; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 100px;
+  padding: 9px 16px; font-family: var(--font-b); font-size: 13px;
+  color: var(--black); outline: none; transition: border-color 0.2s; background: #f8f8fb;
+}
+.chatbot-input:focus { border-color: var(--red); background: #fff; }
+.chatbot-input::placeholder { color: rgba(65,64,66,0.4); }
+.chatbot-send-btn {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--red); border: none;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: all 0.2s; flex-shrink: 0; box-shadow: 0 3px 10px rgba(216,45,55,0.3);
+}
+.chatbot-send-btn:hover { background: #b8242e; transform: scale(1.08); }
+.chatbot-send-btn .lucide { width: 16px; height: 16px; stroke-width: 2; color: #fff; }
+@media(max-width: 450px) {
+  .trec-chatbot-panel { right: 1rem; left: 1rem; width: auto; bottom: 80px; }
+}
 </style>
 @yield('styles')
 </head>
@@ -280,7 +574,6 @@ footer{background:var(--black);padding:5rem 2rem 0}
   <a href="{{ route('home') }}">Home</a>
   <a href="{{ route('about') }}">About</a>
   <a href="{{ route('services') }}">Services</a>
-  <a href="{{ route('wellbeing') }}">Wellbeing</a>
   <a href="{{ route('tscc') }}">TSCC</a>
   <a href="{{ route('gallery') }}">Gallery</a>
   <a href="{{ route('blog') }}">Blog</a>
@@ -301,7 +594,6 @@ footer{background:var(--black);padding:5rem 2rem 0}
       <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'act' : '' }}">Home</a>
       <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'act' : '' }}">About</a>
       <a href="{{ route('services') }}" class="{{ request()->routeIs('services') ? 'act' : '' }}">Services</a>
-      <a href="{{ route('wellbeing') }}" class="{{ request()->routeIs('wellbeing') ? 'act' : '' }}">Wellbeing</a>
       <a href="{{ route('tscc') }}" class="{{ request()->routeIs('tscc') ? 'act' : '' }}">TSCC</a>
       <a href="{{ route('gallery') }}" class="{{ request()->routeIs('gallery') ? 'act' : '' }}">Gallery</a>
       <a href="{{ route('blog') }}" class="{{ request()->routeIs('blog') ? 'act' : '' }}">Blog</a>
@@ -351,7 +643,7 @@ footer{background:var(--black);padding:5rem 2rem 0}
         <a href="{{ route('services') }}">Individual Counselling</a>
         <a href="{{ route('services') }}">Group Counselling</a>
         <a href="{{ route('services') }}">Corporate Training</a>
-        <a href="{{ route('wellbeing') }}">School Wellbeing</a>
+        <a href="{{ route('home') }}#wellbeing-package">School Wellbeing</a>
         <a href="{{ route('services') }}">Parenting Workshops</a>
       </div>
       <div class="ft-col">
@@ -377,6 +669,78 @@ footer{background:var(--black);padding:5rem 2rem 0}
   </div>
 </footer>
 
+@php
+  // Check if we are on a page where the widget should be hidden
+  $isSuccess = session('success') || request()->is('success') || request()->is('checkout/success');
+  $isCheckout = request()->is('checkout*') || request()->is('admin*');
+@endphp
+
+@if(!$isSuccess && !$isCheckout)
+  <!-- Floating Contact Widget (Speed Dial Format) -->
+  <div class="trec-contact-widget" id="trecContactWidget">
+    <!-- Speed Dial Options -->
+    <div class="trec-widget-options" id="trecWidgetOptions">
+      <!-- TSCC Option -->
+      <a href="{{ route('tscc') }}" class="trec-widget-option-btn opt-tscc" data-tooltip="TSCC Conference" aria-label="TSCC Conference">
+        <i data-lucide="award"></i>
+      </a>
+
+      <!-- Booking Option -->
+      <a href="{{ route('contact') }}" class="trec-widget-option-btn opt-booking" data-tooltip="Book a Session" aria-label="Book a Session">
+        <i data-lucide="calendar"></i>
+      </a>
+
+      <!-- Call Option -->
+      <a href="tel:+2349056057502" class="trec-widget-option-btn opt-phone" data-tooltip="Call Helpline" aria-label="Call Helpline">
+        <i data-lucide="phone"></i>
+      </a>
+
+      <!-- WhatsApp Option -->
+      <a href="https://wa.me/2349056057502" target="_blank" class="trec-widget-option-btn opt-whatsapp" data-tooltip="WhatsApp Support" aria-label="WhatsApp Support">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:block"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.588 2.012 14.12 1.01 11.5 1.012c-5.443 0-9.867 4.371-9.871 9.8-.001 1.73.457 3.42 1.32 4.925l-.995 3.635 3.738-.978zM17.15 14.28c-.282-.141-1.67-.82-1.929-.915-.258-.094-.446-.141-.634.141-.188.281-.727.915-.892 1.102-.164.187-.329.21-.61.07-1.15-.52-2.02-.916-2.812-1.602-.686-.595-1.174-1.348-1.309-1.583-.135-.234-.015-.361.103-.478.107-.105.234-.282.352-.422.118-.141.157-.234.235-.39.078-.156.039-.297-.02-.437-.058-.141-.446-1.101-.611-1.5-.16-.388-.322-.335-.446-.341-.115-.006-.247-.007-.38-.007-.132 0-.348.05-.53.25-.182.2-.696.697-.696 1.7s.73 1.96.83 2.1c.101.14 1.436 2.193 3.48 3.078.486.21.866.335 1.161.43.489.155.934.133 1.286.08.393-.06 1.207-.493 1.378-.967.172-.474.172-.88.121-.966-.051-.086-.188-.135-.47-.276z"/></svg>
+      </a>
+
+      <!-- Chatbot Option -->
+      <button class="trec-widget-option-btn opt-chat" id="trecChatTriggerBtn" data-tooltip="Ask AI Assistant" aria-label="Ask AI Assistant">
+        <i data-lucide="bot"></i>
+      </button>
+    </div>
+
+    <!-- Trigger Button -->
+    <button class="trec-widget-trigger" id="trecWidgetTrigger" aria-label="Contact Options">
+      <div class="trec-widget-badge" id="trecWidgetBadge"></div>
+      <i data-lucide="message-circle" class="lucide-message-circle"></i>
+      <i data-lucide="x" class="lucide-x"></i>
+    </button>
+  </div>
+
+  <!-- Chatbot Panel -->
+  <div class="trec-chatbot-panel" id="trecChatbotPanel">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">
+        <i data-lucide="bot"></i>
+      </div>
+      <div class="chatbot-header-info">
+        <div class="chatbot-name">TREC Assistant</div>
+        <div class="chatbot-status">
+          <span class="chatbot-status-dot"></span>
+          Online • Ready to help
+        </div>
+      </div>
+      <button class="chatbot-close" id="trecChatClose" aria-label="Close chat">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="chatbot-messages" id="trecChatMessages"></div>
+    <div class="chatbot-input-bar">
+      <input type="text" class="chatbot-input" id="trecChatInput" placeholder="Ask about services, TSCC, booking..." aria-label="Chat input">
+      <button class="chatbot-send-btn" id="trecChatSend" aria-label="Send message">
+        <i data-lucide="send"></i>
+      </button>
+    </div>
+  </div>
+@endif
+
 @yield('scripts')
 
 <script>
@@ -384,6 +748,233 @@ footer{background:var(--black);padding:5rem 2rem 0}
 document.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => document.body.classList.add('loaded'));
   if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  // ── Floating Contact Widget Logic (Speed Dial)
+  const widgetTrigger = document.getElementById('trecWidgetTrigger');
+  const widgetOptions = document.getElementById('trecWidgetOptions');
+  const widgetBadge   = document.getElementById('trecWidgetBadge');
+
+  if (widgetTrigger && widgetOptions) {
+    widgetTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = widgetOptions.classList.toggle('open');
+      widgetTrigger.classList.toggle('active', isOpen);
+      
+      // Hide badge on click
+      if (isOpen && widgetBadge) {
+        widgetBadge.style.opacity = '0';
+        widgetBadge.style.pointerEvents = 'none';
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!widgetOptions.contains(e.target) && !widgetTrigger.contains(e.target)) {
+        widgetOptions.classList.remove('open');
+        widgetTrigger.classList.remove('active');
+      }
+    });
+  }
+
+  // ── Chatbot Logic
+  const chatbotPanel = document.getElementById('trecChatbotPanel');
+  const chatTriggerBtn = document.getElementById('trecChatTriggerBtn');
+  const chatCloseBtn = document.getElementById('trecChatClose');
+  const chatMessages = document.getElementById('trecChatMessages');
+  const chatInput = document.getElementById('trecChatInput');
+  const chatSendBtn = document.getElementById('trecChatSend');
+
+  function showBotWelcome() {
+    appendBotMessage("Hello! I am your TREC AI Assistant. Ask me anything about our services, booking a session, our annual TSCC conference, or about our organization.");
+    showQuickReplies([
+      { text: "Counselling Services", value: "services" },
+      { text: "Book a Session", value: "book a session" },
+      { text: "TSCC Conference", value: "tscc" },
+      { text: "Contact Info", value: "contact" },
+      { text: "About TREC", value: "about" }
+    ]);
+  }
+
+  function appendBotMessage(htmlContent) {
+    if (!chatMessages) return;
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble bot';
+    bubble.innerHTML = htmlContent;
+    chatMessages.appendChild(bubble);
+    scrollToBottom();
+  }
+
+  function appendUserMessage(text) {
+    if (!chatMessages) return;
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble user';
+    bubble.textContent = text;
+    chatMessages.appendChild(bubble);
+    scrollToBottom();
+  }
+
+  function showQuickReplies(replies) {
+    if (!chatMessages) return;
+    const container = document.createElement('div');
+    container.className = 'chat-quick-replies';
+    replies.forEach(r => {
+      const btn = document.createElement('button');
+      btn.className = 'chat-qr-btn';
+      btn.textContent = r.text;
+      btn.addEventListener('click', () => {
+        container.remove();
+        appendUserMessage(r.text);
+        showTypingAndRespond(r.value);
+      });
+      container.appendChild(btn);
+    });
+    chatMessages.appendChild(container);
+    scrollToBottom();
+  }
+
+  function scrollToBottom() {
+    if (chatMessages) {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  }
+
+  function showTypingAndRespond(query) {
+    if (!chatMessages) return;
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'chat-typing';
+    typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+    chatMessages.appendChild(typingIndicator);
+    scrollToBottom();
+
+    setTimeout(() => {
+      typingIndicator.remove();
+      const response = getBotResponse(query);
+      appendBotMessage(response);
+    }, 750);
+  }
+
+  function getBotResponse(query) {
+    const q = query.toLowerCase().trim();
+    
+    // Greetings
+    if (q.match(/\b(hi|hello|hey|greetings|howdy|counselor|bot|assistant)\b/)) {
+      return "Hello! Welcome to The Ripple Effect Consult. How can I help you today?";
+    }
+    
+    // Booking
+    if (q.includes('book') || q.includes('appointment') || q.includes('schedule') || q.includes('session') || q.includes('consult')) {
+      return "You can easily book a counselling session directly through our website! Visit our <a href='/contact'>Contact Page</a> to fill out our interactive booking form. You can select your desired service (Individual, Group, Corporate, etc.) and complete your details.";
+    }
+
+    // TSCC
+    if (q.includes('tscc') || q.includes('conference') || q.includes('annual')) {
+      return "The School Counselling Conference (TSCC) is Nigeria's premier annual conference for school counsellors and educators. It provides professional capacity building, expert keynotes, CPD workshops, and networking. Visit our dedicated <a href='/tscc'>TSCC Page</a> to learn more about the next conference or to enquire about sponsorship!";
+    }
+
+    // Sponsorship
+    if (q.includes('sponsor') || q.includes('partnership') || q.includes('partner')) {
+      return "Want to partner with us or sponsor the TSCC Conference? We would love to hear from you. Please fill out our sponsorship enquiry section on the <a href='/contact'>Contact Page</a> or email us at <a href='mailto:rippleeffectconsult@gmail.com'>rippleeffectconsult@gmail.com</a>.";
+    }
+
+    // Services
+    if (q.includes('service') || q.includes('offer') || q.includes('counselling') || q.includes('therapy') || q.includes('training') || q.includes('corporate') || q.includes('parenting')) {
+      return "TREC offers professional counselling, training, and consultation services:<ul><li><b>Individual Counselling:</b> One-on-one therapy for anxiety, depression, grief, and relationships.</li><li><b>Group Counselling:</b> Peer support groups and grief circles.</li><li><b>Corporate Training:</b> Stress management and leadership wellbeing.</li><li><b>School Wellbeing:</b> Student counselling and staff wellbeing.</li><li><b>Parenting Workshops:</b> Practical tools for emotional resilience.</li></ul>You can learn more on our <a href='/services'>Services Page</a>.";
+    }
+
+    // Pricing / Price / Cost
+    if (q.includes('price') || q.includes('cost') || q.includes('pricing') || q.includes('fee') || q.includes('charge') || q.includes('pay') || q.includes('free')) {
+      return "We believe in making mental health support accessible. We offer a <b>free initial consultation</b>. To enquire about detailed rates for ongoing individual sessions, group workshops, corporate packages, or school wellbeing audits, please get in touch with us via our <a href='/contact'>Contact Page</a>.";
+    }
+
+    // Contact / phone / email / address / hours / map
+    if (q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('number') || q.includes('call') || q.includes('address') || q.includes('location') || q.includes('where') || q.includes('hour') || q.includes('time') || q.includes('office') || q.includes('map')) {
+      return "Here is how you can reach TREC Nigeria:<ul><li><b>Phone:</b> +234 905 605 7502 or +234 808 063 9507</li><li><b>Email:</b> <a href='mailto:rippleeffectconsult@gmail.com'>rippleeffectconsult@gmail.com</a></li><li><b>Office Address:</b> 11 Raji Crescent, Baruwa, Ipaja, Lagos, Nigeria.</li><li><b>Hours:</b> Monday - Friday, 9:00 AM - 5:00 PM.</li></ul>You can also view our interactive map on the <a href='/contact'>Contact Page</a>.";
+    }
+
+    // About / Story / Founder / Team / Who
+    if (q.includes('about') || q.includes('who') || q.includes('story') || q.includes('team') || q.includes('trec') || q.includes('ripple') || q.includes('founder') || q.includes('found')) {
+      return "The Ripple Effect Consult (TREC) was founded in 2017 in Lagos, Nigeria. We are a multidisciplinary team committed to making mental health support accessible, impactful, and sustainable. Our core values are Integrity, Compassion, Excellence, and Impact. Over the last 8 years, we have counselled 500+ individuals and supported 50+ schools.";
+    }
+
+    // Wellbeing
+    if (q.includes('wellbeing') || q.includes('school package') || q.includes('teacher') || q.includes('student')) {
+      return "Our School Wellbeing package is a holistic framework that embeds emotional health into school culture. It includes wellbeing audits, student counselling, staff training, and policy development. Read all about it on our dedicated <a href='/wellbeing'>Wellbeing Page</a>.";
+    }
+
+    // Blog
+    if (q.includes('blog') || q.includes('article') || q.includes('post') || q.includes('resource') || q.includes('read')) {
+      return "We share mental health resources, coping strategies, and articles on our blog. Check out our latest posts on the <a href='/blog'>Blog Page</a>!";
+    }
+
+    // Thank you
+    if (q.includes('thank') || q.includes('thanks') || q.includes('appreciate') || q.includes('good')) {
+      return "You're very welcome! If you have any other questions, feel free to ask. Have a wonderful day!";
+    }
+
+    // Fallback
+    return "I'm not sure I understand that question entirely. Could you please clarify? You can ask about our services, booking a session, the TSCC conference, contact details, or check out our <a href='/contact'>Contact Page</a> to send a direct message to our team.";
+  }
+
+  // Open chatbot
+  if (chatTriggerBtn && chatbotPanel) {
+    chatTriggerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpening = !chatbotPanel.classList.contains('open');
+      
+      if (isOpening) {
+        chatbotPanel.classList.add('open');
+        // Close speed dial options
+        if (widgetOptions) widgetOptions.classList.remove('open');
+        if (widgetTrigger) widgetTrigger.classList.remove('active');
+
+        // Initialize welcome message if empty
+        if (chatMessages && chatMessages.children.length === 0) {
+          showBotWelcome();
+        }
+
+        // Focus input
+        setTimeout(() => chatInput && chatInput.focus(), 300);
+      } else {
+        chatbotPanel.classList.remove('open');
+      }
+    });
+  }
+
+  // Close chatbot
+  if (chatCloseBtn && chatbotPanel) {
+    chatCloseBtn.addEventListener('click', () => {
+      chatbotPanel.classList.remove('open');
+    });
+  }
+
+  // Click outside to close chatbot
+  document.addEventListener('click', (e) => {
+    if (chatbotPanel && chatbotPanel.classList.contains('open')) {
+      if (!chatbotPanel.contains(e.target) && !chatTriggerBtn.contains(e.target)) {
+        chatbotPanel.classList.remove('open');
+      }
+    }
+  });
+
+  // Send message on click
+  if (chatSendBtn && chatInput) {
+    chatSendBtn.addEventListener('click', () => {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      appendUserMessage(text);
+      chatInput.value = '';
+      showTypingAndRespond(text);
+    });
+
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const text = chatInput.value.trim();
+        if (!text) return;
+        appendUserMessage(text);
+        chatInput.value = '';
+        showTypingAndRespond(text);
+      }
+    });
+  }
 });
 
 // ── Scroll progress bar
