@@ -1141,7 +1141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── TSCC ──
     if (q.includes('tscc') || q.includes('conference') || q.includes('annual') || q.includes('2026')) {
-      return "🎓 <b>The School Counselling Conference (TSCC) 2026</b> is Nigeria's premier annual event for school counsellors, educators, and mental health professionals!<br><br>It features:<ul><li>🎤 Expert Keynote Speakers</li><li>📚 CPD-accredited Workshops</li><li>🤝 Networking with 400+ delegates</li><li>🏫 Collaboration with 50+ schools</li></ul>Don't miss out — visit our <a href='/tscc'>TSCC Page</a> to register or enquire about <b>sponsorship opportunities</b>. Sponsoring TSCC puts your brand in front of Nigeria's top education leaders!";
+      return "🎓 <b>The School Counselling Conference (TSCC) 2026</b> is Nigeria's premier annual event for school counsellors, educators, and mental health professionals!<br><br>It features:<ul><li>🎤 Expert Keynote Speakers</li><li>📚 CPD-accredited Workshops</li><li>🤝 Networking with 400+ delegates</li><li>🏫 Collaboration with over 10 school partners</li></ul>Don't miss out — visit our <a href='/tscc'>TSCC Page</a> to register or enquire about <b>sponsorship opportunities</b>. Sponsoring TSCC puts your brand in front of Nigeria's top education leaders!";
     }
 
     // ── SPONSORSHIP ──
@@ -1166,7 +1166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── ABOUT / WHO ARE YOU ──
     if (q.includes('about') || q.includes('who') || q.includes('story') || q.includes('team') || q.includes('trec') || q.includes('ripple') || q.includes('history') || q.includes('background')) {
-      return "The Ripple Effect Consult (TREC) was founded in <b>2017</b> in Lagos, Nigeria by <b>Faatimah Samuel (MCASSON, FPMC)</b> — a passionate mental health advocate.<br><br>Over 8 years, we've:<ul><li>🧠 Counselled <b>500+ individuals</b></li><li>🏫 Supported <b>50+ schools</b></li><li>🎓 Trained <b>200+ professionals</b></li></ul>Our mission is to make mental health support accessible, sustainable, and impactful across Nigeria. <a href='/about'>Learn our full story →</a><br><br>Ready to experience the TREC difference? <a href='/contact'><b>Book a session →</b></a>";
+      return "The Ripple Effect Consult (TREC) was founded in <b>2017</b> in Lagos, Nigeria by <b>Faatimah Samuel (MCASSON, FPMC)</b> — a passionate mental health advocate.<br><br>Since 2020, we've:<ul><li>🧠 Counselled <b>500+ individuals</b></li><li>🏫 Partnered with <b>over 10 schools</b></li><li>🎓 Trained <b>200+ professionals</b></li><li>🎓 Conducted <b>multiple TSCC conferences</b></li></ul>Our mission is to make mental health support accessible, sustainable, and impactful across Nigeria. <a href='/about'>Learn our full story →</a><br><br>Ready to experience the TREC difference? <a href='/contact'><b>Book a session →</b></a>";
     }
 
     // ── SCHOOL / WELLBEING ──

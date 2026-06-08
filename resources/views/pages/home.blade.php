@@ -1933,9 +1933,9 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
 
       <div class="hero-trust reveal" style="transition-delay:.38s">
         <div class="trust-item"><span class="trust-check">✓</span><span>500+ Individuals Supported</span></div>
-        <div class="trust-item"><span class="trust-check">✓</span><span>50+ Schools Partnered</span></div>
-        <div class="trust-item"><span class="trust-check">✓</span><span>8 Years of Professional Practice</span></div>
-        <div class="trust-item"><span class="trust-check">✓</span><span>6 Successful TSCC Conferences</span></div>
+        <div class="trust-item"><span class="trust-check">✓</span><span>over 10 Schools Partnered</span></div>
+        <div class="trust-item"><span class="trust-check">✓</span><span>2020 Established</span></div>
+        <div class="trust-item"><span class="trust-check">✓</span><span>@php echo date('m') > 8 ? date('Y') - 2025 + 1 : date('Y') - 2025; @endphp TSCC Conducted</span></div>
       </div>
 
     </div><!-- /hero-content-panel -->
@@ -2089,15 +2089,15 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
 <div class="marquee-strip" aria-hidden="true">
   <div class="marquee-track">
     <div class="marquee-item">500+ Individuals Supported</div>
-    <div class="marquee-item">50+ Schools Partnered</div>
-    <div class="marquee-item">8 Years of Professional Practice</div>
-    <div class="marquee-item">6 Successful TSCC Conferences</div>
+    <div class="marquee-item">over 10 Schools Partnered</div>
+    <div class="marquee-item">2020 Established</div>
+    <div class="marquee-item">@php echo date('m') > 8 ? date('Y') - 2020 + 1 : date('Y') - 2020; @endphp TSCC Conducted</div>
     <div class="marquee-item">Trusted by Organisations Nationwide</div>
     <div class="marquee-item">Proven Results · Real Impact</div>
     <div class="marquee-item">500+ Individuals Supported</div>
-    <div class="marquee-item">50+ Schools Partnered</div>
-    <div class="marquee-item">8 Years of Professional Practice</div>
-    <div class="marquee-item">6 Successful TSCC Conferences</div>
+    <div class="marquee-item">over 10 Schools Partnered</div>
+    <div class="marquee-item">2020 Established</div>
+    <div class="marquee-item">@php echo date('m') > 8 ? date('Y') - 2020 + 1 : date('Y') - 2020; @endphp TSCC Conducted</div>
     <div class="marquee-item">Trusted by Organisations Nationwide</div>
     <div class="marquee-item">Proven Results · Real Impact</div>
   </div>
@@ -2369,7 +2369,7 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
               <p>Delegates</p>
             </div>
             <div class="tscc-stat-box">
-              <h5>50+</h5>
+              <h5>over 10</h5>
               <p>School Partners</p>
             </div>
             <div class="tscc-stat-box">

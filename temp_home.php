@@ -1308,9 +1308,9 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
 
       <div class="hero-trust reveal" style="transition-delay:.38s">
         <div class="trust-item"><span class="trust-check">✓</span><span>500+ Individuals Supported</span></div>
-        <div class="trust-item"><span class="trust-check">✓</span><span>50+ Schools Partnered</span></div>
-        <div class="trust-item"><span class="trust-check">✓</span><span>8 Years of Professional Practice</span></div>
-        <div class="trust-item"><span class="trust-check">✓</span><span>6 Successful TSCC Conferences</span></div>
+        <div class="trust-item"><span class="trust-check">✓</span><span>over 10 Schools Partnered</span></div>
+        <div class="trust-item"><span class="trust-check">✓</span><span>2020 Established</span></div>
+        <div class="trust-item"><span class="trust-check">✓</span><span>6 TSCC Conducted</span></div>
       </div>
 
     </div><!-- /hero-content-panel -->
