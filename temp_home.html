@@ -1544,16 +1544,16 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         <div class="impact-label">Individuals Counselled</div>
       </div>
       <div class="impact-item">
-        <div class="impact-num in-o" data-count="50" data-suffix="+">50+</div>
+        <div class="impact-num in-o">over 10</div>
         <div class="impact-label">Schools Partnered</div>
       </div>
       <div class="impact-item">
-        <div class="impact-num in-g" data-count="6" data-suffix="">6</div>
-        <div class="impact-label">TSCC Conferences</div>
+        <div class="impact-num in-g">6</div>
+        <div class="impact-label">TSCC Conducted</div>
       </div>
       <div class="impact-item">
-        <div class="impact-num in-w" data-count="8" data-suffix=" Yrs">8 Yrs</div>
-        <div class="impact-label">Of Professional Practice</div>
+        <div class="impact-num in-w">2020</div>
+        <div class="impact-label">Established</div>
       </div>
     </div>
   </div>

@@ -469,16 +469,16 @@
         <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">Individuals Counselled</div>
       </div>
       <div style="text-align:center;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
-        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--orange);line-height:1" data-count="50" data-suffix="+">50+</div>
-        <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">Schools Supported</div>
+        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--orange);line-height:1">over 10</div>
+        <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">Schools Partnered</div>
       </div>
       <div style="text-align:center;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
-        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--green);line-height:1" data-count="6" data-suffix="">6</div>
-        <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">TSCC Conferences</div>
+        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--green);line-height:1" id="tsccCount">@php echo date('m') > 7 ? date('Y') - 2020 + 1 : date('Y') - 2020; @endphp</div>
+        <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">TSCC Conducted</div>
       </div>
       <div style="text-align:center;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.05)">
-        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--charcoal);line-height:1" data-count="8" data-suffix=" Yrs">8 Yrs</div>
-        <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">Professional Practice</div>
+        <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--charcoal);line-height:1">2020</div>
+        <div style="font-size:.85rem;color:var(--charcoal);margin-top:.5rem;font-weight:400">Established</div>
       </div>
     </div>
   </div>
