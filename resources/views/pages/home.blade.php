@@ -224,6 +224,25 @@
   object-fit: contain;
 }
 
+/* Service Node Interactive Links */
+.service-node-link {
+  cursor: pointer;
+  outline: none;
+}
+.service-node-link rect {
+  transition: stroke-width 0.3s ease, stroke 0.3s ease, filter 0.3s ease;
+}
+.service-node-link:hover rect {
+  stroke-width: 2.2px !important;
+  stroke: rgba(255,255,255,0.85) !important;
+  filter: brightness(1.25) drop-shadow(0 0 12px rgba(255,255,255,0.25));
+}
+.service-node-link:hover text {
+  fill: #ffffff !important;
+  text-shadow: 0 0 6px rgba(255,255,255,0.6);
+  transition: fill 0.3s ease, text-shadow 0.3s ease;
+}
+
 /* Center hub pulse */
 @keyframes hubPulse {
   0%,100% { r: 52; opacity: 0.18; }
@@ -1968,22 +1987,22 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
         </defs>
 
         <!-- ── TENTACLE LINES ── -->
-        <!-- Line to: Individual Counselling (top-left) -->
+        <!-- Line to: Counselling Department Set Up (top-left) -->
         <line class="tentacle t1" x1="260" y1="270" x2="100" y2="105"
           stroke="rgba(216,45,55,0.55)" stroke-width="1.8"/>
-        <!-- Line to: Corporate Training (top-right) -->
+        <!-- Line to: Curriculum Development (top-right) -->
         <line class="tentacle t2" x1="260" y1="270" x2="420" y2="110"
           stroke="rgba(107,143,26,0.55)" stroke-width="1.8"/>
-        <!-- Line to: TSCC Conference (right) -->
+        <!-- Line to: TSCC & Strategic Events (right) -->
         <line class="tentacle t3" x1="260" y1="270" x2="460" y2="275"
           stroke="rgba(229,105,24,0.55)" stroke-width="1.8"/>
-        <!-- Line to: School Wellbeing (bottom-right) -->
+        <!-- Line to: Wellbeing Package (bottom-right) -->
         <line class="tentacle t4" x1="260" y1="270" x2="410" y2="430"
           stroke="rgba(216,45,55,0.55)" stroke-width="1.8"/>
-        <!-- Line to: Parenting Workshops (bottom-left) -->
+        <!-- Line to: Training & Capacity Building (bottom-left) -->
         <line class="tentacle t5" x1="260" y1="270" x2="100" y2="435"
           stroke="rgba(107,143,26,0.55)" stroke-width="1.8"/>
-        <!-- Line to: Group Counselling (left) -->
+        <!-- Line to: Needs Assessment (left) -->
         <line class="tentacle t6" x1="260" y1="270" x2="55" y2="275"
           stroke="rgba(229,105,24,0.55)" stroke-width="1.8"/>
 
@@ -2007,70 +2026,82 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
 
         <!-- ══ SERVICE NODES ══ -->
 
-        <!-- 1 ── Individual Counselling (top-left) -->
-        <g class="nf1" filter="url(#glow)">
-          <rect x="18" y="68" width="168" height="72" rx="14" fill="url(#ng1)" stroke="rgba(216,45,55,0.55)" stroke-width="1.5"/>
-          <rect x="18" y="68" width="6" height="72" rx="3" fill="#D82D37"/>
-          <g transform="translate(28, 85)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(216,45,55,0.90)" stroke-width="2"><path d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11z"/><path d="M12 16c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/><path d="M5.5 20c.5-1.5 1-2 2-2.5M18.5 20c-.5-1.5-1-2-2-2.5"/></svg></g>
-          <text x="48" y="95" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(216,45,55,0.90)" letter-spacing="1">COUNSELLING</text>
-          <text x="36" y="113" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Individual</text>
-          <text x="36" y="129" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Sessions</text>
-        </g>
+        <!-- 1 ── Counselling Department Set Up (top-left) -->
+        <a href="{{ route('services.dept-setup') }}" class="service-node-link">
+          <g class="nf1" filter="url(#glow)">
+            <rect x="18" y="68" width="168" height="72" rx="14" fill="url(#ng1)" stroke="rgba(216,45,55,0.55)" stroke-width="1.5"/>
+            <rect x="18" y="68" width="6" height="72" rx="3" fill="#D82D37"/>
+            <g transform="translate(28, 85)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(216,45,55,0.90)" stroke-width="2"><path d="M12 2H2v20h20V12"/><path d="M2 12h20M12 2v20"/><circle cx="17" cy="7" r="2"/></svg></g>
+            <text x="48" y="95" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(216,45,55,0.90)" letter-spacing="1">DEPARTMENT</text>
+            <text x="32" y="113" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Counselling</text>
+            <text x="32" y="129" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Set Up</text>
+          </g>
+        </a>
         <circle class="conn-dot" cx="100" cy="105" r="4" fill="#D82D37"/>
 
-        <!-- 2 ── Corporate Training (top-right) -->
-        <g class="nf2" filter="url(#glow)">
-          <rect x="336" y="68" width="166" height="72" rx="14" fill="url(#ng2)" stroke="rgba(107,143,26,0.55)" stroke-width="1.5"/>
-          <rect x="496" y="68" width="6" height="72" rx="3" fill="#6b8f1a"/>
-          <g transform="translate(348, 85)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(107,143,26,0.90)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M9 11h6M9 15h6"/></svg></g>
-          <text x="368" y="95" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(107,143,26,0.90)" letter-spacing="1">TRAINING</text>
-          <text x="348" y="113" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Corporate</text>
-          <text x="348" y="129" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Programmes</text>
-        </g>
+        <!-- 2 ── Counselling Curriculum Development (top-right) -->
+        <a href="{{ route('services.curriculum') }}" class="service-node-link">
+          <g class="nf2" filter="url(#glow)">
+            <rect x="336" y="68" width="166" height="72" rx="14" fill="url(#ng2)" stroke="rgba(107,143,26,0.55)" stroke-width="1.5"/>
+            <rect x="496" y="68" width="6" height="72" rx="3" fill="#6b8f1a"/>
+            <g transform="translate(348, 85)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(107,143,26,0.90)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></g>
+            <text x="356" y="95" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(107,143,26,0.90)" letter-spacing="1">CURRICULUM</text>
+            <text x="348" y="113" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Curriculum</text>
+            <text x="348" y="129" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Development</text>
+          </g>
+        </a>
         <circle class="conn-dot" cx="420" cy="110" r="4" fill="#6b8f1a"/>
 
-        <!-- 3 ── TSCC Conference (right) -->
-        <g class="nf3" filter="url(#glow)">
-          <rect x="340" y="238" width="166" height="72" rx="14" fill="url(#ng3)" stroke="rgba(229,105,24,0.55)" stroke-width="1.5"/>
-          <rect x="500" y="238" width="6" height="72" rx="3" fill="#E56918"/>
-          <g transform="translate(352, 255)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(229,105,24,0.90)" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" stroke-linejoin="round"/></svg></g>
-          <text x="372" y="265" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(229,105,24,0.90)" letter-spacing="1">EVENTS</text>
-          <text x="352" y="283" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">TSCC</text>
-          <text x="352" y="299" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Conference</text>
-        </g>
+        <!-- 3 ── TSCC and Strategic Education Events (right) -->
+        <a href="{{ route('tscc') }}" class="service-node-link">
+          <g class="nf3" filter="url(#glow)">
+            <rect x="340" y="238" width="166" height="72" rx="14" fill="url(#ng3)" stroke="rgba(229,105,24,0.55)" stroke-width="1.5"/>
+            <rect x="500" y="238" width="6" height="72" rx="3" fill="#E56918"/>
+            <g transform="translate(352, 255)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(229,105,24,0.90)" stroke-width="2"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg></g>
+            <text x="368" y="265" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(229,105,24,0.90)" letter-spacing="1">TSCC</text>
+            <text x="352" y="283" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">TSCC &</text>
+            <text x="352" y="299" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Events</text>
+          </g>
+        </a>
         <circle class="conn-dot" cx="460" cy="275" r="4" fill="#E56918"/>
 
-        <!-- 4 ── School Wellbeing (bottom-right) -->
-        <g class="nf4" filter="url(#glow)">
-          <rect x="330" y="398" width="168" height="72" rx="14" fill="url(#ng4)" stroke="rgba(216,45,55,0.55)" stroke-width="1.5"/>
-          <rect x="492" y="398" width="6" height="72" rx="3" fill="#D82D37"/>
-          <g transform="translate(342, 415)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(216,45,55,0.90)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></g>
-          <text x="362" y="425" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(216,45,55,0.90)" letter-spacing="1">WELLBEING</text>
-          <text x="342" y="443" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">School</text>
-          <text x="342" y="459" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Programmes</text>
-        </g>
+        <!-- 4 ── School Management Wellbeing Package (bottom-right) -->
+        <a href="{{ route('services.wellbeing') }}" class="service-node-link">
+          <g class="nf4" filter="url(#glow)">
+            <rect x="330" y="398" width="168" height="72" rx="14" fill="url(#ng4)" stroke="rgba(216,45,55,0.55)" stroke-width="1.5"/>
+            <rect x="492" y="398" width="6" height="72" rx="3" fill="#D82D37"/>
+            <g transform="translate(342, 415)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(216,45,55,0.90)" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></g>
+            <text x="362" y="425" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(216,45,55,0.90)" letter-spacing="1">PACKAGE</text>
+            <text x="338" y="443" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">Wellbeing</text>
+            <text x="338" y="459" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">Package</text>
+          </g>
+        </a>
         <circle class="conn-dot" cx="410" cy="430" r="4" fill="#D82D37"/>
 
-        <!-- 5 ── Parenting Workshops (bottom-left) -->
-        <g class="nf5" filter="url(#glow)">
-          <rect x="20" y="398" width="166" height="72" rx="14" fill="url(#ng5)" stroke="rgba(107,143,26,0.55)" stroke-width="1.5"/>
-          <rect x="20" y="398" width="6" height="72" rx="3" fill="#6b8f1a"/>
-          <g transform="translate(30, 415)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(107,143,26,0.90)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></g>
-          <text x="48" y="425" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(107,143,26,0.90)" letter-spacing="1">FAMILY</text>
-          <text x="38" y="443" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Parenting</text>
-          <text x="38" y="459" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Workshops</text>
-        </g>
+        <!-- 5 ── Training and Capacity Building (bottom-left) -->
+        <a href="{{ route('services.training') }}" class="service-node-link">
+          <g class="nf5" filter="url(#glow)">
+            <rect x="20" y="398" width="166" height="72" rx="14" fill="url(#ng5)" stroke="rgba(107,143,26,0.55)" stroke-width="1.5"/>
+            <rect x="20" y="398" width="6" height="72" rx="3" fill="#6b8f1a"/>
+            <g transform="translate(30, 415)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(107,143,26,0.90)" stroke-width="2"><path d="M4 4h16v2H4zM4 10h16v2H4zM4 16h16v2H4z"/><circle cx="2" cy="5" r="1.5"/><circle cx="2" cy="11" r="1.5"/><circle cx="2" cy="17" r="1.5"/></svg></g>
+            <text x="44" y="425" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(107,143,26,0.90)" letter-spacing="1">TRAINING</text>
+            <text x="32" y="443" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">Training &</text>
+            <text x="24" y="459" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">Capacity Build</text>
+          </g>
+        </a>
         <circle class="conn-dot" cx="100" cy="435" r="4" fill="#6b8f1a"/>
 
-        <!-- 6 ── Group Counselling (left) -->
-        <g class="nf6" filter="url(#glow)">
-          <rect x="0" y="238" width="110" height="72" rx="14" fill="url(#ng6)" stroke="rgba(229,105,24,0.55)" stroke-width="1.5"/>
-          <rect x="0" y="238" width="6" height="72" rx="3" fill="#E56918"/>
-          <g transform="translate(8, 255)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(229,105,24,0.90)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></g>
-          <text x="26" y="270" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(229,105,24,0.90)" letter-spacing="0.5">GROUP</text>
-          <text x="14" y="288" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Group</text>
-          <text x="14" y="304" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Sessions</text>
-        </g>
+        <!-- 6 ── Needs Assessment (left) -->
+        <a href="{{ route('services.needs-assessment') }}" class="service-node-link">
+          <g class="nf6" filter="url(#glow)">
+            <rect x="0" y="238" width="110" height="72" rx="14" fill="url(#ng6)" stroke="rgba(229,105,24,0.55)" stroke-width="1.5"/>
+            <rect x="0" y="238" width="6" height="72" rx="3" fill="#E56918"/>
+            <g transform="translate(8, 255)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(229,105,24,0.90)" stroke-width="2"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/><path d="M20.354 15.354l-7.07-7.07a2.828 2.828 0 1 0-4 4l7.07 7.07a2.828 2.828 0 1 0 4-4z"/></svg></g>
+            <text x="18" y="270" font-family="sans-serif" font-size="9" font-weight="700" fill="rgba(229,105,24,0.90)" letter-spacing="0.5">ASSESS</text>
+            <text x="12" y="288" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Needs</text>
+            <text x="12" y="304" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ffffff">Assessment</text>
+          </g>
+        </a>
         <circle class="conn-dot" cx="55" cy="275" r="4" fill="#E56918"/>
 
       </svg>

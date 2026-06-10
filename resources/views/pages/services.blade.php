@@ -31,9 +31,10 @@
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
   border-radius:10px;padding:.75rem 1rem;
   font-size:13px;font-weight:500;color:rgba(255,255,255,.7);
-  transition:background .2s,border-color .2s;
+  transition:all .3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration:none;
 }
-.svc-badge:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.15)}
+.svc-badge:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.15);color:#fff;transform:translateX(5px)}
 .svc-badge-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .bd-r{background:var(--red)}
 .bd-o{background:var(--orange)}
@@ -43,11 +44,17 @@
 /* ── SERVICES LIST ── */
 .svc-list-sec{padding:6rem 2rem;background:var(--white)}
 .svc-item{
+  position:relative;
   display:grid;grid-template-columns:80px 1fr;
-  gap:2.5rem;padding:3rem 0;
+  gap:2.5rem;padding:3rem 1rem;
   border-bottom:1px solid var(--mid);
   align-items:start;
-  transition:background .2s;
+  transition:all .30s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius:12px;
+}
+.svc-item:hover {
+  background:rgba(216,45,55,.02);
+  padding-left:2rem;
 }
 .svc-item:last-child{border-bottom:none}
 .svc-item-num{
@@ -55,7 +62,7 @@
   color:var(--light);line-height:1;user-select:none;
   transition:color .3s;
 }
-.svc-item:hover .svc-item-num{color:var(--mid)}
+.svc-item:hover .svc-item-num{color:var(--red);opacity:.7}
 .svc-item-body{flex:1}
 .svc-item-head{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
 .svc-item-head h3{font-family:var(--font-h);font-size:1.45rem;font-weight:700;color:var(--black)}
@@ -79,6 +86,13 @@
   font-size:13px;font-weight:700;color:var(--red);
   letter-spacing:.5px;text-transform:uppercase;
   transition:gap .2s;
+}
+.svc-item-cta::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:5;
+  cursor:pointer;
 }
 .svc-item:hover .svc-item-cta{gap:12px}
 
@@ -139,12 +153,12 @@
       <p class="reveal" style="transition-delay:.2s">Comprehensive counselling, training, and consultation — tailored to your context, your people, and your goals.</p>
     </div>
     <div class="svc-badge-list reveal-right">
-      <div class="svc-badge"><span class="svc-badge-dot bd-r"></span>Individual & Group Counselling</div>
-      <div class="svc-badge"><span class="svc-badge-dot bd-o"></span>Corporate Mental Health Training</div>
-      <div class="svc-badge"><span class="svc-badge-dot bd-g"></span>School Wellbeing Programmes</div>
-      <div class="svc-badge"><span class="svc-badge-dot bd-w"></span>Parenting & Family Workshops</div>
-      <div class="svc-badge"><span class="svc-badge-dot bd-r"></span>TSCC & Strategic Events</div>
-      <div class="svc-badge"><span class="svc-badge-dot bd-o"></span>Consultation & Advisory</div>
+      <a href="{{ route('services.dept-setup') }}" class="svc-badge"><span class="svc-badge-dot bd-r"></span>Counselling Department Setup</a>
+      <a href="{{ route('services.curriculum') }}" class="svc-badge"><span class="svc-badge-dot bd-o"></span>Curriculum Development</a>
+      <a href="{{ route('services.needs-assessment') }}" class="svc-badge"><span class="svc-badge-dot bd-g"></span>Needs Assessment</a>
+      <a href="{{ route('services.training') }}" class="svc-badge"><span class="svc-badge-dot bd-w"></span>Training & Capacity Building</a>
+      <a href="{{ route('services.wellbeing') }}" class="svc-badge"><span class="svc-badge-dot bd-r"></span>Wellbeing Package</a>
+      <a href="{{ route('tscc') }}" class="svc-badge"><span class="svc-badge-dot bd-o"></span>TSCC & Strategic Events</a>
     </div>
   </div>
 </div>
@@ -153,7 +167,7 @@
 <section class="svc-list-sec">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">Seven Core Areas</div>
+      <div class="eyebrow">Six Core Services</div>
       <h2 class="stitle">Everything We Do</h2>
     </div>
 
@@ -161,18 +175,18 @@
       <div class="svc-item-num">01</div>
       <div class="svc-item-body">
         <div class="svc-item-head">
-          <h3>Individual Counselling</h3>
-          <span class="svc-item-tag tag-r">Core Service</span>
+          <h3>Counselling Department Set Up</h3>
+          <span class="svc-item-tag tag-r">Schools</span>
         </div>
-        <p>Confidential, one-on-one therapeutic support tailored to each person's unique journey. Whether navigating anxiety, depression, grief, trauma, or relationship challenges — our sessions are a safe space for healing, growth, and meaningful transformation.</p>
+        <p>TREC helps schools create or restructure a functional counselling department by establishing the necessary structures, documentation systems, referral pathways, assessment processes, reporting systems, and operational procedures needed for effective student support.</p>
         <div class="svc-item-bullets">
-          <span class="svc-bullet">Anxiety & Stress</span>
-          <span class="svc-bullet">Depression & Grief</span>
-          <span class="svc-bullet">Trauma Recovery</span>
-          <span class="svc-bullet">Career Transitions</span>
-          <span class="svc-bullet">Relationship Issues</span>
+          <span class="svc-bullet">Department Structure</span>
+          <span class="svc-bullet">Documentation Systems</span>
+          <span class="svc-bullet">Referral Pathways</span>
+          <span class="svc-bullet">Assessment Processes</span>
+          <span class="svc-bullet">Reporting Systems</span>
         </div>
-        <a href="{{ route('contact') }}" class="svc-item-cta">Book a Session →</a>
+        <a href="{{ route('services.dept-setup') }}" class="svc-item-cta">Read More →</a>
       </div>
     </div>
 
@@ -180,17 +194,18 @@
       <div class="svc-item-num">02</div>
       <div class="svc-item-body">
         <div class="svc-item-head">
-          <h3>Group Counselling</h3>
-          <span class="svc-item-tag tag-g">Community</span>
+          <h3>Counselling Curriculum Development</h3>
+          <span class="svc-item-tag tag-o">Education</span>
         </div>
-        <p>Facilitated group sessions that harness the power of collective healing, peer support, and shared experience. Groups create a sense of belonging and normalise emotional struggles — often producing breakthroughs that individual work alone cannot achieve.</p>
+        <p>TREC designs age-appropriate counselling and wellbeing curricula that help students develop emotional intelligence, self-awareness, confidence, communication skills, values, peer relationship skills, and responsible behaviour through structured learning experiences.</p>
         <div class="svc-item-bullets">
-          <span class="svc-bullet">Peer Support Groups</span>
-          <span class="svc-bullet">Grief Circles</span>
-          <span class="svc-bullet">Youth Groups</span>
-          <span class="svc-bullet">Women's Circles</span>
+          <span class="svc-bullet">Emotional Intelligence</span>
+          <span class="svc-bullet">Self-Awareness Development</span>
+          <span class="svc-bullet">Communication Skills</span>
+          <span class="svc-bullet">Peer Relationships</span>
+          <span class="svc-bullet">Values Education</span>
         </div>
-        <a href="{{ route('contact') }}" class="svc-item-cta">Book a Session →</a>
+        <a href="{{ route('services.curriculum') }}" class="svc-item-cta">Read More →</a>
       </div>
     </div>
 
@@ -198,18 +213,18 @@
       <div class="svc-item-num">03</div>
       <div class="svc-item-body">
         <div class="svc-item-head">
-          <h3>Corporate Training</h3>
-          <span class="svc-item-tag tag-o">Organisations</span>
+          <h3>Needs Assessment</h3>
+          <span class="svc-item-tag tag-g">Strategic</span>
         </div>
-        <p>Bespoke workplace mental health training designed to build emotionally intelligent, resilient, and psychologically safe organisations. From leadership workshops to company-wide mental health campaigns — we transform workplace culture from the inside out.</p>
+        <p>TREC conducts comprehensive assessments to understand the wellbeing, psychosocial, and behavioural needs of students, teachers, parents, and school management by gathering, analysing, and interpreting data to support evidence-based decision making.</p>
         <div class="svc-item-bullets">
-          <span class="svc-bullet">Emotional Intelligence</span>
-          <span class="svc-bullet">Stress Management</span>
-          <span class="svc-bullet">Leadership Wellbeing</span>
-          <span class="svc-bullet">Burnout Prevention</span>
-          <span class="svc-bullet">Psychological Safety</span>
+          <span class="svc-bullet">Wellbeing Assessment</span>
+          <span class="svc-bullet">Psychosocial Analysis</span>
+          <span class="svc-bullet">Behavioural Evaluation</span>
+          <span class="svc-bullet">Data Interpretation</span>
+          <span class="svc-bullet">Evidence-Based Insights</span>
         </div>
-        <a href="{{ route('contact') }}" class="svc-item-cta">Request a Proposal →</a>
+        <a href="{{ route('services.needs-assessment') }}" class="svc-item-cta">Read More →</a>
       </div>
     </div>
 
@@ -217,17 +232,18 @@
       <div class="svc-item-num">04</div>
       <div class="svc-item-body">
         <div class="svc-item-head">
-          <h3>School Wellbeing Programs</h3>
-          <span class="svc-item-tag tag-g">Education</span>
+          <h3>Training and Capacity Building</h3>
+          <span class="svc-item-tag tag-o">Development</span>
         </div>
-        <p>Holistic, structured frameworks that embed emotional health into the DNA of school culture. Our School Wellbeing Package touches every level — students, teachers, support staff, and school leadership — creating environments where everyone can genuinely thrive.</p>
+        <p>TREC equips teachers, school leaders, counsellors, parents, and students with the knowledge, tools, and practical skills needed to identify, support, and respond effectively to emotional, behavioural, and psychosocial needs within the school community.</p>
         <div class="svc-item-bullets">
-          <span class="svc-bullet">Wellbeing Audits</span>
-          <span class="svc-bullet">Student Counselling</span>
-          <span class="svc-bullet">Staff Training</span>
-          <span class="svc-bullet">Policy Development</span>
+          <span class="svc-bullet">Teacher Training</span>
+          <span class="svc-bullet">Leadership Development</span>
+          <span class="svc-bullet">Parent Workshops</span>
+          <span class="svc-bullet">Skill Building</span>
+          <span class="svc-bullet">Practical Tools</span>
         </div>
-        <a href="{{ route('home') }}#wellbeing-package" class="svc-item-cta">See Full Package →</a>
+        <a href="{{ route('services.training') }}" class="svc-item-cta">Read More →</a>
       </div>
     </div>
 
@@ -235,17 +251,18 @@
       <div class="svc-item-num">05</div>
       <div class="svc-item-body">
         <div class="svc-item-head">
-          <h3>Parenting Workshops</h3>
-          <span class="svc-item-tag tag-r">Families</span>
+          <h3>School Management Wellbeing Package</h3>
+          <span class="svc-item-tag tag-r">Comprehensive</span>
         </div>
-        <p>Evidence-based workshops empowering parents to raise confident, emotionally resilient children. We equip parents with practical, culturally-grounded tools to understand their children's emotional world, strengthen bonds, and break generational cycles.</p>
+        <p>A structured wellbeing support package designed for schools seeking consistent, professional, and measurable psychosocial support across students, staff, parents, and management through integrated counselling, training, reporting, advisory, and crisis-response services.</p>
         <div class="svc-item-bullets">
-          <span class="svc-bullet">Emotional Literacy</span>
-          <span class="svc-bullet">Positive Discipline</span>
-          <span class="svc-bullet">Attachment Parenting</span>
-          <span class="svc-bullet">Teen Mental Health</span>
+          <span class="svc-bullet">Integrated Counselling</span>
+          <span class="svc-bullet">Professional Training</span>
+          <span class="svc-bullet">Measurable Support</span>
+          <span class="svc-bullet">Advisory Services</span>
+          <span class="svc-bullet">Crisis Response</span>
         </div>
-        <a href="{{ route('contact') }}" class="svc-item-cta">Register Interest →</a>
+        <a href="{{ route('services.wellbeing') }}" class="svc-item-cta">Read More →</a>
       </div>
     </div>
 
@@ -253,35 +270,18 @@
       <div class="svc-item-num">06</div>
       <div class="svc-item-body">
         <div class="svc-item-head">
-          <h3>Consultation & Advisory</h3>
-          <span class="svc-item-tag tag-o">Strategic</span>
+          <h3>TSCC and Strategic Education Events</h3>
+          <span class="svc-item-tag tag-g">Events</span>
         </div>
-        <p>Expert consultation for NGOs, government bodies, schools, and organisations designing mental health policies and programmes. We advise on frameworks, implementation strategies, and impact measurement — translating best practice into local reality.</p>
+        <p>TREC's strategic event platform, led by The School Counselling Conference (TSCC), brings together school leaders, counsellors, psychologists, teachers, parents, sponsors, policymakers, and education stakeholders to reposition counselling as a strategic driver of whole-school transformation.</p>
         <div class="svc-item-bullets">
-          <span class="svc-bullet">Policy Design</span>
-          <span class="svc-bullet">Programme Evaluation</span>
-          <span class="svc-bullet">Training Design</span>
-          <span class="svc-bullet">Research Support</span>
+          <span class="svc-bullet">School Counselling Conference</span>
+          <span class="svc-bullet">Stakeholder Engagement</span>
+          <span class="svc-bullet">Professional Development</span>
+          <span class="svc-bullet">Sector Leadership</span>
+          <span class="svc-bullet">Strategic Positioning</span>
         </div>
-        <a href="{{ route('contact') }}" class="svc-item-cta">Enquire Now →</a>
-      </div>
-    </div>
-
-    <div class="svc-item reveal">
-      <div class="svc-item-num">07</div>
-      <div class="svc-item-body">
-        <div class="svc-item-head">
-          <h3>TSCC & Strategic Events</h3>
-          <span class="svc-item-tag tag-g">Annual Event</span>
-        </div>
-        <p>Nigeria's premier school counselling conference and a growing portfolio of strategic education events — driving sector-wide conversations, building professional capacity, and creating a community of practice for counsellors and educators nationwide.</p>
-        <div class="svc-item-bullets">
-          <span class="svc-bullet">Annual Conference</span>
-          <span class="svc-bullet">CPD Workshops</span>
-          <span class="svc-bullet">Expert Keynotes</span>
-          <span class="svc-bullet">Networking Events</span>
-        </div>
-        <a href="{{ route('tscc') }}" class="svc-item-cta">Learn About TSCC →</a>
+        <a href="{{ route('tscc') }}" class="svc-item-cta">Read More →</a>
       </div>
     </div>
 

@@ -25,6 +25,31 @@ class PageController extends Controller
         return view('pages.services');
     }
 
+    public function serviceDeptSetup(): View
+    {
+        return view('pages.services.counselling-department-setup');
+    }
+
+    public function serviceCurriculum(): View
+    {
+        return view('pages.services.curriculum-development');
+    }
+
+    public function serviceNeedsAssessment(): View
+    {
+        return view('pages.services.needs-assessment');
+    }
+
+    public function serviceTraining(): View
+    {
+        return view('pages.services.training-capacity-building');
+    }
+
+    public function serviceWellbeing(): View
+    {
+        return view('pages.services.wellbeing-package');
+    }
+
     public function tscc(): View
     {
         return view('pages.tscc');

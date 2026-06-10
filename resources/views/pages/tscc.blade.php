@@ -614,13 +614,247 @@
   border: 1px solid rgba(229,105,24,0.2);
   border-radius: 100px;
   padding: 0.3rem 0.8rem;
-}x;
-  text-transform: uppercase;
-  color: var(--orange);
-  background: rgba(229,105,24,0.12);
-  border: 1px solid rgba(229,105,24,0.25);
+}
+
+/* ── MERGED: OVERVIEW & BENEFITS (from tscc-events) ── */
+.tscc-overview-sec {
+  padding: 6.5rem 2rem;
+  background: #fff;
+}
+.tscc-overview-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.3fr;
+  gap: 3.5rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.tscc-overview-lead {
+  font-size: 1.08rem;
+  font-weight: 300;
+  line-height: 2;
+  color: var(--charcoal);
+  margin-bottom: 1.75rem;
+}
+.tscc-overview-lead strong {
+  color: var(--black);
+  font-weight: 700;
+}
+.sd-benefit-list {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  margin-top: 1.5rem;
+}
+.sd-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--cream);
+  border: 1px solid var(--mid);
+  border-radius: 12px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.sd-benefit:hover {
+  border-color: var(--orange);
+  box-shadow: 0 4px 20px rgba(229,105,24,.08);
+}
+.sd-benefit-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(229,105,24,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sd-benefit-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--orange);
+}
+.sd-benefit-text h4 {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: .2rem;
+}
+.sd-benefit-text p {
+  font-size: .85rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.7;
+}
+
+/* ── MERGED: EVENT PORTFOLIO ── */
+.events-portfolio-sec {
+  background: var(--black);
+  padding: 6.5rem 2rem;
+}
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.event-track-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(229,105,24,.18);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: background .2s, border-color .2s;
+}
+.event-track-card:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(229,105,24,.35);
+}
+.event-track-badge {
+  display: inline-block;
+  padding: 4px 14px;
   border-radius: 100px;
-  padding: 0.35rem 0.9rem;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(229,105,24,.12);
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+.event-track-card h4 {
+  font-family: var(--font-h);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .6rem;
+}
+.event-track-card p {
+  font-size: .87rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.45);
+  line-height: 1.8;
+}
+
+/* ── MERGED: HOW TO GET INVOLVED (deliverables) ── */
+.get-involved-sec {
+  background: var(--cream);
+  padding: 6.5rem 2rem;
+}
+.sd-deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+}
+.sd-deliverable {
+  background: #fff;
+  border: 1px solid var(--mid);
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  transition: transform .25s, box-shadow .25s;
+}
+.sd-deliverable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+}
+.sd-deliverable-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--light);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.sd-deliverable h4 {
+  font-family: var(--font-h);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: .65rem;
+}
+.sd-deliverable p {
+  font-size: .87rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.8;
+}
+
+/* ── MERGED: FAQ ── */
+.tscc-faq-sec {
+  background: #fff;
+  padding: 6.5rem 2rem;
+  border-top: 1px solid var(--mid);
+}
+.sd-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 820px;
+  margin: 3rem auto 0;
+}
+.sd-faq-item {
+  border: 1px solid var(--mid);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+.sd-faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 1.75rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+}
+.sd-faq-q h4 {
+  font-family: var(--font-h);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--black);
+}
+.sd-faq-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s, transform .3s;
+}
+.sd-faq-item.open .sd-faq-icon {
+  background: var(--orange);
+  transform: rotate(45deg);
+}
+.sd-faq-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--charcoal);
+}
+.sd-faq-item.open .sd-faq-icon svg { stroke: #fff; }
+.sd-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.75rem;
+  transition: max-height .4s ease, padding .4s ease;
+  font-size: .92rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.9;
+}
+.sd-faq-item.open .sd-faq-a {
+  max-height: 400px;
+  padding: .25rem 1.75rem 1.5rem;
 }
 
 /* ── OBJECTIVES GRID ── */
@@ -1454,6 +1688,16 @@
 
 /* ── RESPONSIVE MEDIA QUERIES ── */
 @media(max-width:960px){
+  .tscc-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+  .sd-deliverables-grid {
+    grid-template-columns: 1fr 1fr;
+  }
   .tscc-hero-inner {
     grid-template-columns: 1fr;
     gap: 4.5rem;
@@ -1539,6 +1783,9 @@
 }
 
 @media(max-width:600px){
+  .sd-deliverables-grid {
+    grid-template-columns: 1fr;
+  }
   .tscc-hero {
     padding-top: 6rem;
   }
@@ -1706,6 +1953,169 @@
   </div>
 </section>
 
+<!-- ══ MERGED: OVERVIEW & KEY BENEFITS ══ -->
+<section class="tscc-overview-sec">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:3.5rem" class="reveal">
+      <div class="eyebrow" style="justify-content:center;color:var(--orange)">Events & Sector Leadership</div>
+      <h2 class="stitle">Repositioning Counselling as a<br>Strategic Driver of Education</h2>
+    </div>
+    <div class="tscc-overview-grid">
+      <div>
+        <p class="tscc-overview-lead reveal">
+          School counselling in Nigeria is often under-resourced, under-valued, and under-utilised. TREC's event platform exists to <strong>change that narrative at a sector level</strong> — convening the people and institutions with the power to reshape how counselling is perceived, funded, and practised in schools.
+        </p>
+        <p class="tscc-overview-lead reveal" style="transition-delay:.1s">
+          Led by <strong>The School Counselling Conference (TSCC)</strong> — Nigeria's premier annual gathering for school counselling professionals — our events bring together school leaders, counsellors, psychologists, teachers, parents, sponsors, and policymakers for a day of learning, debate, and collaboration that moves the entire sector forward.
+        </p>
+      </div>
+
+      <!-- ══ CINEMATIC VIDEO SHOWCASE ══ -->
+      <div class="tscc-video-section reveal" style="transition-delay:0.15s">
+        <!-- Ambient glows -->
+        <div class="video-glow-ring vgr-1"></div>
+        <div class="video-glow-ring vgr-2"></div>
+
+        <!-- Video player -->
+        <div class="tscc-video-container">
+          <video id="tsccEssenceVideo" preload="metadata" playsinline webkit-playsinline>
+            <source src="{{ asset('tscc-essence.mp4') }}" type="video/mp4">
+          </video>
+
+          <!-- Custom play overlay -->
+          <div class="tscc-video-overlay" id="videoOverlay">
+            <div class="video-label">
+              <i data-lucide="clapperboard"></i>
+              Conference Highlight Reel
+            </div>
+            <button class="video-play-btn" id="videoPlayBtn" aria-label="Play TSCC Essence video">
+              <i data-lucide="play"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Caption bar -->
+        <div class="tscc-video-caption">
+          <div class="video-caption-text">
+            <i data-lucide="film"></i>
+            The Essence of TSCC
+          </div>
+          <span class="video-caption-badge">Official Film</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow reveal" style="margin-bottom:.75rem">Key Benefits</div>
+        <div class="sd-benefit-list">
+          <div class="sd-benefit reveal" style="transition-delay:.1s">
+            <div class="sd-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="sd-benefit-text">
+              <h4>Sector-Level Networking</h4>
+              <p>Connect with Nigeria's most forward-thinking school counsellors, education leaders, and mental health advocates.</p>
+            </div>
+          </div>
+          <div class="sd-benefit reveal" style="transition-delay:.15s">
+            <div class="sd-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <div class="sd-benefit-text">
+              <h4>World-Class CPD</h4>
+              <p>Expert keynotes, breakout workshops, and panel sessions that deliver high-quality professional development — CPD certified.</p>
+            </div>
+          </div>
+          <div class="sd-benefit reveal" style="transition-delay:.2s">
+            <div class="sd-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="sd-benefit-text">
+              <h4>Brand Visibility &amp; Thought Leadership</h4>
+              <p>For institutions and sponsors: position your brand as a champion of school mental health in front of decision-makers.</p>
+            </div>
+          </div>
+          <div class="sd-benefit reveal" style="transition-delay:.25s">
+            <div class="sd-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="sd-benefit-text">
+              <h4>Policy &amp; Advocacy Platform</h4>
+              <p>TSCC is a space where sector voices influence the conversation with education regulators and policymakers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MERGED: STRATEGIC EVENT PORTFOLIO ══ -->
+<section class="events-portfolio-sec">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:1rem" class="reveal">
+      <div class="eyebrow" style="justify-content:center;color:rgba(255,255,255,.4)">Event Formats</div>
+      <h2 class="stitle" style="color:#fff;text-align:center">Our Strategic Event Portfolio</h2>
+      <p class="slead" style="text-align:center;margin:0 auto;color:rgba(255,255,255,.45)">Beyond TSCC, TREC convenes a range of strategic education events throughout the year.</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-track-card reveal">
+        <div class="event-track-badge">Annual</div>
+        <h4>The School Counselling Conference (TSCC)</h4>
+        <p>Nigeria's flagship annual conference for school counselling — a full-day summit of keynotes, panels, workshops, and awards celebrating excellence in school mental health practice.</p>
+      </div>
+      <div class="event-track-card reveal" style="transition-delay:.1s">
+        <div class="event-track-badge">Termly</div>
+        <h4>School Leadership Wellbeing Roundtables</h4>
+        <p>Intimate, invitation-only roundtable discussions for school principals and directors — exploring strategic wellbeing leadership, current challenges, and emerging best practice.</p>
+      </div>
+      <div class="event-track-card reveal" style="transition-delay:.2s">
+        <div class="event-track-badge">Masterclass</div>
+        <h4>Counsellor CPD Masterclasses</h4>
+        <p>Half-day and full-day professional development masterclasses for school counsellors — covering advanced clinical skills, ethics, documentation, and emerging approaches in school mental health.</p>
+      </div>
+      <div class="event-track-card reveal" style="transition-delay:.3s">
+        <div class="event-track-badge">Community</div>
+        <h4>Parent Wellbeing Forums</h4>
+        <p>Open, accessible community forums for parents — covering mental health at home, raising resilient children, navigating digital wellbeing, and supporting children through transitions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MERGED: HOW TO GET INVOLVED ══ -->
+<section class="get-involved-sec">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:1rem" class="reveal">
+      <div class="eyebrow" style="justify-content:center">Partnership &amp; Sponsorship</div>
+      <h2 class="stitle" style="text-align:center">How to Get Involved</h2>
+    </div>
+    <div class="sd-deliverables-grid">
+      <div class="sd-deliverable reveal">
+        <div class="sd-deliverable-num">01</div>
+        <h4>Attend as a Delegate</h4>
+        <p>Register as an individual delegate for TSCC or any TREC event — open to all education professionals, school leaders, counsellors, and parents.</p>
+      </div>
+      <div class="sd-deliverable reveal" style="transition-delay:.1s">
+        <div class="sd-deliverable-num">02</div>
+        <h4>School Group Packages</h4>
+        <p>Register your entire counselling team or leadership group at preferential group rates — maximising your school's CPD impact at TSCC.</p>
+      </div>
+      <div class="sd-deliverable reveal" style="transition-delay:.2s">
+        <div class="sd-deliverable-num">03</div>
+        <h4>Event Sponsorship</h4>
+        <p>Position your institution, brand, or product in front of 200+ education decision-makers through bespoke TSCC sponsorship packages.</p>
+      </div>
+      <div class="sd-deliverable reveal" style="transition-delay:.3s">
+        <div class="sd-deliverable-num">04</div>
+        <h4>Speak or Present</h4>
+        <p>Share your expertise, research, or school's story as a keynote speaker, panellist, or workshop facilitator at TSCC or a TREC masterclass.</p>
+      </div>
+      <div class="sd-deliverable reveal" style="transition-delay:.4s">
+        <div class="sd-deliverable-num">05</div>
+        <h4>Exhibit or Showcase</h4>
+        <p>Exhibit your services, products, or research findings to a targeted audience of school leaders and counselling professionals at TSCC.</p>
+      </div>
+      <div class="sd-deliverable reveal" style="transition-delay:.5s">
+        <div class="sd-deliverable-num">06</div>
+        <h4>Commission a Bespoke Event</h4>
+        <p>TREC designs and delivers bespoke strategic education events for school networks, associations, or education bodies — on any wellbeing theme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── OVERVIEW & MISSION ── -->
 <section class="tscc-about-sec">
   <div class="wrap">
@@ -1715,112 +2125,9 @@
     </div>
     
     <div class="tscc-content-box reveal">
-      <div class="tscc-intro-row">
-        <div class="tscc-editorial-intro">
-          <p style="font-size:1.15rem;color:var(--black);line-height:1.8;font-weight:400;margin-bottom:1.5rem">
-            <strong>TSCC is the flagship conference of The Ripple Effect Consult (TREC), designed to reposition school counselling from a support function to a strategic driver of school transformation.</strong>
-          </p>
-          <p>TSCC serves as a premier platform that brings together school owners, school leaders, counsellors, psychologists, teachers, parents, policymakers, development partners, corporate sponsors, and education stakeholders to explore how counselling systems can improve student wellbeing, strengthen school culture, enhance staff effectiveness, and improve overall school outcomes.</p>
-          <p>The conference is built on the belief that counselling should not operate as an isolated department but as a central system that aligns people, processes, and outcomes within educational institutions.</p>
-        </div>
-
-        <!-- ══ CINEMATIC VIDEO SHOWCASE ══ -->
-        <div class="tscc-video-section reveal" style="transition-delay:0.15s">
-          <!-- Ambient glows -->
-          <div class="video-glow-ring vgr-1"></div>
-          <div class="video-glow-ring vgr-2"></div>
-
-          <!-- Video player -->
-          <div class="tscc-video-container">
-            <video id="tsccEssenceVideo" preload="metadata" playsinline webkit-playsinline>
-              <source src="{{ asset('tscc-essence.mp4') }}" type="video/mp4">
-            </video>
-
-            <!-- Custom play overlay -->
-            <div class="tscc-video-overlay" id="videoOverlay">
-              <div class="video-label">
-                <i data-lucide="clapperboard"></i>
-                Conference Highlight Reel
-              </div>
-              <button class="video-play-btn" id="videoPlayBtn" aria-label="Play TSCC Essence video">
-                <i data-lucide="play"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Caption bar -->
-          <div class="tscc-video-caption">
-            <div class="video-caption-text">
-              <i data-lucide="film"></i>
-              The Essence of TSCC
-            </div>
-            <span class="video-caption-badge">Official Film</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tscc-vision-mission">
-        <div class="vm-panel">
-          <div class="vm-icon-box">
-            <i data-lucide="eye"></i>
-          </div>
-          <h3>Vision</h3>
-          <p>To become Africa's leading platform for advancing school counselling, wellbeing systems, psychosocial support, and whole-school transformation.</p>
-        </div>
-        
-        <div class="vm-panel">
-          <div class="vm-icon-box">
-            <i data-lucide="target"></i>
-          </div>
-          <h3>Mission</h3>
-          <p>To empower schools with the knowledge, tools, frameworks, partnerships, and strategies needed to build sustainable counselling and wellbeing systems that support students, strengthen staff capacity, engage parents, and improve educational outcomes.</p>
-        </div>
-
-      </div>
-
       <div class="tscc-why-matters">
         <h3>Why TSCC Matters</h3>
         <p style="margin-bottom:0">Modern schools face increasingly complex challenges — student behavioural and emotional concerns, mental health challenges, teacher burnout, parent engagement difficulties, bullying, digital safety concerns, and crisis management needs. TSCC addresses these by promoting counselling as a strategic educational tool rather than a reactive intervention.</p>
-      </div>
-
-      <h2 class="stitle" style="font-size:1.8rem;text-align:center;margin:4.5rem 0 1.5rem">Strategic Objectives</h2>
-      <div class="objectives-grid">
-        <div class="obj-card interactive-card">
-          <span class="obj-card-num">01</span>
-          <div class="obj-card-icon"><i data-lucide="arrow-up-right"></i></div>
-          <h4>Reposition Counselling</h4>
-          <p>Promote counselling as a critical component of school management and educational effectiveness.</p>
-        </div>
-        <div class="obj-card interactive-card">
-          <span class="obj-card-num">02</span>
-          <div class="obj-card-icon"><i data-lucide="heart"></i></div>
-          <h4>Strengthen Systems</h4>
-          <p>Equip schools with practical frameworks for implementing counselling and psychosocial support structures.</p>
-        </div>
-        <div class="obj-card interactive-card">
-          <span class="obj-card-num">03</span>
-          <div class="obj-card-icon"><i data-lucide="graduation-cap"></i></div>
-          <h4>Build Capacity</h4>
-          <p>Develop competencies of school leaders, counsellors, teachers, parents, and stakeholders.</p>
-        </div>
-        <div class="obj-card interactive-card">
-          <span class="obj-card-num">04</span>
-          <div class="obj-card-icon"><i data-lucide="bar-chart-3"></i></div>
-          <h4>Evidence-Based</h4>
-          <p>Encourage data-driven approaches, assessments, and measurable outcomes in counselling interventions.</p>
-        </div>
-        <div class="obj-card interactive-card">
-          <span class="obj-card-num">05</span>
-          <div class="obj-card-icon"><i data-lucide="handshake"></i></div>
-          <h4>Strategic Partnerships</h4>
-          <p>Create collaboration opportunities among schools, government agencies, NGOs, and corporate organizations.</p>
-        </div>
-        <div class="obj-card interactive-card">
-          <span class="obj-card-num">06</span>
-          <div class="obj-card-icon"><i data-lucide="landmark"></i></div>
-          <h4>Influence Policy</h4>
-          <p>Contribute to conversations around educational reform, student wellbeing, and psychosocial support systems.</p>
-        </div>
       </div>
 
       <h2 class="stitle" style="font-size:1.8rem;text-align:center;margin:4rem 0 1.5rem">Target Audience</h2>
@@ -2136,47 +2443,59 @@
       
       <div class="editions-list reveal-stagger">
         <div class="edition-row">
-          <div class="edition-year">2024</div>
+          <div class="edition-year">2025</div>
           <div class="edition-body">
-            <span class="edition-title">TSCC VI — Resilience & Recovery in Schools</span>
-            <span class="edition-tag">Lagos · 400+ Delegates</span>
-          </div>
-        </div>
-        <div class="edition-row">
-          <div class="edition-year">2023</div>
-          <div class="edition-body">
-            <span class="edition-title">TSCC V — The Future of School Counselling</span>
-            <span class="edition-tag">Lagos · 350+ Delegates</span>
-          </div>
-        </div>
-        <div class="edition-row">
-          <div class="edition-year">2022</div>
-          <div class="edition-body">
-            <span class="edition-title">TSCC IV — Post-Pandemic Wellbeing</span>
-            <span class="edition-tag">Hybrid · 500+ Delegates</span>
-          </div>
-        </div>
-        <div class="edition-row">
-          <div class="edition-year">2021</div>
-          <div class="edition-body">
-            <span class="edition-title">TSCC III — Mental Health in a Digital Age</span>
-            <span class="edition-tag">Virtual · 600+ Delegates</span>
-          </div>
-        </div>
-        <div class="edition-row">
-          <div class="edition-year">2020</div>
-          <div class="edition-body">
-            <span class="edition-title">TSCC II — Building Psychologically Safe Schools</span>
+            <span class="edition-title">Inaugural Edition: Bridging the Mental Wellness Gap in Schools</span>
             <span class="edition-tag">Lagos · 250+ Delegates</span>
           </div>
         </div>
-        <div class="edition-row">
-          <div class="edition-year">2019</div>
-          <div class="edition-body">
-            <span class="edition-title">TSCC I — Counselling at the Heart of Education</span>
-            <span class="edition-tag">Lagos · 180 Delegates</span>
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MERGED: FAQ ══ -->
+<section class="tscc-faq-sec">
+  <div class="wrap">
+    <div style="text-align:center" class="reveal">
+      <div class="eyebrow" style="justify-content:center;color:var(--orange)">Common Questions</div>
+      <h2 class="stitle">Frequently Asked Questions</h2>
+    </div>
+    <div class="sd-faq-list">
+      <div class="sd-faq-item reveal">
+        <button class="sd-faq-q" onclick="toggleFaq(this)">
+          <h4>When is the next TSCC?</h4>
+          <div class="sd-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="sd-faq-a">TSCC is held annually — typically in the second half of the school year. Visit our dedicated TSCC page for the latest date, venue, and registration information. Early-bird registrations open several months in advance, so we recommend registering your interest early to secure your place.</div>
+      </div>
+      <div class="sd-faq-item reveal" style="transition-delay:.1s">
+        <button class="sd-faq-q" onclick="toggleFaq(this)">
+          <h4>Can organisations sponsor or exhibit at TSCC?</h4>
+          <div class="sd-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="sd-faq-a">Yes. TSCC offers a range of sponsorship tiers — from headline title sponsor to exhibitor and session sponsor packages. Each tier includes different levels of brand visibility, delegate engagement, and speaking opportunities. Contact us to receive the current TSCC sponsorship prospectus.</div>
+      </div>
+      <div class="sd-faq-item reveal" style="transition-delay:.2s">
+        <button class="sd-faq-q" onclick="toggleFaq(this)">
+          <h4>Can TREC organise a bespoke event for our school network or association?</h4>
+          <div class="sd-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="sd-faq-a">Absolutely. TREC has experience designing and delivering bespoke conferences, symposia, and professional development events for school groups, education associations, and corporate partners. We handle everything — from agenda design and speaker curation to event logistics and post-event reporting. Contact us to discuss your vision.</div>
+      </div>
+      <div class="sd-faq-item reveal" style="transition-delay:.3s">
+        <button class="sd-faq-q" onclick="toggleFaq(this)">
+          <h4>Who should attend TSCC?</h4>
+          <div class="sd-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="sd-faq-a">TSCC is designed for school counsellors, educational psychologists, mental health practitioners, school leaders (principals, proprietors, administrators), teachers, parents, policymakers, development partners, and corporate organisations with an interest in school mental health and wellbeing. Anyone passionate about advancing education in Nigeria is welcome.</div>
+      </div>
+      <div class="sd-faq-item reveal" style="transition-delay:.4s">
+        <button class="sd-faq-q" onclick="toggleFaq(this)">
+          <h4>Are CPD certificates awarded at TSCC?</h4>
+          <div class="sd-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+        </button>
+        <div class="sd-faq-a">Yes. TSCC sessions are CPD certified, and all registered delegates receive a certificate of participation confirming their professional development hours. These are recognised by national counselling and education bodies in Nigeria.</div>
       </div>
     </div>
   </div>
@@ -2219,6 +2538,14 @@
 @endsection
 
 @section('scripts')
+<script>
+function toggleFaq(btn){
+  const item = btn.closest('.sd-faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.sd-faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // Lightbox Implementation

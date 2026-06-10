@@ -1072,7 +1072,7 @@
           <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
         </div>
         <div class="faq-body">
-          <div class="faq-body-inner">Schools can access our School Wellbeing Packages which include teacher training, student counselling, and parent workshops. Fill in this form selecting "School Wellbeing" and we'll send you a proposal within 48 hours.</div>
+          <div class="faq-body-inner">Schools can access our School Management Wellbeing Package which includes needs assessments, curriculum development, teacher training, student counselling, and ongoing support. Fill in this form selecting "School Management Wellbeing Package" and we'll send you a proposal within 48 hours.</div>
         </div>
       </div>
 
@@ -1168,66 +1168,57 @@
 
         <div class="service-grid" id="serviceGrid">
           <label class="service-option">
-            <input type="radio" name="s2_service" value="Individual Counselling">
+            <input type="radio" name="s2_service" value="Counselling Department Set Up">
             <div class="service-card">
               <div class="service-card-check"><i data-lucide="check"></i></div>
-              <div class="service-card-icon" style="background:rgba(216,45,55,.1);color:var(--red)"><i data-lucide="brain"></i></div>
-              <h4>Individual Counselling</h4>
-              <p>One-on-one sessions for personal growth</p>
+              <div class="service-card-icon" style="background:rgba(216,45,55,.1);color:var(--red)"><i data-lucide="briefcase"></i></div>
+              <h4>Department Set Up</h4>
+              <p>Establishing functional counselling departments</p>
             </div>
           </label>
           <label class="service-option">
-            <input type="radio" name="s2_service" value="Group Counselling">
+            <input type="radio" name="s2_service" value="Curriculum Development">
             <div class="service-card">
               <div class="service-card-check"><i data-lucide="check"></i></div>
-              <div class="service-card-icon" style="background:rgba(229,105,24,.1);color:var(--orange)"><i data-lucide="users"></i></div>
-              <h4>Group Counselling</h4>
-              <p>Shared spaces for collective healing</p>
+              <div class="service-card-icon" style="background:rgba(229,105,24,.1);color:var(--orange)"><i data-lucide="book-open"></i></div>
+              <h4>Curriculum Development</h4>
+              <p>Age-appropriate wellbeing curricula</p>
             </div>
           </label>
           <label class="service-option">
-            <input type="radio" name="s2_service" value="Corporate Training">
+            <input type="radio" name="s2_service" value="Needs Assessment">
             <div class="service-card">
               <div class="service-card-check"><i data-lucide="check"></i></div>
-              <div class="service-card-icon" style="background:rgba(107,143,26,.1);color:var(--green)"><i data-lucide="building-2"></i></div>
-              <h4>Corporate Training</h4>
-              <p>Wellbeing programs for organisations</p>
+              <div class="service-card-icon" style="background:rgba(107,143,26,.1);color:var(--green)"><i data-lucide="clipboard-check"></i></div>
+              <h4>Needs Assessment</h4>
+              <p>Comprehensive psychosocial evaluations</p>
             </div>
           </label>
           <label class="service-option">
-            <input type="radio" name="s2_service" value="School Wellbeing Package">
+            <input type="radio" name="s2_service" value="Training and Capacity Building">
             <div class="service-card">
               <div class="service-card-check"><i data-lucide="check"></i></div>
               <div class="service-card-icon" style="background:rgba(216,45,55,.1);color:var(--red)"><i data-lucide="graduation-cap"></i></div>
-              <h4>School Wellbeing</h4>
-              <p>Comprehensive school support packages</p>
+              <h4>Training & Capacity Building</h4>
+              <p>Skills development for school communities</p>
             </div>
           </label>
           <label class="service-option">
-            <input type="radio" name="s2_service" value="Parenting Workshops">
+            <input type="radio" name="s2_service" value="School Management Wellbeing Package">
             <div class="service-card">
               <div class="service-card-check"><i data-lucide="check"></i></div>
-              <div class="service-card-icon" style="background:rgba(229,105,24,.1);color:var(--orange)"><i data-lucide="heart"></i></div>
-              <h4>Parenting Workshops</h4>
-              <p>Skills for conscious, engaged parenting</p>
+              <div class="service-card-icon" style="background:rgba(229,105,24,.1);color:var(--orange)"><i data-lucide="shield-check"></i></div>
+              <h4>Wellbeing Package</h4>
+              <p>Integrated school support systems</p>
             </div>
           </label>
           <label class="service-option">
-            <input type="radio" name="s2_service" value="TSCC Registration">
+            <input type="radio" name="s2_service" value="TSCC and Strategic Education Events">
             <div class="service-card">
               <div class="service-card-check"><i data-lucide="check"></i></div>
-              <div class="service-card-icon" style="background:rgba(107,143,26,.1);color:var(--green)"><i data-lucide="ticket"></i></div>
-              <h4>TSCC Registration</h4>
-              <p>Secure your spot at the conference</p>
-            </div>
-          </label>
-          <label class="service-option">
-            <input type="radio" name="s2_service" value="TSCC Sponsorship">
-            <div class="service-card">
-              <div class="service-card-check"><i data-lucide="check"></i></div>
-              <div class="service-card-icon" style="background:rgba(216,45,55,.1);color:var(--red)"><i data-lucide="award"></i></div>
-              <h4>TSCC Sponsorship</h4>
-              <p>Partner with Africa's leading edu-conference</p>
+              <div class="service-card-icon" style="background:rgba(107,143,26,.1);color:var(--green)"><i data-lucide="calendar-event"></i></div>
+              <h4>TSCC & Events</h4>
+              <p>Strategic education conference and events</p>
             </div>
           </label>
           <label class="service-option">
