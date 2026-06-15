@@ -1203,7 +1203,7 @@ $testimonials = [
 
         {{-- Benefits + CTA --}}
         <div class="p-6 bg-white flex-1 flex flex-col">
-          @if($ticket->benefits && count($ticket->benefits) > 0)
+          @if(is_array($ticket->benefits) && count($ticket->benefits) > 0)
           <ul class="space-y-2.5 mb-6 flex-1">
             @foreach($ticket->benefits as $benefit)
             <li class="flex items-start gap-2.5 text-sm text-slate-700">
