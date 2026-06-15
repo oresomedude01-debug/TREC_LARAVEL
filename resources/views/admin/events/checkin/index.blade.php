@@ -50,9 +50,15 @@
                         <div class="absolute top-0 left-0 right-0 bottom-0 border-4 border-red-500 rounded-lg pointer-events-none m-12" style="box-sizing: border-box;"></div>
                     </div>
                     <p class="text-xs text-slate-500 text-center mt-3">Point camera at QR code</p>
-                    <button type="button" id="close-camera-btn" class="w-full mt-3 bg-slate-200 hover:bg-slate-300 text-slate-900 px-3 py-2 rounded-lg font-medium transition-colors text-sm">
-                        Close Camera
-                    </button>
+                    <div class="flex gap-2 mt-3">
+                        <button type="button" id="force-scan-btn" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg font-medium transition-colors text-sm shadow-sm flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Capture Scan
+                        </button>
+                        <button type="button" id="close-camera-btn" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-900 px-3 py-2 rounded-lg font-medium transition-colors text-sm">
+                            Close Camera
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Status Message Area -->
@@ -193,6 +199,8 @@
     const qrInput = document.getElementById('qr_token');
     let lastScannedQr = null;
 
+    const forceScanBtn = document.getElementById('force-scan-btn');
+
     // Toggle Camera
     toggleCameraBtn.addEventListener('click', async function() {
         if (cameraActive) {
@@ -205,6 +213,35 @@
     // Close Camera
     closeCameraBtn.addEventListener('click', function() {
         stopCamera();
+    });
+
+    // Manual Capture Scan
+    forceScanBtn.addEventListener('click', function() {
+        if (!cameraActive) return;
+        
+        canvas.width = cameraFeed.videoWidth;
+        canvas.height = cameraFeed.videoHeight;
+        canvasContext.drawImage(cameraFeed, 0, 0);
+        const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+        
+        // Try all inversion attempts when forced
+        const code = jsQR(imageData.data, imageData.width, imageData.height, {
+            inversionAttempts: "attemptBoth",
+        });
+
+        if (code) {
+            const qrValue = code.data;
+            if (qrValue) {
+                lastScannedQr = qrValue;
+                qrInput.value = qrValue;
+                qrInput.focus();
+                
+                // Submit immediately
+                document.getElementById('scan-form').submit();
+            }
+        } else {
+            alert('No QR Code detected in this frame. Please make sure the code is clearly visible and try again.');
+        }
     });
 
     // Start Camera
@@ -260,7 +297,9 @@
             canvas.height = cameraFeed.videoHeight;
             canvasContext.drawImage(cameraFeed, 0, 0);
             const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
-            const code = jsQR(imageData.data, imageData.width, imageData.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                inversionAttempts: "attemptBoth",
+            });
 
             if (code) {
                 const qrValue = code.data;
