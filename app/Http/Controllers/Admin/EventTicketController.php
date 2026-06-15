@@ -37,7 +37,7 @@ class EventTicketController extends Controller
             'benefits.*' => 'string|max:255',
             'is_active' => 'boolean',
             'display_order' => 'integer|min:0',
-            'type' => ['required', 'string', 'in:early_bird,standard,vip,student,virtual,team', \Illuminate\Validation\Rule::unique('event_ticket_types')->where('event_id', $event->id)],
+            'type' => ['required', 'string', 'in:early_bird,standard,vip,student,virtual,team'],
             'team_size' => 'nullable|integer|min:2|required_if:type,team',
         ]);
         if ($validated['type'] === 'standard') {
@@ -85,7 +85,7 @@ class EventTicketController extends Controller
             'benefits.*' => 'string|max:255',
             'is_active' => 'boolean',
             'display_order' => 'integer|min:0',
-            'type' => ['required', 'string', 'in:early_bird,standard,vip,student,virtual,team', \Illuminate\Validation\Rule::unique('event_ticket_types')->where('event_id', $event->id)->ignore($ticket->id)],
+            'type' => ['required', 'string', 'in:early_bird,standard,vip,student,virtual,team'],
             'team_size' => 'nullable|integer|min:2|required_if:type,team',
         ]);
         if ($validated['type'] === 'standard') {
