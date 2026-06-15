@@ -1686,11 +1686,387 @@
   transform: translateY(-2px);
 }
 
+/* ── STAY INFORMED / LEAD CAPTURE ── */
+.tscc-subscribe-sec {
+  background: var(--black);
+  padding: 7rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.tscc-subscribe-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 0% 50%, rgba(229,105,24,.13), transparent 55%),
+    radial-gradient(ellipse 50% 80% at 100% 30%, rgba(216,45,55,.09), transparent 55%);
+  pointer-events: none;
+}
+/* Floating decorative orbs */
+.sub-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: orbDrift 12s ease-in-out infinite alternate;
+}
+.sub-orb-1 {
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(229,105,24,.12) 0%, transparent 70%);
+  top: -80px; left: -100px;
+}
+.sub-orb-2 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(107,143,26,.10) 0%, transparent 70%);
+  bottom: -60px; right: -60px;
+  animation-delay: -6s;
+}
+@keyframes orbDrift {
+  0%   { transform: scale(1) translate(0,0); }
+  100% { transform: scale(1.18) translate(20px, -20px); }
+}
+.tscc-subscribe-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
+  align-items: center;
+}
+/* Left column */
+.sub-left .sub-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 1.25rem;
+}
+.sub-left .sub-eyebrow-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.6); opacity: .6; }
+}
+.sub-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+}
+.sub-left h2 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--orange), #f5a623);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sub-left p {
+  font-size: .97rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.55);
+  line-height: 1.95;
+  margin-bottom: 1.2rem;
+}
+.sub-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  margin-top: 2rem;
+}
+.sub-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  font-size: .9rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.7);
+}
+.sub-benefit-check {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(229,105,24,.15);
+  border: 1px solid rgba(229,105,24,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sub-benefit-check svg {
+  width: 11px; height: 11px;
+  stroke: var(--orange);
+  stroke-width: 2.5;
+}
+/* Right column — form card */
+.sub-form-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 24px;
+  padding: 2.75rem 2.5rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+.sub-form-card::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  border-radius: 2px;
+}
+.sub-form-title {
+  font-family: var(--font-h);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .4rem;
+}
+.sub-form-subtitle {
+  font-size: .88rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.sub-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sub-field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.sub-field label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+.sub-field input,
+.sub-field select {
+  width: 100%;
+  padding: .85rem 1.1rem;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  color: #fff;
+  font-size: .93rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color .2s, background .2s;
+  box-sizing: border-box;
+}
+.sub-field input::placeholder { color: rgba(255,255,255,.3); }
+.sub-field input:focus,
+.sub-field select:focus {
+  border-color: rgba(229,105,24,.6);
+  background: rgba(255,255,255,.09);
+}
+.sub-field select option { background: #1a1a1a; color: #fff; }
+.sub-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.sub-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--orange), #d4561a);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+  position: relative;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+.sub-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background .2s;
+}
+.sub-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(229,105,24,.4); }
+.sub-btn:hover::before { background: rgba(255,255,255,.05); }
+.sub-btn:active { transform: translateY(0); }
+.sub-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.sub-btn .btn-spinner {
+  display: none;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin: 0 auto;
+}
+.sub-btn.loading .btn-text { display: none; }
+.sub-btn.loading .btn-spinner { display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.sub-trust {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+  font-size: .8rem;
+  color: rgba(255,255,255,.35);
+  justify-content: center;
+}
+.sub-trust svg { width: 14px; height: 14px; stroke: rgba(255,255,255,.35); flex-shrink: 0; }
+/* Success state */
+.sub-success {
+  display: none;
+  text-align: center;
+  padding: 1rem 0;
+}
+.sub-success-icon {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: rgba(107,143,26,.15);
+  border: 1px solid rgba(107,143,26,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+.sub-success-icon svg { width: 28px; height: 28px; stroke: #7aad1e; stroke-width: 2; }
+.sub-success h4 { font-family: var(--font-h); color: #fff; font-size: 1.15rem; margin-bottom: .5rem; }
+.sub-success p { font-size: .9rem; color: rgba(255,255,255,.5); line-height: 1.75; }
+
+/* ── LEAD CAPTURE MODAL ── */
+.tscc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s ease, visibility .35s;
+}
+.tscc-modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.tscc-modal {
+  background: #111;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 24px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(30px) scale(.97);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.tscc-modal-overlay.visible .tscc-modal { transform: translateY(0) scale(1); }
+.tscc-modal-top-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--orange), var(--green));
+}
+.tscc-modal-body {
+  padding: 2.5rem 2.5rem 2rem;
+}
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+  color: rgba(255,255,255,.7);
+}
+.modal-close-btn:hover { background: rgba(255,255,255,.14); transform: rotate(90deg); }
+.modal-close-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; }
+.modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  border: 1px solid rgba(229,105,24,.3);
+  background: rgba(229,105,24,.08);
+  border-radius: 100px;
+  padding: .3rem .8rem;
+  margin-bottom: 1rem;
+}
+.modal-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+.tscc-modal h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+  margin-bottom: .85rem;
+}
+.tscc-modal h3 em { font-style: normal; color: var(--orange); }
+.tscc-modal .modal-lead {
+  font-size: .9rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.5);
+  line-height: 1.85;
+  margin-bottom: 1.75rem;
+}
+.tscc-modal .sub-form .sub-btn { margin-top: 0; }
+.modal-dismiss {
+  text-align: center;
+  margin-top: 1rem;
+}
+.modal-dismiss button {
+  background: none;
+  border: none;
+  font-size: .8rem;
+  color: rgba(255,255,255,.3);
+  cursor: pointer;
+  transition: color .2s;
+  font-family: var(--font-body);
+  padding: .25rem;
+}
+.modal-dismiss button:hover { color: rgba(255,255,255,.6); }
+
 /* ── RESPONSIVE MEDIA QUERIES ── */
 @media(max-width:960px){
   .tscc-overview-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+  .tscc-subscribe-inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  .sub-row {
+    grid-template-columns: 1fr 1fr;
   }
   .events-grid {
     grid-template-columns: 1fr;
@@ -1858,6 +2234,18 @@
   }
   .social-btn {
     justify-content: center;
+  }
+  .sub-row {
+    grid-template-columns: 1fr;
+  }
+  .tscc-subscribe-sec {
+    padding: 5rem 1.25rem;
+  }
+  .sub-form-card {
+    padding: 2rem 1.5rem;
+  }
+  .tscc-modal-body {
+    padding: 2rem 1.5rem 1.5rem;
   }
 }
 </style>
@@ -2501,6 +2889,170 @@
   </div>
 </section>
 
+<!-- ── STAY INFORMED / LEAD CAPTURE ── -->
+<section class="tscc-subscribe-sec" id="tscc-subscribe">
+  <div class="sub-orb sub-orb-1"></div>
+  <div class="sub-orb sub-orb-2"></div>
+  <div class="tscc-subscribe-inner">
+
+    <!-- LEFT: copy & benefits -->
+    <div class="sub-left reveal">
+      <div class="sub-eyebrow">
+        <span class="sub-eyebrow-dot"></span>
+        Join the Movement
+      </div>
+      <h2>Never Miss a<br><em>TSCC Announcement</em></h2>
+      <p>TSCC is not a one-time event — it is a growing movement to reposition school counselling as a strategic driver of student wellbeing and educational outcomes across Africa.</p>
+      <p>New opportunities, speaker announcements, partnership calls, and conference dates are released throughout the year. Subscribers hear about them first.</p>
+      <div class="sub-benefits">
+        <div class="sub-benefit-item">
+          <div class="sub-benefit-check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Early notification when registration opens
+        </div>
+        <div class="sub-benefit-item">
+          <div class="sub-benefit-check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Speaker & programme announcements
+        </div>
+        <div class="sub-benefit-item">
+          <div class="sub-benefit-check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Scholarship & sponsorship opportunities
+        </div>
+        <div class="sub-benefit-item">
+          <div class="sub-benefit-check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Professional development resources
+        </div>
+        <div class="sub-benefit-item">
+          <div class="sub-benefit-check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Partnership & exhibition opportunities
+        </div>
+        <div class="sub-benefit-item">
+          <div class="sub-benefit-check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
+          TSCC news & event updates
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: form card -->
+    <div class="sub-form-card reveal" style="transition-delay:.15s">
+      <div class="sub-form-title">Get Early Access to TSCC Updates</div>
+      <div class="sub-form-subtitle">Join educators, counsellors, school leaders, and wellbeing professionals shaping the future of education in Nigeria.</div>
+
+      <!-- Form -->
+      <form class="sub-form" id="tsccSubscribeForm" onsubmit="tsccSubscribe(event,'tsccSubscribeForm')" novalidate>
+        <div class="sub-row">
+          <div class="sub-field">
+            <label for="sub-name">Full Name <span style="color:var(--orange)">*</span></label>
+            <input id="sub-name" name="name" type="text" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="sub-field">
+            <label for="sub-email">Email Address <span style="color:var(--orange)">*</span></label>
+            <input id="sub-email" name="email" type="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+        </div>
+        <div class="sub-row">
+          <div class="sub-field">
+            <label for="sub-profession">Profession</label>
+            <select id="sub-profession" name="profession">
+              <option value="">Select role…</option>
+              <option>School Counsellor</option>
+              <option>Educational Psychologist</option>
+              <option>School Leader / Principal</option>
+              <option>Teacher</option>
+              <option>Parent</option>
+              <option>Policymaker</option>
+              <option>Corporate / Sponsor</option>
+              <option>NGO / Development Partner</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="sub-field">
+            <label for="sub-org">Organisation / School</label>
+            <input id="sub-org" name="organisation" type="text" placeholder="Your institution">
+          </div>
+        </div>
+        <button type="submit" class="sub-btn" id="tsccSubBtn">
+          <span class="btn-text">Keep Me Informed</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </form>
+
+      <!-- Success state (hidden until submit) -->
+      <div class="sub-success" id="tsccSubSuccess">
+        <div class="sub-success-icon"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h4>You're on the list!</h4>
+        <p>Thank you for joining the TSCC community. We'll be in touch with announcements, speaker news, and early registration access as they happen.</p>
+      </div>
+
+      <div class="sub-trust">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        No spam. Only important TSCC updates and opportunities.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── LEAD CAPTURE MODAL ── -->
+<div class="tscc-modal-overlay" id="tsccModalOverlay" role="dialog" aria-modal="true" aria-labelledby="tsccModalTitle">
+  <div class="tscc-modal">
+    <div class="tscc-modal-top-bar"></div>
+    <div class="tscc-modal-body">
+      <button class="modal-close-btn" id="tsccModalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+
+      <div class="modal-badge"><span class="modal-badge-dot"></span>TSCC Community</div>
+      <h3 id="tsccModalTitle">Don't Miss the<br><em>Next TSCC Edition</em></h3>
+      <p class="modal-lead">Join educators, counsellors, school leaders, and wellbeing professionals across Africa. Be among the first to hear about registration openings, speaker announcements, and TSCC initiatives.</p>
+
+      <form class="sub-form" id="tsccModalForm" onsubmit="tsccSubscribe(event,'tsccModalForm')" novalidate>
+        <div class="sub-field">
+          <label for="modal-name">Full Name <span style="color:var(--orange)">*</span></label>
+          <input id="modal-name" name="name" type="text" placeholder="Your full name" required autocomplete="name">
+        </div>
+        <div class="sub-field">
+          <label for="modal-email">Email Address <span style="color:var(--orange)">*</span></label>
+          <input id="modal-email" name="email" type="email" placeholder="your@email.com" required autocomplete="email">
+        </div>
+        <div class="sub-field">
+          <label for="modal-profession">Profession</label>
+          <select id="modal-profession" name="profession">
+            <option value="">Select your role…</option>
+            <option>School Counsellor</option>
+            <option>Educational Psychologist</option>
+            <option>School Leader / Principal</option>
+            <option>Teacher</option>
+            <option>Parent</option>
+            <option>Policymaker</option>
+            <option>Corporate / Sponsor</option>
+            <option>NGO / Development Partner</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button type="submit" class="sub-btn">
+          <span class="btn-text">Notify Me About TSCC</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </form>
+
+      <div class="sub-success" id="tsccModalSuccess" style="display:none">
+        <div class="sub-success-icon"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h4>Welcome to the TSCC community!</h4>
+        <p>We'll keep you updated with everything TSCC — announcements, speakers, and registration news.</p>
+      </div>
+
+      <div class="sub-trust">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        No spam. Unsubscribe any time.
+      </div>
+
+      <div class="modal-dismiss">
+        <button type="button" id="tsccModalDismiss">I'm not interested right now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── REGISTER CTA ── -->
 <section class="tscc-cta">
   <div class="reveal" style="position:relative;z-index:1">
@@ -2545,6 +3097,119 @@ function toggleFaq(btn){
   document.querySelectorAll('.sd-faq-item.open').forEach(el=>el.classList.remove('open'));
   if(!wasOpen) item.classList.add('open');
 }
+
+// ── TSCC Subscribe logic (shared by section form + modal form)
+function tsccSubscribe(e, formId) {
+  e.preventDefault();
+  const form    = document.getElementById(formId);
+  const btn     = form.querySelector('.sub-btn');
+  const success = formId === 'tsccSubscribeForm'
+    ? document.getElementById('tsccSubSuccess')
+    : document.getElementById('tsccModalSuccess');
+
+  // Basic validation
+  const nameEl  = form.querySelector('input[name="name"]');
+  const emailEl = form.querySelector('input[name="email"]');
+  if (!nameEl.value.trim()) { nameEl.focus(); return; }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRe.test(emailEl.value.trim())) { emailEl.focus(); return; }
+
+  // Loading state
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  // Simulate async submit (replace with real endpoint when ready)
+  setTimeout(() => {
+    // Mark subscribed in localStorage so modal won't re-trigger
+    try { localStorage.setItem('tscc_subscribed', '1'); } catch(err) {}
+
+    // Show success, hide form
+    form.style.display = 'none';
+    if (success) { success.style.display = 'block'; }
+    btn.classList.remove('loading');
+
+    // If modal is open, auto-close after short delay
+    if (formId === 'tsccModalForm') {
+      setTimeout(() => closeTsccModal(), 2500);
+    }
+  }, 900);
+}
+
+// ── TSCC Lead-Capture Modal
+const MODAL_KEY       = 'tscc_modal_shown';
+const SUBSCRIBED_KEY  = 'tscc_subscribed';
+const MODAL_COOLDOWN  = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
+
+function openTsccModal() {
+  try {
+    if (localStorage.getItem(SUBSCRIBED_KEY)) return;       // already subscribed
+    const last = parseInt(localStorage.getItem(MODAL_KEY) || '0', 10);
+    if (Date.now() - last < MODAL_COOLDOWN) return;         // shown recently
+    localStorage.setItem(MODAL_KEY, Date.now().toString());
+  } catch(err) {}
+  const overlay = document.getElementById('tsccModalOverlay');
+  if (overlay) {
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeTsccModal() {
+  const overlay = document.getElementById('tsccModalOverlay');
+  if (overlay) {
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Close buttons
+  const closeBtn = document.getElementById('tsccModalClose');
+  const dismissBtn = document.getElementById('tsccModalDismiss');
+  const overlay   = document.getElementById('tsccModalOverlay');
+  if (closeBtn)   closeBtn.addEventListener('click', closeTsccModal);
+  if (dismissBtn) dismissBtn.addEventListener('click', closeTsccModal);
+  if (overlay)    overlay.addEventListener('click', e => { if (e.target === overlay) closeTsccModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTsccModal(); });
+
+  // Skip if already subscribed
+  try { if (localStorage.getItem(SUBSCRIBED_KEY)) return; } catch(err) {}
+
+  let modalFired = false;
+  function fireModal() {
+    if (modalFired) return;
+    modalFired = true;
+    openTsccModal();
+  }
+
+  // Trigger 1: Exit intent (desktop only)
+  document.addEventListener('mouseleave', e => {
+    if (e.clientY <= 5) fireModal();
+  });
+
+  // Trigger 2: 50 seconds of engagement
+  setTimeout(fireModal, 50000);
+
+  // Trigger 3: scroll past 70% of page but subscription section not yet in view
+  let scrollFired = false;
+  const subscribeSection = document.getElementById('tscc-subscribe');
+  window.addEventListener('scroll', () => {
+    if (scrollFired || modalFired) return;
+    const scrolled = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+    if (scrolled > 0.70) {
+      // only fire if the subscribe section is not yet in viewport
+      if (subscribeSection) {
+        const rect = subscribeSection.getBoundingClientRect();
+        if (rect.top > window.innerHeight) {
+          scrollFired = true;
+          fireModal();
+        }
+      } else {
+        scrollFired = true;
+        fireModal();
+      }
+    }
+  }, { passive: true });
+});
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {

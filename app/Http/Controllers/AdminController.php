@@ -6,6 +6,7 @@ use App\Models\BlogPost;
 use App\Models\GalleryImage;
 use App\Models\ContactSubmission;
 use App\Models\User;
+use App\Models\Setting;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -122,6 +123,37 @@ class AdminController extends Controller
             return '/uploads/blog/' . $filename;
         }
         return $request->input('image_url');
+    }
+
+    public function settings(): View
+    {
+        $settings = [
+            'paystack_enabled'    => Setting::get('paystack_enabled', '0'),
+            'paystack_public_key' => Setting::get('paystack_public_key', ''),
+            'paystack_secret_key' => Setting::get('paystack_secret_key', ''),
+            'mail_from_address'   => Setting::get('mail_from_address', config('mail.from.address')),
+            'mail_from_name'      => Setting::get('mail_from_name', config('mail.from.name')),
+        ];
+        return view('admin.settings', compact('settings'));
+    }
+
+    public function saveSettings(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'paystack_enabled'    => 'nullable|boolean',
+            'paystack_public_key' => 'nullable|string|max:255',
+            'paystack_secret_key' => 'nullable|string|max:255',
+            'mail_from_address'   => 'nullable|email|max:255',
+            'mail_from_name'      => 'nullable|string|max:255',
+        ]);
+
+        Setting::set('paystack_enabled',    $request->boolean('paystack_enabled') ? '1' : '0');
+        Setting::set('paystack_public_key', $request->input('paystack_public_key', ''));
+        Setting::set('paystack_secret_key', $request->input('paystack_secret_key', ''));
+        Setting::set('mail_from_address',   $request->input('mail_from_address', ''));
+        Setting::set('mail_from_name',      $request->input('mail_from_name', ''));
+
+        return back()->with('success', 'Settings saved successfully!');
     }
 
     public function gallery(): View

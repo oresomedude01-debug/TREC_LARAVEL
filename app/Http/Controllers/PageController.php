@@ -165,12 +165,38 @@ class PageController extends Controller
     public function showBlog(string $slug): View
     {
         $post = BlogPost::where('slug', $slug)->firstOrFail();
+        
+        // Track visit
+        $this->trackBlogPostView($post);
+        
         $relatedPosts = BlogPost::where('id', '!=', $post->id)
             ->where('published_at', '!=', null)
             ->orderBy('published_at', 'desc')
             ->limit(3)
             ->get();
         return view('pages.blog-show', compact('post', 'relatedPosts'));
+    }
+
+    private function trackBlogPostView(BlogPost $post)
+    {
+        $ipAddress = request()->ip();
+        $userAgent = request()->userAgent();
+
+        // Check if this IP has viewed this post today
+        $existingView = \App\Models\BlogPostView::where('blog_post_id', $post->id)
+            ->where('ip_address', $ipAddress)
+            ->whereDate('created_at', today())
+            ->exists();
+
+        // Only count if not already viewed today from this IP
+        if (!$existingView) {
+            \App\Models\BlogPostView::create([
+                'blog_post_id' => $post->id,
+                'ip_address' => $ipAddress,
+                'user_agent' => $userAgent,
+            ]);
+            $post->incrementViewCount();
+        }
     }
 
     public function contact(): View

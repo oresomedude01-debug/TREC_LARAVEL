@@ -871,6 +871,7 @@ footer{background:var(--black);padding:5rem 2rem 0}
 </head>
 <body>
 
+@if(!request()->routeIs('event.*'))
 <!-- SCROLL PROGRESS -->
 <div id="scroll-progress"></div>
 
@@ -959,7 +960,9 @@ footer{background:var(--black);padding:5rem 2rem 0}
     <p class="mob-footer-text">The Ripple Effect Consult © 2024</p>
   </div>
 </div>
+@endif
 
+@if(!request()->routeIs('event.*'))
 <!-- NAV -->
 <nav id="mainNav">
   <div class="nav-wrap">
@@ -984,15 +987,17 @@ footer{background:var(--black);padding:5rem 2rem 0}
     </button>
   </div>
 </nav>
+@endif
 
 <!-- CONTENT -->
-<main style="padding-top: var(--nav-h);">
+<main style="{{ request()->routeIs('event.*') ? 'padding-top: 0;' : 'padding-top: var(--nav-h);' }}">
   @if(session('success'))
     <div class="toast">✓ {{ session('success') }}</div>
   @endif
   @yield('content')
 </main>
 
+@if(!request()->routeIs('event.*'))
 <!-- FOOTER -->
 <footer>
   <div class="ft-inner">
@@ -1014,7 +1019,7 @@ footer{background:var(--black);padding:5rem 2rem 0}
             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.735-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
           </a>
           <a href="https://www.tiktok.com/@theschoolcounsellingcon0" target="_blank" class="ft-social-link" aria-label="TikTok">
-            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></svg>
           </a>
         </div>
       </div>
@@ -1048,11 +1053,12 @@ footer{background:var(--black);padding:5rem 2rem 0}
     </div>
   </div>
 </footer>
+@endif
 
 @php
   // Check if we are on a page where the widget should be hidden
   $isSuccess = session('success') || request()->is('success') || request()->is('checkout/success');
-  $isCheckout = request()->is('checkout*') || request()->is('admin*');
+  $isCheckout = request()->is('checkout*') || request()->is('admin*') || request()->routeIs('event.*');
 @endphp
 
 @if(!$isSuccess && !$isCheckout)
