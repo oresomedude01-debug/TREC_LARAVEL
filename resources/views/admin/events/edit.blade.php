@@ -94,21 +94,50 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div>
-                        <label for="event_date" class="block text-sm font-medium text-slate-700 mb-1">Start Date</label>
-                        <input type="date" name="event_date" id="event_date" value="{{ old('event_date', $event->event_date?->format('Y-m-d')) }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500">
-                    </div>
-                    <div>
-                        <label for="end_date" class="block text-sm font-medium text-slate-700 mb-1">End Date <span class="text-slate-400 font-normal">(Optional)</span></label>
-                        <input type="date" name="end_date" id="end_date" value="{{ old('end_date', $event->end_date?->format('Y-m-d')) }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500">
-                    </div>
-                    <div>
-                        <label for="start_time" class="block text-sm font-medium text-slate-700 mb-1">Start Time</label>
-                        <input type="time" name="start_time" id="start_time" value="{{ old('start_time', $event->start_time ? substr($event->start_time, 0, 5) : '') }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500">
-                    </div>
-                    <div>
-                        <label for="end_time" class="block text-sm font-medium text-slate-700 mb-1">End Time</label>
-                        <input type="time" name="end_time" id="end_time" value="{{ old('end_time', $event->end_time ? substr($event->end_time, 0, 5) : '') }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500">
+                    {{-- ─── Multi-Date Repeater ─── --}}
+                    <div class="md:col-span-4" id="dates-wrapper">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="block text-sm font-semibold text-slate-700">Dates</label>
+                            <button type="button" id="add-date-btn"
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                                Add Another Date
+                            </button>
+                        </div>
+                        <div id="dates-list">
+                            @php
+                                $dates = old('dates', $event->dates);
+                                if (empty($dates) && $event->event_date) {
+                                    $dates = [['date' => $event->event_date?->format('Y-m-d'), 'start_time' => $event->start_time ? substr($event->start_time, 0, 5) : '', 'end_time' => $event->end_time ? substr($event->end_time, 0, 5) : '']];
+                                }
+                                if (empty($dates)) {
+                                    $dates = [['date' => '', 'start_time' => '', 'end_time' => '']];
+                                }
+                            @endphp
+                            @foreach($dates as $index => $dt)
+                            <div class="date-row border border-slate-200 rounded-xl p-4 bg-slate-50/50 relative mb-4">
+                                @if($index > 0)
+                                <button type="button" class="remove-date absolute top-3 right-3 text-slate-400 hover:text-red-500 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                                </button>
+                                @endif
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">Date <span class="text-red-500">*</span></label>
+                                        <input type="date" name="dates[{{$index}}][date]" value="{{ $dt['date'] ?? '' }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">Start Time</label>
+                                        <input type="time" name="dates[{{$index}}][start_time]" value="{{ $dt['start_time'] ?? '' }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">End Time</label>
+                                        <input type="time" name="dates[{{$index}}][end_time]" value="{{ $dt['end_time'] ?? '' }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
 
                     {{-- ─── Multi-Venue Repeater ─── --}}
@@ -271,6 +300,45 @@
             if (remaining.length === 1) {
                 remaining[0].querySelector('.remove-venue').classList.add('hidden');
             }
+        });
+    });
+
+    let dateIndex = {{ count($dates ?? []) }};
+    document.getElementById('add-date-btn').addEventListener('click', function() {
+        const list = document.getElementById('dates-list');
+        const newRow = document.createElement('div');
+        newRow.className = 'date-row border border-slate-200 rounded-xl p-4 bg-slate-50/50 relative mb-4';
+        newRow.innerHTML = `
+            <button type="button" class="remove-date absolute top-3 right-3 text-slate-400 hover:text-red-500 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Date <span class="text-red-500">*</span></label>
+                    <input type="date" name="dates[${dateIndex}][date]" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Start Time</label>
+                    <input type="time" name="dates[${dateIndex}][start_time]" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">End Time</label>
+                    <input type="time" name="dates[${dateIndex}][end_time]" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+            </div>
+        `;
+        list.appendChild(newRow);
+        
+        newRow.querySelector('.remove-date').addEventListener('click', function() {
+            newRow.remove();
+        });
+        dateIndex++;
+    });
+
+    // Attach listeners to existing date remove buttons
+    document.querySelectorAll('.remove-date').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.date-row').remove();
         });
     });
 </script>

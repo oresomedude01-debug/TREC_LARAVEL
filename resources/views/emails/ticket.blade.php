@@ -178,7 +178,20 @@
                 <div class="info-value">{{ $event->theme }}</div>
             </div>
             @endif
-            @if($event->event_date)
+            @if(!empty($event->dates) && count($event->dates) > 0)
+            <div class="info-row">
+                <div class="info-label">Date</div>
+                <div class="info-value">
+                    @foreach($event->dates as $dt)
+                        {{ \Carbon\Carbon::parse($dt['date'])->format('l, F j, Y') }}
+                        @if(!empty($dt['start_time']))
+                            <br><small style="color:#718096">{{ \Carbon\Carbon::parse($dt['start_time'])->format('h:i A') }}{{ !empty($dt['end_time']) ? ' - '.\Carbon\Carbon::parse($dt['end_time'])->format('h:i A') : '' }}</small>
+                        @endif
+                        {!! !$loop->last ? '<br><br>' : '' !!}
+                    @endforeach
+                </div>
+            </div>
+            @elseif($event->event_date)
             <div class="info-row">
                 <div class="info-label">Date</div>
                 <div class="info-value">

@@ -72,6 +72,10 @@ class EventController extends Controller
             'end_date' => 'nullable|date|after_or_equal:event_date',
             'start_time' => 'nullable|date_format:H:i',
             'end_time' => 'nullable|date_format:H:i',
+            'dates' => 'nullable|array',
+            'dates.*.date' => 'required_with:dates|date',
+            'dates.*.start_time' => 'nullable|date_format:H:i',
+            'dates.*.end_time' => 'nullable|date_format:H:i',
         ]);
 
         // Handle image uploads
@@ -95,6 +99,19 @@ class EventController extends Controller
             }
         } else {
             $validated['venues'] = null;
+        }
+
+        // Filter out blank date entries
+        if (!empty($validated['dates'])) {
+            $validated['dates'] = array_values(array_filter($validated['dates'], fn($d) => !empty($d['date'])));
+            if (!empty($validated['dates'][0])) {
+                $validated['event_date'] = $validated['dates'][0]['date'];
+                $validated['start_time'] = $validated['dates'][0]['start_time'] ?? null;
+                $validated['end_time']   = $validated['dates'][0]['end_time'] ?? null;
+                $validated['end_date']   = null;
+            }
+        } else {
+            $validated['dates'] = null;
         }
 
         // Filter out empty objectives
@@ -135,6 +152,10 @@ class EventController extends Controller
             'end_date' => 'nullable|date|after_or_equal:event_date',
             'start_time' => 'nullable|date_format:H:i',
             'end_time' => 'nullable|date_format:H:i',
+            'dates' => 'nullable|array',
+            'dates.*.date' => 'required_with:dates|date',
+            'dates.*.start_time' => 'nullable|date_format:H:i',
+            'dates.*.end_time' => 'nullable|date_format:H:i',
         ]);
 
         foreach (['banner_image','logo_image','social_share_image','email_header_image'] as $field) {
@@ -156,6 +177,19 @@ class EventController extends Controller
             }
         } else {
             $validated['venues'] = null;
+        }
+
+        // Filter out blank date entries
+        if (!empty($validated['dates'])) {
+            $validated['dates'] = array_values(array_filter($validated['dates'], fn($d) => !empty($d['date'])));
+            if (!empty($validated['dates'][0])) {
+                $validated['event_date'] = $validated['dates'][0]['date'];
+                $validated['start_time'] = $validated['dates'][0]['start_time'] ?? null;
+                $validated['end_time']   = $validated['dates'][0]['end_time'] ?? null;
+                $validated['end_date']   = null;
+            }
+        } else {
+            $validated['dates'] = null;
         }
 
         if (isset($validated['objectives'])) {

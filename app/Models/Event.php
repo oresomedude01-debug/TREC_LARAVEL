@@ -23,6 +23,7 @@ class Event extends Model
         'venue_address',
         'google_maps_url',
         'venues',
+        'dates',
         'event_date',
         'end_date',
         'start_time',
@@ -38,6 +39,7 @@ class Event extends Model
         'objectives'               => 'array',
         'registration_form_fields' => 'array',
         'venues'                   => 'array',
+        'dates'                    => 'array',
         'event_date'               => 'date',
         'end_date'                 => 'date',
     ];

@@ -29,7 +29,11 @@
   "@@type": "Event",
   "name": "{{ $event->name }}",
   "description": "{{ strip_tags($event->short_description) }}",
+  @if(!empty($event->dates) && count($event->dates) > 0)
+  "startDate": "{{ \Carbon\Carbon::parse($event->dates[0]['date'])->toIso8601String() }}",
+  @else
   "startDate": "{{ $event->event_date?->toIso8601String() }}",
+  @endif
   @if(!empty($event->venues) && count($event->venues) > 0)
   "location": [
     @foreach($event->venues as $venue)
@@ -719,13 +723,23 @@ body {
 
     {{-- Event metadata chips --}}
     <div class="flex flex-wrap gap-3 mb-10 justify-center lg:justify-start">
-      @if($event->event_date)
+      @if(!empty($event->dates) && count($event->dates) > 0)
+        @foreach($event->dates as $dt)
+        <div class="flex items-center gap-2.5 bg-white/6 border border-white/10 rounded-full px-4 py-2 text-sm text-white/75 backdrop-blur-sm">
+          <svg class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          {{ \Carbon\Carbon::parse($dt['date'])->format('l, F j, Y') }}
+          @if(!empty($dt['start_time']))
+            <span class="opacity-50">|</span> {{ \Carbon\Carbon::parse($dt['start_time'])->format('h:i A') }}{{ !empty($dt['end_time']) ? ' – '.\Carbon\Carbon::parse($dt['end_time'])->format('h:i A') : '' }}
+          @endif
+        </div>
+        @endforeach
+      @elseif($event->event_date)
       <div class="flex items-center gap-2.5 bg-white/6 border border-white/10 rounded-full px-4 py-2 text-sm text-white/75 backdrop-blur-sm">
         <svg class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         {{ $event->event_date->format('l, F j, Y') }}@if($event->end_date && $event->end_date->neq($event->event_date)) &mdash; {{ $event->end_date->format('l, F j, Y') }}@endif
       </div>
       @endif
-      @if($event->start_time)
+      @if(empty($event->dates) && $event->start_time)
       <div class="flex items-center gap-2.5 bg-white/6 border border-white/10 rounded-full px-4 py-2 text-sm text-white/75 backdrop-blur-sm">
         <svg class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         {{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }}{{ $event->end_time ? ' – '.\Carbon\Carbon::parse($event->end_time)->format('h:i A') : '' }}
@@ -1711,7 +1725,19 @@ $faqs = [
         @endif
       </a>
       @endif
-      @if($event->event_date)
+      @if(!empty($event->dates) && count($event->dates) > 0)
+      <div class="inline-flex items-center gap-2 text-slate-500 text-sm py-4 px-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        @foreach($event->dates as $dt)
+          {{ \Carbon\Carbon::parse($dt['date'])->format('l, F j, Y') }}@if(!$loop->last), @endif
+        @endforeach
+        @if(!empty($event->venues) && count($event->venues) > 0)
+          · {{ collect($event->venues)->pluck('name')->join(', ') }}
+        @elseif($event->venue_name) 
+          · {{ $event->venue_name }} 
+        @endif
+      </div>
+      @elseif($event->event_date)
       <div class="inline-flex items-center gap-2 text-slate-500 text-sm py-4 px-6">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         {{ $event->event_date->format('l, F j, Y') }}@if($event->end_date && $event->end_date->neq($event->event_date)) &mdash; {{ $event->end_date->format('l, F j, Y') }}@endif
@@ -1722,6 +1748,7 @@ $faqs = [
         @endif
       </div>
       @endif
+
     </div>
   </div>
 </section>
