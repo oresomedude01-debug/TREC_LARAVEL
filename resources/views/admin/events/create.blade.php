@@ -60,10 +60,14 @@
                     <p class="text-sm text-slate-500">When and where is this happening?</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div>
-                        <label for="event_date" class="block text-sm font-semibold text-slate-700 mb-1">Date</label>
+                        <label for="event_date" class="block text-sm font-semibold text-slate-700 mb-1">Start Date</label>
                         <input type="date" name="event_date" id="event_date" value="{{ old('event_date') }}">
+                    </div>
+                    <div>
+                        <label for="end_date" class="block text-sm font-semibold text-slate-700 mb-1">End Date <span class="text-slate-400 font-normal">(Optional)</span></label>
+                        <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}">
                     </div>
                     <div>
                         <label for="start_time" class="block text-sm font-semibold text-slate-700 mb-1">Start Time</label>

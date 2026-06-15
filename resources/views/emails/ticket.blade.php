@@ -181,7 +181,9 @@
             @if($event->event_date)
             <div class="info-row">
                 <div class="info-label">Date</div>
-                <div class="info-value">{{ \Carbon\Carbon::parse($event->event_date)->format('l, F j, Y') }}</div>
+                <div class="info-value">
+                    {{ \Carbon\Carbon::parse($event->event_date)->format('l, F j, Y') }}@if($event->end_date && $event->end_date->neq($event->event_date)) &mdash; {{ \Carbon\Carbon::parse($event->end_date)->format('l, F j, Y') }}@endif
+                </div>
             </div>
             @endif
             @if($event->start_time)

@@ -73,7 +73,9 @@
                     @endif
                     <div class="flex justify-between items-center py-1 border-b border-slate-800/40">
                         <span class="text-slate-400 font-medium">Date</span>
-                        <span class="font-semibold text-white">{{ $event->event_date?->format('F d, Y') ?? 'TBA' }}</span>
+                        <span class="font-semibold text-white">
+                            {{ $event->event_date?->format('F j, Y') ?? 'TBA' }}@if($event->end_date && $event->end_date->neq($event->event_date)) &mdash; {{ $event->end_date->format('F j, Y') }}@endif
+                        </span>
                     </div>
                     <div class="flex justify-between items-center py-1">
                         <span class="text-slate-400 font-medium">Venue</span>

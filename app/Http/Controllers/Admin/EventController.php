@@ -65,6 +65,7 @@ class EventController extends Controller
             'venue_address' => 'nullable|string',
             'google_maps_url' => 'nullable|url',
             'event_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:event_date',
             'start_time' => 'nullable|date_format:H:i',
             'end_time' => 'nullable|date_format:H:i',
         ]);
@@ -110,6 +111,7 @@ class EventController extends Controller
             'venue_address' => 'nullable|string',
             'google_maps_url' => 'nullable|url',
             'event_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:event_date',
             'start_time' => 'nullable|date_format:H:i',
             'end_time' => 'nullable|date_format:H:i',
         ]);
