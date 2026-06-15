@@ -11,6 +11,7 @@
 <meta name="language" content="English">
 <meta name="copyright" content="The Ripple Effect Consult">
 <title>@yield('title', 'TREC - Mental Health Counselling & Professional Consultation') – The Ripple Effect Consult</title>
+<link rel="icon" type="image/png" href="{{ asset('images/tscc-logo.png') }}">
 <meta name="description" content="@yield('meta_desc', 'TREC (The Ripple Effect Consult) provides professional mental health counselling, psychological consultation, and wellness training for individuals, schools, and organisations. Expert mental health support and consultation services.')">
 <meta property="og:type" content="@yield('og_type', 'website')">
 <meta property="og:title" content="@yield('og_title', 'TREC - The Ripple Effect Consult | Mental Health & Counselling')">

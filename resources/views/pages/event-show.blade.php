@@ -588,7 +588,7 @@ body {
   <div class="flex items-center justify-between w-full">
     {{-- Logo --}}
     <a href="{{ url('/') }}" class="flex items-center gap-2.5 flex-shrink-0">
-      <span class="w-9 h-9 rounded-full bg-red-600 flex items-center justify-center text-white text-xs font-black shadow-lg shadow-red-600/40 flex-shrink-0">T</span>
+      <img src="{{ asset('images/tscc-logo.png') }}" alt="TSCC Logo" class="h-10 w-auto object-contain">
       <span class="nav-logo-text font-bold text-base tracking-tight hidden sm:block">TREC</span>
     </a>
 
@@ -656,28 +656,40 @@ body {
   <div class="hero-orb-2"></div>
   <div class="hero-orb-3"></div>
 
-  <div class="relative z-10 w-full max-w-6xl mx-auto px-5 md:px-8 pt-32 pb-24 md:pt-40 md:pb-32">
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-24 md:pt-40 md:pb-32">
 
-    {{-- Event meta badges --}}
-    <div class="flex flex-wrap items-center gap-3 mb-8 justify-center lg:justify-start">
-      @if($showWaitlist)
-        <span class="inline-flex items-center gap-2 bg-amber-900/40 border border-amber-800/40 text-amber-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>Waitlist Open</span>
-      @elseif($event->status === 'registration_open')
-        <span class="badge-live"><span class="pulse-dot"></span>Registration Open</span>
-      @elseif($event->status === 'registration_closed')
-        <span class="inline-flex items-center gap-2 bg-red-900/40 border border-red-800/40 text-red-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Registration Closed</span>
-      @elseif($event->status === 'completed')
-        <span class="inline-flex items-center gap-2 bg-slate-800/60 border border-slate-700/40 text-slate-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Past Event</span>
-      @else
-        <span class="inline-flex items-center gap-2 bg-blue-900/40 border border-blue-800/40 text-blue-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Coming Soon</span>
-      @endif
-      <span class="text-white/35 text-xs font-medium">by The Ripple Effect Consult</span>
-    </div>
+    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16">
+      
+      {{-- TSCC Hero Logo (Creative Left Placement) --}}
+      <div class="flex-shrink-0 relative group lg:mt-6">
+        {{-- Soft glowing aura behind the logo --}}
+        <div class="absolute inset-0 bg-red-500/20 blur-[80px] rounded-full scale-150 transition-all duration-700 pointer-events-none"></div>
+        <img src="{{ asset('images/tscc-logo.png') }}" alt="TSCC Logo" class="relative h-48 md:h-64 lg:h-[340px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:scale-105 transition-transform duration-500">
+      </div>
 
-    {{-- Title --}}
-    <h1 class="ep-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-5 text-center lg:text-left max-w-4xl">
-      {{ $event->name }}
-    </h1>
+      {{-- Main Text Content --}}
+      <div class="flex-1 text-center lg:text-left flex flex-col items-center lg:items-start">
+        
+        {{-- Event meta badges --}}
+        <div class="flex flex-wrap items-center gap-3 mb-6 justify-center lg:justify-start">
+          @if($showWaitlist)
+            <span class="inline-flex items-center gap-2 bg-amber-900/40 border border-amber-800/40 text-amber-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>Waitlist Open</span>
+          @elseif($event->status === 'registration_open')
+            <span class="badge-live"><span class="pulse-dot"></span>Registration Open</span>
+          @elseif($event->status === 'registration_closed')
+            <span class="inline-flex items-center gap-2 bg-red-900/40 border border-red-800/40 text-red-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Registration Closed</span>
+          @elseif($event->status === 'completed')
+            <span class="inline-flex items-center gap-2 bg-slate-800/60 border border-slate-700/40 text-slate-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Past Event</span>
+          @else
+            <span class="inline-flex items-center gap-2 bg-blue-900/40 border border-blue-800/40 text-blue-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Coming Soon</span>
+          @endif
+          <span class="text-white/35 text-xs font-medium">by The Ripple Effect Consult</span>
+        </div>
+
+        {{-- Title --}}
+        <h1 class="ep-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-5 max-w-4xl">
+          {{ $event->name }}
+        </h1>
 
     {{-- Theme --}}
     @if($event->theme)
@@ -754,6 +766,9 @@ body {
       </div>
     </div>
     @endif
+
+      </div>
+    </div>
 
   </div>
 
