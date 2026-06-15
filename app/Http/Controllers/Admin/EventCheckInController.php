@@ -31,7 +31,7 @@ class EventCheckInController extends Controller
     public function scan(Request $request, Event $event)
     {
         $request->validate(['qr_token' => 'required|string']);
-        $token = $request->qr_token;
+        $token = trim($request->qr_token);
 
         // Allow manual entry of registration number in the scan box as a fallback
         $registration = EventRegistration::where('event_id', $event->id)

@@ -230,7 +230,7 @@
         });
 
         if (code) {
-            const qrValue = code.data;
+            const qrValue = code.data.trim();
             if (qrValue) {
                 lastScannedQr = qrValue;
                 qrInput.value = qrValue;
@@ -302,7 +302,7 @@
             });
 
             if (code) {
-                const qrValue = code.data;
+                const qrValue = code.data.trim();
                 if (qrValue && qrValue !== lastScannedQr) {
                     lastScannedQr = qrValue;
                     qrInput.value = qrValue;
