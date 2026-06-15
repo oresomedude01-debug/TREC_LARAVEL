@@ -594,7 +594,7 @@ body {
 
     {{-- Desktop nav links --}}
     <div class="nav-links-group hidden md:flex items-center gap-6">
-      @if($event->objectives && count($event->objectives) > 0)
+      @if(is_array($event->objectives) && count($event->objectives) > 0)
       <a href="#why-attend" class="nav-link section-link">Why Attend</a>
       @endif
       @if($allSpeakers->count() > 0)
@@ -622,7 +622,7 @@ body {
 
   {{-- Mobile Nav Links Panel --}}
   <div class="mobile-nav-links hidden flex-col gap-3.5 pt-4 pb-2 border-t border-white/10 mt-3.5 w-full">
-    @if($event->objectives && count($event->objectives) > 0)
+    @if(is_array($event->objectives) && count($event->objectives) > 0)
     <a href="#why-attend" class="mobile-nav-link text-sm font-medium text-white/70 hover:text-white transition-colors">Why Attend</a>
     @endif
     @if($allSpeakers->count() > 0)
@@ -741,7 +741,7 @@ body {
     </div>
 
     {{-- Trust bar: key benefits --}}
-    @if($event->objectives && count($event->objectives) > 0)
+    @if(is_array($event->objectives) && count($event->objectives) > 0)
     <div class="pt-10 border-t border-white/8">
       <p class="text-xs font-bold uppercase tracking-widest text-white/30 mb-5 text-center lg:text-left">What you'll gain</p>
       <div class="flex flex-wrap gap-2.5 justify-center lg:justify-start">
@@ -832,7 +832,7 @@ body {
 @endif
 
 {{-- ═══ SECTION 3 · WHY ATTEND ════════════════════════════════════════════════ --}}
-@if($event->objectives && count($event->objectives) > 0)
+@if(is_array($event->objectives) && count($event->objectives) > 0)
 <section class="py-20 md:py-28 bg-white" id="why-attend">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
 
