@@ -195,12 +195,19 @@
                 </div>
             </div>
             @endif
-            @if($event->venue_name)
+            @if(!empty($event->venues) && count($event->venues) > 0)
+            <div class="info-row">
+                <div class="info-label">Venue</div>
+                <div class="info-value">
+                    {{ collect($event->venues)->pluck('name')->join(', ') }}
+                </div>
+            </div>
+            @elseif($event->venue_name)
             <div class="info-row">
                 <div class="info-label">Venue</div>
                 <div class="info-value">
                     {{ $event->venue_name }}
-                    @if($event->venue_address)<br><span style="font-weight:400; color:#64748b; font-size:13px;">{{ $event->venue_address }}</span>@endif
+                    @if($event->venue_address)<br><small style="color:#718096">{{ $event->venue_address }}</small>@endif
                 </div>
             </div>
             @endif

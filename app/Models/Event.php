@@ -22,6 +22,7 @@ class Event extends Model
         'venue_name',
         'venue_address',
         'google_maps_url',
+        'venues',
         'event_date',
         'end_date',
         'start_time',
@@ -36,6 +37,7 @@ class Event extends Model
     protected $casts = [
         'objectives'               => 'array',
         'registration_form_fields' => 'array',
+        'venues'                   => 'array',
         'event_date'               => 'date',
         'end_date'                 => 'date',
     ];

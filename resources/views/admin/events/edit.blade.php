@@ -111,14 +111,50 @@
                         <input type="time" name="end_time" id="end_time" value="{{ old('end_time', $event->end_time ? substr($event->end_time, 0, 5) : '') }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500">
                     </div>
 
-                    <div class="md:col-span-3">
-                        <label for="venue_name" class="block text-sm font-medium text-slate-700 mb-1">Venue Name</label>
-                        <input type="text" name="venue_name" id="venue_name" value="{{ old('venue_name', $event->venue_name) }}" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500">
-                    </div>
+                    {{-- ─── Multi-Venue Repeater ─── --}}
+                    <div class="md:col-span-4" id="venues-wrapper">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="block text-sm font-semibold text-slate-700">Venues</label>
+                            <button type="button" id="add-venue-btn"
+                                class="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 hover:text-red-800 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                                Add Another Venue
+                            </button>
+                        </div>
 
-                    <div class="md:col-span-3">
-                        <label for="venue_address" class="block text-sm font-medium text-slate-700 mb-1">Full Address</label>
-                        <textarea name="venue_address" id="venue_address" rows="2" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500">{{ old('venue_address', $event->venue_address) }}</textarea>
+                        <div id="venues-list" class="space-y-4">
+                            @php
+                                $venues = old('venues', $event->venues);
+                                if (empty($venues) && $event->venue_name) {
+                                    $venues = [['name' => $event->venue_name, 'address' => $event->venue_address, 'maps_url' => $event->google_maps_url]];
+                                }
+                                if (empty($venues)) {
+                                    $venues = [['name' => '', 'address' => '', 'maps_url' => '']];
+                                }
+                            @endphp
+                            
+                            @foreach($venues as $index => $venue)
+                            <div class="venue-row border border-slate-200 rounded-xl p-4 bg-white relative">
+                                <button type="button" class="remove-venue absolute top-3 right-3 text-slate-400 hover:text-red-500 transition-colors {{ $index === 0 && count($venues) === 1 ? 'hidden' : '' }}">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                                </button>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="md:col-span-3">
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">Venue Name <span class="text-red-500">*</span></label>
+                                        <input type="text" name="venues[{{ $index }}][name]" placeholder="e.g. Eko Convention Center" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm" value="{{ $venue['name'] ?? '' }}">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">Address</label>
+                                        <input type="text" name="venues[{{ $index }}][address]" placeholder="e.g. Victoria Island, Lagos" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm" value="{{ $venue['address'] ?? '' }}">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">Google Maps URL</label>
+                                        <input type="url" name="venues[{{ $index }}][maps_url]" placeholder="https://maps.google.com/..." class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm" value="{{ $venue['maps_url'] ?? '' }}">
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -190,4 +226,52 @@
         </form>
     </div>
 </div>
+
+<script>
+    let venueIndex = {{ count($venues ?? []) > 0 ? count($venues) - 1 : 0 }};
+    document.getElementById('add-venue-btn').addEventListener('click', function() {
+        venueIndex++;
+        const list = document.getElementById('venues-list');
+        const newRow = document.createElement('div');
+        newRow.className = 'venue-row border border-slate-200 rounded-xl p-4 bg-white relative mt-4';
+        newRow.innerHTML = `
+            <button type="button" class="remove-venue absolute top-3 right-3 text-slate-400 hover:text-red-500 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-3">
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Venue Name <span class="text-red-500">*</span></label>
+                    <input type="text" name="venues[${venueIndex}][name]" placeholder="e.g. Eko Convention Center" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Address</label>
+                    <input type="text" name="venues[${venueIndex}][address]" placeholder="e.g. Victoria Island, Lagos" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Google Maps URL</label>
+                    <input type="url" name="venues[${venueIndex}][maps_url]" placeholder="https://maps.google.com/..." class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+            </div>
+        `;
+        list.appendChild(newRow);
+        
+        // Add remove listener
+        newRow.querySelector('.remove-venue').addEventListener('click', function() {
+            newRow.remove();
+        });
+        
+        // Show all remove buttons since there's >1
+        document.querySelectorAll('.remove-venue').forEach(btn => btn.classList.remove('hidden'));
+    });
+
+    document.querySelectorAll('.remove-venue').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.venue-row').remove();
+            const remaining = document.querySelectorAll('.venue-row');
+            if (remaining.length === 1) {
+                remaining[0].querySelector('.remove-venue').classList.add('hidden');
+            }
+        });
+    });
+</script>
 @endsection

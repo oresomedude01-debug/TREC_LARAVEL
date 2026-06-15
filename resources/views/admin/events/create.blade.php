@@ -78,19 +78,39 @@
                         <input type="time" name="end_time" id="end_time" value="{{ old('end_time') }}">
                     </div>
 
-                    <div class="md:col-span-3">
-                        <label for="venue_name" class="block text-sm font-semibold text-slate-700 mb-1">Venue Name</label>
-                        <input type="text" name="venue_name" id="venue_name" value="{{ old('venue_name') }}" placeholder="e.g. Eko Convention Center">
-                    </div>
+                    {{-- ─── Multi-Venue Repeater ─── --}}
+                    <div class="md:col-span-4" id="venues-wrapper">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="block text-sm font-semibold text-slate-700">Venues</label>
+                            <button type="button" id="add-venue-btn"
+                                class="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 hover:text-red-800 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                                Add Another Venue
+                            </button>
+                        </div>
 
-                    <div class="md:col-span-3">
-                        <label for="venue_address" class="block text-sm font-semibold text-slate-700 mb-1">Full Address</label>
-                        <textarea name="venue_address" id="venue_address" rows="2">{{ old('venue_address') }}</textarea>
-                    </div>
-
-                    <div class="md:col-span-3">
-                        <label for="google_maps_url" class="block text-sm font-semibold text-slate-700 mb-1">Google Maps Link <span class="text-slate-400 font-normal">(Optional)</span></label>
-                        <input type="url" name="google_maps_url" id="google_maps_url" value="{{ old('google_maps_url') }}" placeholder="https://maps.google.com/...">
+                        <div id="venues-list" class="space-y-4">
+                            {{-- starter row --}}
+                            <div class="venue-row border border-slate-200 rounded-xl p-4 bg-white relative">
+                                <button type="button" class="remove-venue absolute top-3 right-3 text-slate-400 hover:text-red-500 transition-colors hidden">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                                </button>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="md:col-span-3">
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">Venue Name <span class="text-red-500">*</span></label>
+                                        <input type="text" name="venues[0][name]" placeholder="e.g. Eko Convention Center" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm" value="{{ old('venues.0.name') }}">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">Address</label>
+                                        <input type="text" name="venues[0][address]" placeholder="e.g. Victoria Island, Lagos" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm" value="{{ old('venues.0.address') }}">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1">Google Maps URL</label>
+                                        <input type="url" name="venues[0][maps_url]" placeholder="https://maps.google.com/..." class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm" value="{{ old('venues.0.maps_url') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,6 +154,39 @@
         if(!document.getElementById('slug').value || document.getElementById('slug').value === document.getElementById('name').value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')) {
             document.getElementById('slug').value = this.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
         }
+    });
+
+    let venueIndex = 0;
+    document.getElementById('add-venue-btn').addEventListener('click', function() {
+        venueIndex++;
+        const list = document.getElementById('venues-list');
+        const newRow = document.createElement('div');
+        newRow.className = 'venue-row border border-slate-200 rounded-xl p-4 bg-white relative mt-4';
+        newRow.innerHTML = `
+            <button type="button" class="remove-venue absolute top-3 right-3 text-slate-400 hover:text-red-500 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-3">
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Venue Name <span class="text-red-500">*</span></label>
+                    <input type="text" name="venues[${venueIndex}][name]" placeholder="e.g. Eko Convention Center" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Address</label>
+                    <input type="text" name="venues[${venueIndex}][address]" placeholder="e.g. Victoria Island, Lagos" class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Google Maps URL</label>
+                    <input type="url" name="venues[${venueIndex}][maps_url]" placeholder="https://maps.google.com/..." class="w-full rounded-lg border-slate-300 focus:border-red-500 focus:ring-red-500 text-sm">
+                </div>
+            </div>
+        `;
+        list.appendChild(newRow);
+        
+        // Add remove listener
+        newRow.querySelector('.remove-venue').addEventListener('click', function() {
+            newRow.remove();
+        });
     });
 </script>
 @endsection

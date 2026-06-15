@@ -61,9 +61,13 @@ class EventController extends Controller
             'objectives' => 'nullable|array',
             'objectives.*' => 'string|max:255',
             'target_audience' => 'nullable|string',
-            'venue_name' => 'nullable|string|max:255',
+            'venue_name'    => 'nullable|string|max:255',
             'venue_address' => 'nullable|string',
             'google_maps_url' => 'nullable|url',
+            'venues'        => 'nullable|array',
+            'venues.*.name' => 'required_with:venues|string|max:255',
+            'venues.*.address' => 'nullable|string',
+            'venues.*.maps_url' => 'nullable|url',
             'event_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:event_date',
             'start_time' => 'nullable|date_format:H:i',
@@ -78,6 +82,19 @@ class EventController extends Controller
                 $file->move(public_path('uploads/events'), $filename);
                 $validated[$field] = '/uploads/events/' . $filename;
             }
+        }
+
+        // Filter out blank venue entries
+        if (!empty($validated['venues'])) {
+            $validated['venues'] = array_values(array_filter($validated['venues'], fn($v) => !empty($v['name'])));
+            // Keep legacy columns populated from first venue
+            if (!empty($validated['venues'][0])) {
+                $validated['venue_name']    = $validated['venues'][0]['name'];
+                $validated['venue_address'] = $validated['venues'][0]['address'] ?? null;
+                $validated['google_maps_url'] = $validated['venues'][0]['maps_url'] ?? null;
+            }
+        } else {
+            $validated['venues'] = null;
         }
 
         // Filter out empty objectives
@@ -107,9 +124,13 @@ class EventController extends Controller
             'objectives' => 'nullable|array',
             'objectives.*' => 'string|max:255',
             'target_audience' => 'nullable|string',
-            'venue_name' => 'nullable|string|max:255',
-            'venue_address' => 'nullable|string',
-            'google_maps_url' => 'nullable|url',
+            'venue_name'       => 'nullable|string|max:255',
+            'venue_address'    => 'nullable|string',
+            'google_maps_url'  => 'nullable|url',
+            'venues'           => 'nullable|array',
+            'venues.*.name'    => 'required_with:venues|string|max:255',
+            'venues.*.address' => 'nullable|string',
+            'venues.*.maps_url'=> 'nullable|url',
             'event_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:event_date',
             'start_time' => 'nullable|date_format:H:i',
@@ -123,6 +144,18 @@ class EventController extends Controller
                 $file->move(public_path('uploads/events'), $filename);
                 $validated[$field] = '/uploads/events/' . $filename;
             }
+        }
+
+        // Filter out blank venue entries
+        if (!empty($validated['venues'])) {
+            $validated['venues'] = array_values(array_filter($validated['venues'], fn($v) => !empty($v['name'])));
+            if (!empty($validated['venues'][0])) {
+                $validated['venue_name']    = $validated['venues'][0]['name'];
+                $validated['venue_address'] = $validated['venues'][0]['address'] ?? null;
+                $validated['google_maps_url'] = $validated['venues'][0]['maps_url'] ?? null;
+            }
+        } else {
+            $validated['venues'] = null;
         }
 
         if (isset($validated['objectives'])) {

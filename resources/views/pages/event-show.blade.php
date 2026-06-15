@@ -30,11 +30,23 @@
   "name": "{{ $event->name }}",
   "description": "{{ strip_tags($event->short_description) }}",
   "startDate": "{{ $event->event_date?->toIso8601String() }}",
+  @if(!empty($event->venues) && count($event->venues) > 0)
+  "location": [
+    @foreach($event->venues as $venue)
+    {
+      "@@type": "Place",
+      "name": "{{ $venue['name'] ?? 'TBA' }}",
+      "address": "{{ $venue['address'] ?? '' }}"
+    }{{ !$loop->last ? ',' : '' }}
+    @endforeach
+  ],
+  @else
   "location": {
     "@@type": "Place",
     "name": "{{ $event->venue_name ?? 'TBA' }}",
     "address": "{{ $event->venue_address ?? '' }}"
   },
+  @endif
   "organizer": {
     "@@type": "Organization",
     "name": "The Ripple Effect Consult",
@@ -719,7 +731,14 @@ body {
         {{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }}{{ $event->end_time ? ' – '.\Carbon\Carbon::parse($event->end_time)->format('h:i A') : '' }}
       </div>
       @endif
-      @if($event->venue_name)
+      @if(!empty($event->venues) && count($event->venues) > 0)
+        @foreach($event->venues as $venue)
+        <div class="meta-chip">
+          <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          {{ $venue['name'] }}
+        </div>
+        @endforeach
+      @elseif($event->venue_name)
       <div class="meta-chip">
         <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         {{ $event->venue_name }}
@@ -897,36 +916,48 @@ body {
     @if($featuredSpeakers->count() > 0)
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       @foreach($featuredSpeakers as $speaker)
-      <div class="speaker-card h-80 bg-slate-200 reveal">
+      <div class="speaker-card group h-80 bg-slate-200 reveal relative overflow-hidden rounded-3xl cursor-pointer">
         @if($speaker->photo)
-        <img src="{{ asset($speaker->photo) }}" alt="{{ $speaker->name }}" loading="lazy">
+        <img src="{{ asset($speaker->photo) }}" alt="{{ $speaker->name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
         @else
-        <div class="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
+        <div class="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
           <i data-lucide="user" class="w-20 h-20 text-slate-400"></i>
         </div>
         @endif
-        <div class="speaker-overlay">
-          @if($speaker->biography)
-          <p class="text-white text-sm leading-relaxed line-clamp-3 mb-3">{{ $speaker->biography }}</p>
-          @endif
-          <div class="flex gap-2">
-            @if(isset($speaker->social_links['linkedin']) && $speaker->social_links['linkedin'])
-            <a href="{{ $speaker->social_links['linkedin'] }}" target="_blank" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors">
-              <i data-lucide="linkedin" class="w-4 h-4 text-white"></i>
-            </a>
-            @endif
-            @if(isset($speaker->social_links['twitter']) && $speaker->social_links['twitter'])
-            <a href="{{ $speaker->social_links['twitter'] }}" target="_blank" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors">
-              <i data-lucide="twitter" class="w-4 h-4 text-white"></i>
-            </a>
-            @endif
+        
+        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wide z-20">Featured</span>
+        
+        {{-- Always visible bottom gradient --}}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col justify-end">
+          {{-- Biography and socials that expand on hover --}}
+          <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+            <div class="overflow-hidden">
+              @if($speaker->biography)
+              <p class="text-white/90 text-sm leading-relaxed line-clamp-3 mb-3">{{ $speaker->biography }}</p>
+              @endif
+              <div class="flex gap-2 mb-3">
+                @if(isset($speaker->social_links['linkedin']) && $speaker->social_links['linkedin'])
+                <a href="{{ $speaker->social_links['linkedin'] }}" target="_blank" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition-colors backdrop-blur-sm pointer-events-auto">
+                  <i data-lucide="linkedin" class="w-4 h-4 text-white"></i>
+                </a>
+                @endif
+                @if(isset($speaker->social_links['twitter']) && $speaker->social_links['twitter'])
+                <a href="{{ $speaker->social_links['twitter'] }}" target="_blank" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition-colors backdrop-blur-sm pointer-events-auto">
+                  <i data-lucide="twitter" class="w-4 h-4 text-white"></i>
+                </a>
+                @endif
+              </div>
+            </div>
           </div>
-        </div>
-        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wide">Featured</span>
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-5 py-4">
-          <h3 class="text-white font-bold text-lg leading-tight">{{ $speaker->name }}</h3>
-          @if($speaker->title)<p class="text-red-300 text-sm font-medium">{{ $speaker->title }}</p>@endif
-          @if($speaker->organization)<p class="text-white/50 text-xs">{{ $speaker->organization }}</p>@endif
+
+          {{-- Always visible name and title --}}
+          <div>
+            <h3 class="text-white font-bold text-lg leading-tight">{{ $speaker->name }}</h3>
+            @if($speaker->title)<p class="text-red-300 text-sm font-medium">{{ $speaker->title }}</p>@endif
+            @if($speaker->organization)<p class="text-white/50 text-xs">{{ $speaker->organization }}</p>@endif
+          </div>
         </div>
       </div>
       @endforeach
@@ -1684,7 +1715,11 @@ $faqs = [
       <div class="inline-flex items-center gap-2 text-slate-500 text-sm py-4 px-6">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         {{ $event->event_date->format('l, F j, Y') }}@if($event->end_date && $event->end_date->neq($event->event_date)) &mdash; {{ $event->end_date->format('l, F j, Y') }}@endif
-        @if($event->venue_name) · {{ $event->venue_name }} @endif
+        @if(!empty($event->venues) && count($event->venues) > 0)
+          · {{ collect($event->venues)->pluck('name')->join(', ') }}
+        @elseif($event->venue_name) 
+          · {{ $event->venue_name }} 
+        @endif
       </div>
       @endif
     </div>

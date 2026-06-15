@@ -79,7 +79,13 @@
                     </div>
                     <div class="flex justify-between items-center py-1">
                         <span class="text-slate-400 font-medium">Venue</span>
-                        <span class="font-semibold text-white text-right max-w-[240px] truncate">{{ $event->venue_name ?? 'TBA' }}</span>
+                        <span class="font-semibold text-white text-right max-w-[240px] truncate">
+                            @if(!empty($event->venues) && count($event->venues) > 0)
+                                {{ collect($event->venues)->pluck('name')->join(', ') }}
+                            @else
+                                {{ $event->venue_name ?? 'TBA' }}
+                            @endif
+                        </span>
                     </div>
                 </div>
 
