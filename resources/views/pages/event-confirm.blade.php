@@ -2,6 +2,21 @@
 
 @section('title', 'Registration Confirmed – ' . $event->name)
 
+@section('styles')
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    corePlugins: {
+      preflight: false,
+    }
+  }
+</script>
+<style>
+    /* Reset app.blade.php defaults that might conflict */
+    main { padding-top: 0 !important; }
+</style>
+@endsection
+
 @section('content')
 <section class="relative min-h-screen bg-[#0f172a] text-white flex items-center justify-center py-24 px-4 overflow-hidden">
     {{-- Glow effects --}}
