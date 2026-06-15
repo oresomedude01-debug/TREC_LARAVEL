@@ -342,9 +342,21 @@ class EventPageController extends Controller
     {
         $reg->loadMissing(['event', 'ticketType']);
 
+        Log::info('Attempting to send ticket email', [
+            'registration_id' => $reg->id,
+            'registration_number' => $reg->registration_number,
+            'email' => $reg->email,
+            'event_id' => $reg->event_id,
+        ]);
+
         try {
             Mail::to($reg->email, $reg->first_name . ' ' . $reg->last_name)
                 ->send(new TicketMail($reg));
+
+            Log::info('Ticket email sent successfully', [
+                'registration_number' => $reg->registration_number,
+                'email' => $reg->email,
+            ]);
 
             EventEmailLog::create([
                 'event_id'        => $reg->event_id,
@@ -358,7 +370,9 @@ class EventPageController extends Controller
         } catch (\Throwable $e) {
             Log::error('Failed to send ticket email', [
                 'registration' => $reg->registration_number,
+                'email' => $reg->email,
                 'error'        => $e->getMessage(),
+                'trace' => substr($e->getTraceAsString(), 0, 500),
             ]);
 
             EventEmailLog::create([

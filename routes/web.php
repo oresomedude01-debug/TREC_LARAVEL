@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\EventRegistrationController;
 use App\Http\Controllers\Admin\EventMarketingController;
 use App\Http\Controllers\Admin\EventCheckInController;
 use App\Http\Controllers\Admin\EventWaitlistController;
+use App\Models\EventRegistration;
 
 // Public pages
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -49,6 +50,20 @@ Route::get('/test-email', function () {
 })->name('test.email');
 
 Route::post('/test-email/send', [PageController::class, 'sendTestEmail'])->name('test.email.send');
+
+// Test ticket email (debug)
+Route::get('/test-ticket-email/{registration}', function (EventRegistration $registration) {
+    \Illuminate\Support\Facades\Log::info('Test ticket email route accessed', ['reg_id' => $registration->id]);
+    
+    try {
+        $registration->loadMissing(['event', 'ticketType']);
+        \Illuminate\Support\Facades\Mail::to($registration->email, $registration->first_name . ' ' . $registration->last_name)
+            ->send(new \App\Mail\TicketMail($registration));
+        return "Ticket email sent to {$registration->email}";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage() . "\n\nTrace:\n" . $e->getTraceAsString();
+    }
+})->name('test.ticket.email');
 
 // Authentication routes
 Route::get('/login', function () {
