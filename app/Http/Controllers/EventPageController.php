@@ -344,7 +344,7 @@ class EventPageController extends Controller
 
         try {
             Mail::to($reg->email, $reg->first_name . ' ' . $reg->last_name)
-                ->queue(new TicketMail($reg));
+                ->send(new TicketMail($reg));
 
             EventEmailLog::create([
                 'event_id'        => $reg->event_id,
