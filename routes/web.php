@@ -43,6 +43,13 @@ Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 // Contact form submission
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+// Test email route (for development/debugging)
+Route::get('/test-email', function () {
+    return view('test-email');
+})->name('test.email');
+
+Route::post('/test-email/send', [PageController::class, 'sendTestEmail'])->name('test.email.send');
+
 // Authentication routes
 Route::get('/login', function () {
     return view('auth.login');

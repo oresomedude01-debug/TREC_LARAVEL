@@ -203,5 +203,29 @@ class PageController extends Controller
     {
         return view('pages.contact');
     }
+
+    public function sendTestEmail(): \Illuminate\Http\RedirectResponse
+    {
+        $email = request('email');
+        
+        if (!$email) {
+            return back()->withErrors(['email' => 'Email address is required.']);
+        }
+
+        try {
+            \Illuminate\Support\Facades\Mail::raw(
+                'This is a test email from TREC Laravel Application. If you received this, your SMTP configuration is working correctly!',
+                function ($message) use ($email) {
+                    $message->to($email)
+                            ->subject('✅ Test Email - TREC SMTP Configuration');
+                }
+            );
+
+            return back()->with('success', "Test email sent to {$email}! Check your inbox.");
+        } catch (\Exception $e) {
+            Log::error('Test email failed', ['error' => $e->getMessage()]);
+            return back()->withErrors(['email' => 'Failed to send email: ' . $e->getMessage()]);
+        }
+    }
 }
 
