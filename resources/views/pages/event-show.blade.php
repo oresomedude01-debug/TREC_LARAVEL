@@ -628,7 +628,9 @@ body {
     {{-- CTA + mobile hamburger --}}
     <div class="flex items-center gap-3">
       @if($event->status === 'registration_open' || $showWaitlist)
-      <a href="#register" class="nav-cta-pill">{{ $showWaitlist ? 'Join Waitlist' : 'Register Now' }}</a>
+      <!-- COMMENTED OUT: Local registration - redirecting to Selar -->
+      {{-- <a href="#register" class="nav-cta-pill">{{ $showWaitlist ? 'Join Waitlist' : 'Register Now' }}</a> --}}
+      <a href="https://selar.com/tscc2026" class="nav-cta-pill">{{ $showWaitlist ? 'Join Waitlist' : 'Register Now' }}</a>
       @endif
       <button class="nav-hamburger md:hidden w-9 h-9 rounded-full border border-white/20 bg-white/10 flex items-center justify-center text-white" aria-label="Menu">
         <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect width="16" height="2" rx="1" fill="currentColor"/><rect y="5" width="16" height="2" rx="1" fill="currentColor"/><rect y="10" width="16" height="2" rx="1" fill="currentColor"/></svg>
@@ -769,7 +771,9 @@ body {
     {{-- Hero CTAs --}}
     <div class="flex flex-wrap gap-4 mb-14 justify-center lg:justify-start">
       @if($event->status === 'registration_open')
-      <a href="#register" class="btn-hero-primary">
+      {{-- COMMENTED OUT: Local registration form - redirecting to Selar --}}
+      {{-- <a href="#register" class="btn-hero-primary"> --}}
+      <a href="https://selar.com/tscc2026" class="btn-hero-primary">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
         Secure Your Spot
         @if($activeTicket && (float)$activeTicket->price > 0)
@@ -867,7 +871,9 @@ body {
         @else
         <p class="text-red-100 mb-4">Check our ticket options below.</p>
         @endif
-        <a href="#register"
+        {{-- COMMENTED OUT: Local registration - redirecting to Selar --}}
+        {{-- <a href="#register" --}}
+        <a href="https://selar.com/tscc2026"
            class="flex items-center justify-center gap-2 w-full bg-white text-red-700 hover:bg-red-50 font-bold py-3.5 rounded-xl transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           Lock In This Price Now
@@ -1292,7 +1298,9 @@ $testimonials = [
 
           {{-- CTA --}}
           @if($event->status === 'registration_open' && $isOnSale && !$isSoldOut)
-          <a href="#register" onclick="selectTicket({{ $ticket->id }})"
+          {{-- COMMENTED OUT: Local ticket registration - redirecting to Selar --}}
+          {{-- <a href="#register" onclick="selectTicket({{ $ticket->id }})" --}}
+          <a href="https://selar.com/tscc2026"
              class="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-sm transition-all
                     {{ $isVip ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-500/30 hover:-translate-y-0.5' : 'bg-slate-900 hover:bg-slate-800 text-white hover:-translate-y-0.5' }}">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
@@ -1325,7 +1333,8 @@ $testimonials = [
 @endif
 
 {{-- ═══ SECTION 9 · REGISTRATION FORM ════════════════════════════════════════
-     Two-column layout on desktop: form on right, trust signals on left.
+     COMMENTED OUT: Using Selar for ticket sales (Third-party platform)
+     Redirect button pointing to: https://selar.com/tscc2026
 ══════════════════════════════════════════════════════════════════════════════ --}}
 @if($event->status === 'registration_open' || $showWaitlist)
 <section id="register" class="py-20 md:py-28 relative overflow-hidden"
@@ -1335,6 +1344,24 @@ $testimonials = [
   <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-600/60 to-transparent"></div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-5 md:px-8">
+    {{-- SELAR REDIRECT NOTICE --}}
+    <div class="text-center max-w-2xl mx-auto mb-12 py-12 px-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm">
+      <div class="mb-6">
+        <svg class="w-16 h-16 mx-auto text-red-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <h2 class="text-3xl font-bold text-white mb-3">Tickets Now on Selar! 🎟️</h2>
+      <p class="text-slate-300 text-lg mb-8">We've moved ticket sales to <strong>Selar</strong> for a better purchasing experience. Click the button below to complete your registration.</p>
+      
+      <a href="https://selar.com/tscc2026" class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold text-lg px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-red-600/40 mb-6">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        Proceed to Selar to Buy Tickets
+      </a>
+      
+      <p class="text-slate-400 text-sm">✓ Secure payment processing  ✓ Instant ticket delivery  ✓ Mobile-friendly checkout</p>
+    </div>
+
+    {{-- OLD FORM COMMENTED OUT --}}
+    <!-- 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
       {{-- LEFT: Trust signals --}}
@@ -1604,6 +1631,7 @@ $testimonials = [
         </div>
       </div>
 
+    --> <!-- END OF COMMENTED OUT REGISTRATION FORM -->
     </div>
   </div>
 </section>
