@@ -777,7 +777,12 @@ body {
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
         Secure Your Spot
         @if($activeTicket && (float)$activeTicket->price > 0)
+        @if($activeTicket->strike_price && (float)$activeTicket->strike_price > (float)$activeTicket->price)
+        <span class="bg-white/20 rounded-full px-3 py-0.5 text-sm font-semibold line-through">₦{{ number_format((float)$activeTicket->strike_price) }}</span>
+        <span class="bg-green-500/30 rounded-full px-3 py-0.5 text-sm font-semibold">Save {{ $activeTicket->discount_percent }}%</span>
+        @else
         <span class="bg-white/20 rounded-full px-3 py-0.5 text-sm font-semibold">from ₦{{ number_format((float)$activeTicket->price) }}</span>
+        @endif
         @endif
       </a>
       @endif
@@ -850,6 +855,12 @@ body {
             <p class="text-red-200 text-xs font-bold uppercase tracking-widest">Current Price</p>
             <p class="text-4xl font-black mt-1">
               @if((float)$activeTicket->price === 0.0) Free
+              @elseif($activeTicket->strike_price && (float)$activeTicket->strike_price > (float)$activeTicket->price)
+                <span class="line-through text-2xl text-white/50">₦{{ number_format((float)$activeTicket->strike_price) }}</span>
+                <br>
+                <span class="text-green-400">Save {{ $activeTicket->discount_percent }}%</span>
+                <br>
+                ₦{{ number_format((float)$activeTicket->price) }}
               @else ₦{{ number_format((float)$activeTicket->price) }} @endif
             </p>
             <p class="text-red-200 text-sm mt-1">{{ $activeTicket->name }}</p>
@@ -1245,8 +1256,27 @@ $testimonials = [
             @if((float)$ticket->price === 0.0)
             <span class="text-5xl font-black {{ $isVip ? 'text-white' : 'text-slate-900' }}">Free</span>
             @else
+            @if($ticket->strike_price && (float)$ticket->strike_price > (float)$ticket->price)
+            {{-- Show strike price with discount --}}
+            <div class="flex items-start gap-3 mb-2">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-sm font-semibold {{ $isVip ? 'text-white/60' : 'text-slate-400' }} line-through">₦{{ number_format((float)$ticket->strike_price) }}</span>
+                  <span class="inline-block px-2.5 py-1 rounded-lg {{ $isVip ? 'bg-white/20' : 'bg-green-100' }} font-bold text-xs {{ $isVip ? 'text-white' : 'text-green-700' }}">
+                    Save {{ $ticket->discount_percent }}%
+                  </span>
+                </div>
+                <div class="flex items-baseline gap-1 mt-2">
+                  <span class="text-2xl font-bold {{ $isVip ? 'text-white/70' : 'text-slate-400' }}">₦</span>
+                  <span class="text-5xl font-black {{ $isVip ? 'text-white' : 'text-slate-900' }}">{{ number_format((float)$ticket->price) }}</span>
+                </div>
+              </div>
+            </div>
+            @else
+            {{-- No strike price, show regular price --}}
             <span class="text-2xl font-bold {{ $isVip ? 'text-white/70' : 'text-slate-400' }}">₦</span>
             <span class="text-5xl font-black {{ $isVip ? 'text-white' : 'text-slate-900' }}">{{ number_format((float)$ticket->price) }}</span>
+            @endif
             @endif
           </div>
           @if($ticket->team_size)
@@ -1788,7 +1818,13 @@ $faqs = [
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
     Register Now
     @if($activeTicket && (float)$activeTicket->price > 0)
+    @if($activeTicket->strike_price && (float)$activeTicket->strike_price > (float)$activeTicket->price)
+    <span class="text-red-200 font-normal text-sm line-through">· ₦{{ number_format((float)$activeTicket->strike_price) }}</span>
+    <span class="text-green-400 font-semibold text-sm"> Save {{ $activeTicket->discount_percent }}%</span>
     <span class="text-red-200 font-normal text-sm">· ₦{{ number_format((float)$activeTicket->price) }}</span>
+    @else
+    <span class="text-red-200 font-normal text-sm">· ₦{{ number_format((float)$activeTicket->price) }}</span>
+    @endif
     @endif
   </a>
 </div>

@@ -13,6 +13,7 @@ class EventTicketType extends Model
         'name',
         'description',
         'price',
+        'strike_price',
         'currency',
         'quantity_available',
         'quantity_sold',
@@ -30,6 +31,7 @@ class EventTicketType extends Model
         'benefits'    => 'array',
         'is_active'   => 'boolean',
         'price'       => 'decimal:2',
+        'strike_price' => 'decimal:2',
         'sales_start' => 'datetime',
         'sales_end'   => 'datetime',
     ];
@@ -119,5 +121,19 @@ class EventTicketType extends Model
         }
 
         return $this->currency . ' ' . number_format((float) $this->price, 2);
+    }
+
+    /**
+     * Calculates the discount percentage if a strike price is set.
+     * Returns the percentage (e.g., 20 for 20% off), or null if no discount.
+     */
+    public function getDiscountPercentAttribute(): ?int
+    {
+        if (!$this->strike_price || (float) $this->strike_price <= 0 || (float) $this->price >= (float) $this->strike_price) {
+            return null;
+        }
+
+        $discount = ((float) $this->strike_price - (float) $this->price) / (float) $this->strike_price * 100;
+        return (int) round($discount);
     }
 }

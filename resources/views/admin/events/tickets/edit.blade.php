@@ -77,12 +77,21 @@
                 <div class="xl:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8 space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="price" class="form-label">Price</label>
+                            <label for="price" class="form-label">Sale Price <span class="text-red-500">*</span></label>
                             <div class="relative flex items-center">
                                 <span class="absolute left-4 text-slate-500 font-semibold">₦</span>
                                 <input type="number" step="0.01" name="price" id="price" value="{{ old('price', $ticket->price) }}" required class="w-full rounded-xl border-slate-200 focus:border-red-500 focus:ring-red-500 pl-9 transition-colors text-lg font-semibold text-slate-900">
                             </div>
                             <p class="text-xs text-slate-400 mt-1.5">Leave at 0.00 for free tickets.</p>
+                        </div>
+
+                        <div>
+                            <label for="strike_price" class="form-label">Strike-Through Price (Optional)</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-4 text-slate-500 font-semibold">₦</span>
+                                <input type="number" step="0.01" name="strike_price" id="strike_price" value="{{ old('strike_price', $ticket->strike_price) }}" placeholder="Original price" class="w-full rounded-xl border-slate-200 focus:border-red-500 focus:ring-red-500 pl-9 transition-colors text-lg font-semibold text-slate-900">
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1.5">Original/regular price to show savings. Visitors will see the discount %.</p>
                         </div>
 
                         <div>

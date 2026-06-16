@@ -28,6 +28,7 @@ class EventTicketController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
+            'strike_price' => 'nullable|numeric|min:0',
             'currency' => 'nullable|string|size:3',
             'quantity_available' => 'nullable|integer|min:1',
             'sales_start' => 'nullable|date',
@@ -55,7 +56,7 @@ class EventTicketController extends Controller
 
         $validated['event_id'] = $event->id;
         $validated['is_active'] = $request->boolean('is_active', true);
-        $validated['benefits'] = array_values(array_filter($request->input('benefits', [])));
+        $validated['benefits'] = $request->input('benefits', []);
         $validated['currency'] = $request->input('currency', 'NGN');
         $validated['team_size'] = $validated['type'] === 'team' ? $validated['team_size'] : null;
         EventTicketType::create($validated);
@@ -76,6 +77,7 @@ class EventTicketController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
+            'strike_price' => 'nullable|numeric|min:0',
             'currency' => 'nullable|string|size:3',
             'quantity_available' => 'nullable|integer|min:1',
             'sales_start' => 'nullable|date',
@@ -102,7 +104,7 @@ class EventTicketController extends Controller
         }
 
         $validated['is_active'] = $request->boolean('is_active');
-        $validated['benefits'] = array_values(array_filter($request->input('benefits', [])));
+        $validated['benefits'] = $request->input('benefits', []);
         $validated['currency'] = $request->input('currency', 'NGN');
         $validated['team_size'] = $validated['type'] === 'team' ? $validated['team_size'] : null;
         $ticket->update($validated);
