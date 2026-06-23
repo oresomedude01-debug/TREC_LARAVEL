@@ -1,11 +1,28 @@
 @extends('layouts.app')
 
-@section('title', 'Home - TREC Mental Health Counselling & Consultation')
-@section('meta_desc', 'TREC (The Ripple Effect Consult) - Professional mental health counselling, psychological consultation, and wellness training for individuals, schools, and organisations. Expert mental health services in Nigeria.')
-@section('meta_keywords', 'TREC, The Ripple Effect Consult, mental health counselling, counseling services, mental health support, psychological consultation, stress management, anxiety support, mental wellness, school counselling, workplace mental health, professional consultation, psychotherapy, emotional wellbeing, mental health Nigeria')
-@section('og_title', 'TREC - Professional Mental Health Counselling & Consultation Services')
-@section('og_desc', 'TREC (The Ripple Effect Consult) provides expert mental health counselling, psychological consultation, and wellness programs for individuals, schools, and organisations.')
+@section('title', 'TREC – The Ripple Effect Consult | School, Personal & Organisational Counselling Nigeria')
+@section('meta_desc', 'TREC (The Ripple Effect Consult) – Nigeria\'s leading counselling & consulting firm. School counselling, personal counselling, organisational wellbeing, and home of TSCC – the annual school counselling conference. Based in Lagos, serving Nigeria.')
+@section('meta_keywords', 'TREC, TSCC, The Ripple Effect Consult, Ripple Effect, Ripple Effect Consult, Ripple Effect Consulting, TREC Nigeria, school counselling Nigeria, school counsellor Nigeria, personal counselling Lagos, individual counselling Nigeria, organisational counselling Nigeria, workplace mental health Nigeria, mental health support Nigeria, counselling services Lagos, wellbeing consulting Nigeria, school wellbeing programme Nigeria, TSCC 2026, TSCC conference, school counselling conference Nigeria, CPD counselling Nigeria, child development conference, mental health Nigeria, psychosocial support Nigeria, mental wellness Nigeria, emotional wellbeing Nigeria, psychological consultation Nigeria, counseling services, stress management Nigeria')
+@section('og_title', 'TREC – The Ripple Effect Consult | School, Personal & Organisational Counselling')
+@section('og_desc', 'Nigeria\'s leading counselling & consulting firm. School counselling setup, personal counselling, organisational wellbeing, and home of TSCC – Nigeria\'s annual school counselling conference.')
+@section('og_image', url('tscc-images/trec-og-image.png'))
 @section('breadcrumb_title', 'Home')
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "WebSite",
+  "name": "TREC – The Ripple Effect Consult",
+  "url": "https://trecnigeria.com",
+  "potentialAction": {
+    "@@type": "SearchAction",
+    "target": "https://trecnigeria.com/insights?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+@endpush
 @section('styles')
 <style>
 /* ══════════════════════════════════════

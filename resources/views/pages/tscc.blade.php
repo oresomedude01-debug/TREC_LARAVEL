@@ -1,8 +1,47 @@
 @extends('layouts.app')
-@section('title', 'TSCC — The School Counselling Conference')
-@section('meta_desc', 'Nigeria\'s premier annual school counselling conference — expert keynotes, CPD workshops, networking, and advocacy for counsellors and educators.')
+@section('title', 'TSCC – The School Counselling Conference | TREC Nigeria')
+@section('meta_desc', 'TSCC (The School Counselling Conference) – Nigeria\'s premier annual school counselling conference by TREC. Expert keynotes, CPD workshops, networking, and advocacy for counsellors, educators, and school leaders.')
+@section('meta_keywords', 'TSCC, TSCC 2026, The School Counselling Conference, school counselling conference Nigeria, TREC, The Ripple Effect Consult, Ripple Effect, CPD counselling Nigeria, child development conference Lagos, school counsellor Nigeria, counselling conference Africa, school mental health conference Nigeria, education conference Nigeria, counselling CPD workshop, school wellbeing conference, counsellor professional development Nigeria, TSCC conference, TREC Nigeria')
+@section('og_title', 'TSCC – The School Counselling Conference | TREC Nigeria')
+@section('og_desc', 'Nigeria\'s premier annual school counselling conference. TSCC brings together counsellors, educators, and school leaders for CPD workshops, keynote speakers, and professional networking.')
+@section('og_image', url('tscc-images/trec-og-image.png'))
+@section('og_type', 'website')
+@section('breadcrumb_title', 'TSCC – School Counselling Conference')
 
-@section('styles')
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Event",
+  "name": "TSCC 2026 – The School Counselling Conference",
+  "alternateName": ["TSCC", "The School Counselling Conference", "TSCC 2026"],
+  "description": "Nigeria's premier annual school counselling conference bringing together counsellors, educators, school leaders, and child development advocates for CPD workshops, expert keynotes, and professional networking.",
+  "url": "https://trecnigeria.com/tscc",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+  "location": {
+    "@@type": "Place",
+    "name": "Lagos, Nigeria",
+    "address": {
+      "@@type": "PostalAddress",
+      "addressLocality": "Lagos",
+      "addressCountry": "NG"
+    }
+  },
+  "organizer": {
+    "@@type": "Organization",
+    "name": "TREC – The Ripple Effect Consult",
+    "url": "https://trecnigeria.com"
+  },
+  "offers": {
+    "@@type": "Offer",
+    "url": "https://trecnigeria.com/tscc",
+    "priceCurrency": "NGN",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+@endpush
 <style>
 /* ── HERO ── */
 .tscc-hero {

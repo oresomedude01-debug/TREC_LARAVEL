@@ -1,8 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Counselling Department Setup - TREC Nigeria')
-@section('meta_desc', 'TREC helps schools establish a fully functional counselling department — structures, documentation, referral pathways, assessment processes and reporting systems for effective student support.')
-@section('og_title', 'Counselling Department Setup — TREC Nigeria')
+@section('title', 'Counselling Department Setup – TREC Nigeria | School Counselling Services')
+@section('meta_desc', 'TREC helps schools establish a fully functional counselling department – structures, documentation, referral pathways, assessment processes and reporting systems for effective student support.')
+@section('og_title', 'Counselling Department Setup – TREC Nigeria')
 @section('og_desc', 'Build a professional, structured counselling department from the ground up. TREC provides the frameworks, documentation, and systems schools need.')
+@section('og_image', url('tscc-images/trec-og-image.png'))
+@section('meta_keywords', 'school counselling department setup Nigeria, TREC, The Ripple Effect Consult, Ripple Effect, school counsellor Nigeria, counselling department school, student support system Nigeria, school mental health Nigeria, counselling documentation school, referral pathway school Nigeria, student wellbeing Nigeria, school counselling services Lagos')
 @section('breadcrumb_title', 'Counselling Department Setup')
 
 @section('styles')

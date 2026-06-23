@@ -1,104 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NG">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="author" content="The Ripple Effect Consult (TREC)">
-<meta name="keywords" content="@yield('meta_keywords', 'TREC, The Ripple Effect Consult, mental health counselling, psychological consultation, mental wellness, stress management, anxiety support, counseling services, professional consultation, mental health training, organisational wellness, school counseling, workplace mental health, psychotherapy, personal development, emotional wellbeing, mental health support')">
+<meta name="keywords" content="@yield('meta_keywords', 'TREC, TSCC, The Ripple Effect Consult, Ripple Effect, Ripple Effect Consult, Ripple Effect Consulting, TREC Nigeria, school counselling Nigeria, school counsellor Nigeria, student mental health Nigeria, personal counselling Lagos, individual counselling Nigeria, organisational counselling Nigeria, workplace mental health Nigeria, mental health support Nigeria, counselling services Lagos, psychosocial support Nigeria, wellbeing consulting Nigeria, school wellbeing programme Nigeria, CPD counselling Nigeria, child development conference Lagos, school counselling conference Nigeria, TSCC 2026, TSCC conference, mental health training Nigeria, psychological consultation Nigeria, emotional wellbeing Nigeria, mental wellness Nigeria, counseling services, stress management Nigeria, anxiety support Nigeria, professional consultation Nigeria')">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="googlebot" content="index, follow">
-<meta name="revisit-after" content="7 days">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="bingbot" content="index, follow">
+<meta name="slurp" content="index, follow">
+<meta name="revisit-after" content="3 days">
 <meta name="language" content="English">
+<meta name="geo.region" content="NG-LA">
+<meta name="geo.placename" content="Lagos, Nigeria">
 <meta name="copyright" content="The Ripple Effect Consult">
-<title>@yield('title', 'TREC - Mental Health Counselling & Professional Consultation') – The Ripple Effect Consult</title>
+<meta name="rating" content="general">
+<meta name="category" content="mental health, counselling, consulting, education">
+<title>@yield('title', 'TREC – The Ripple Effect Consult | School, Personal & Organisational Counselling Nigeria')</title>
 <link rel="icon" type="image/png" href="{{ asset('images/tscc-logo.png') }}">
-<meta name="description" content="@yield('meta_desc', 'TREC (The Ripple Effect Consult) provides professional mental health counselling, psychological consultation, and wellness training for individuals, schools, and organisations. Expert mental health support and consultation services.')">
+<meta name="description" content="@yield('meta_desc', 'TREC (The Ripple Effect Consult) – Nigeria\'s leading counselling and consulting firm. We provide school counselling, personal counselling, and organisational wellbeing services. Home of TSCC – the annual school counselling conference.')">
+
+{{-- Open Graph --}}
 <meta property="og:type" content="@yield('og_type', 'website')">
-<meta property="og:title" content="@yield('og_title', 'TREC - The Ripple Effect Consult | Mental Health & Counselling')">
-<meta property="og:description" content="@yield('og_desc', 'Professional mental health counselling, psychological consultation, and wellness services. TREC creates lasting positive change through expert mental health support.')">
+<meta property="og:locale" content="en_NG">
+<meta property="og:title" content="@yield('og_title', 'TREC – The Ripple Effect Consult | Counselling & Consulting Nigeria')">
+<meta property="og:description" content="@yield('og_desc', 'School counselling, personal counselling, and organisational wellbeing services from TREC – The Ripple Effect Consult. Home of TSCC, Nigeria\'s premier school counselling conference.')">
 <meta property="og:url" content="{{ url()->current() }}">
-<meta property="og:site_name" content="TREC - The Ripple Effect Consult">
+<meta property="og:site_name" content="TREC – The Ripple Effect Consult">
 <meta property="og:image" content="@yield('og_image', url('tscc-images/trec-og-image.png'))">
-<meta property="og:image:alt" content="TREC - The Ripple Effect Consult Mental Health Services">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TREC – The Ripple Effect Consult | Counselling & Consulting">
+
+{{-- Twitter Card --}}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="@yield('og_title', 'TREC - Mental Health Counselling & Professional Consultation')">
-<meta name="twitter:description" content="@yield('og_desc', 'Professional mental health counselling, psychological consultation, and wellness services. TREC creates lasting positive change.')">
+<meta name="twitter:site" content="@TRECNigeria">
+<meta name="twitter:title" content="@yield('og_title', 'TREC – Counselling & Consulting Nigeria')">
+<meta name="twitter:description" content="@yield('og_desc', 'School counselling, personal counselling, and organisational wellbeing from TREC – The Ripple Effect Consult.')">
 <meta name="twitter:image" content="@yield('og_image', url('tscc-images/trec-og-image.png'))">
+
 <link rel="canonical" href="{{ url()->current() }}">
+<link rel="alternate" hreflang="en-NG" href="{{ url()->current() }}">
 <link rel="alternate" hreflang="en" href="{{ url()->current() }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-<!-- JSON-LD Schema Markup -->
+{{-- Global Organization Schema --}}
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "TREC - The Ripple Effect Consult",
-  "alternateName": ["The Ripple Effect Consult", "TREC", "Ripple Effect"],
-  "description": "Professional mental health counselling, psychological consultation, and wellness training services",
-  "url": "{{ url('/') }}",
-  "logo": "{{ url('tscc-images/logo.png') }}",
+  "@@type": "Organization",
+  "name": "TREC – The Ripple Effect Consult",
+  "alternateName": ["The Ripple Effect Consult", "TREC", "Ripple Effect", "Ripple Effect Consult", "Ripple Effect Consulting", "TREC Nigeria"],
+  "description": "Nigeria's leading counselling and consulting firm providing school counselling, personal counselling, organisational wellbeing services, and hosting TSCC – the annual school counselling conference.",
+  "url": "https://trecnigeria.com",
+  "logo": "https://trecnigeria.com/tscc-images/logo.png",
+  "email": "tscc@trecnigeria.com",
   "sameAs": [
-    "{{ url('/') }}"
+    "https://trecnigeria.com",
+    "https://www.facebook.com/trecnigeria",
+    "https://www.instagram.com/trecnigeria",
+    "https://www.linkedin.com/company/the-ripple-effect-consult",
+    "https://twitter.com/TRECNigeria"
   ],
   "knowsAbout": [
+    "School Counselling",
+    "Personal Counselling",
+    "Organisational Counselling",
     "Mental Health Counselling",
     "Psychological Consultation",
+    "Child Development",
+    "Student Wellbeing",
     "Stress Management",
     "Anxiety Support",
     "Mental Wellness",
     "Workplace Mental Health",
-    "School Counselling",
+    "Staff Wellbeing",
     "Organisational Development",
     "Personal Development",
-    "Emotional Wellbeing"
+    "Emotional Wellbeing",
+    "CPD Training",
+    "Counsellor Training Nigeria",
+    "Psychosocial Support"
   ],
   "serviceType": [
-    "Mental Health Counselling",
-    "Professional Consultation",
-    "Training & Development",
-    "Wellness Programs"
+    "School Counselling Department Setup",
+    "Personal Mental Health Counselling",
+    "Organisational Wellbeing Consulting",
+    "Counselling Curriculum Development",
+    "Needs Assessment",
+    "Training & Capacity Building",
+    "School Wellbeing Package",
+    "TSCC Annual Conference"
   ]
 }
 </script>
 
-<!-- Services Schema -->
+{{-- LocalBusiness Schema --}}
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "name": "TREC - The Ripple Effect Consult",
-  "image": "{{ url('tscc-images/logo.png') }}",
-  "description": "Professional mental health counselling and psychological consultation services",
-  "medicalSpecialty": [
-    "Mental Health Counselling",
-    "Psychological Services",
-    "Wellness Coaching"
-  ],
+  "@@type": "LocalBusiness",
+  "@@id": "https://trecnigeria.com/#business",
+  "name": "TREC – The Ripple Effect Consult",
+  "image": "https://trecnigeria.com/tscc-images/logo.png",
+  "description": "Professional school counselling, personal counselling, and organisational wellbeing consulting in Nigeria. Home of TSCC.",
+  "url": "https://trecnigeria.com",
+  "email": "tscc@trecnigeria.com",
+  "priceRange": "₦₦",
+  "currenciesAccepted": "NGN",
+  "paymentAccepted": "Cash, Bank Transfer, Paystack",
+  "areaServed": ["Nigeria", "Lagos", "Abuja"],
   "address": {
-    "@type": "PostalAddress",
-    "name": "TREC - The Ripple Effect Consult"
+    "@@type": "PostalAddress",
+    "addressCountry": "NG",
+    "addressRegion": "Lagos",
+    "addressLocality": "Lagos"
+  },
+  "hasOfferCatalog": {
+    "@@type": "OfferCatalog",
+    "name": "TREC Counselling & Consulting Services",
+    "itemListElement": [
+      { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "School Counselling Department Setup" } },
+      { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "Personal Counselling" } },
+      { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "Organisational Wellbeing Consulting" } },
+      { "@@type": "Offer", "itemOffered": { "@@type": "Service", "name": "TSCC Annual Conference" } }
+    ]
   }
 }
 </script>
 
-<!-- Breadcrumb Schema -->
+{{-- BreadcrumbList Schema --}}
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
-  "@type": "BreadcrumbList",
+  "@@type": "BreadcrumbList",
   "itemListElement": [
     {
-      "@type": "ListItem",
+      "@@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "{{ url('/') }}"
+      "item": "https://trecnigeria.com"
     },
     {
-      "@type": "ListItem",
+      "@@type": "ListItem",
       "position": 2,
       "name": "@yield('breadcrumb_title', 'Page')",
       "item": "{{ url()->current() }}"
@@ -106,6 +153,9 @@
   ]
 }
 </script>
+
+{{-- Per-page JSON-LD injection slot --}}
+@stack('schema')
 <style>
 /* ── RESET & ROOT ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}

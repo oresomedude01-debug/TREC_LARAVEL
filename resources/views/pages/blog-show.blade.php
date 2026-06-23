@@ -1,10 +1,42 @@
 @extends('layouts.app')
-@section('title', $post->title . ' - TREC Mental Health Insights')
-@section('meta_desc', $post->excerpt ?? $post->title)
-@section('og_title', $post->title . ' - TREC Insights')
-@section('og_desc', $post->excerpt ?? $post->title)
+@section('title', $post->title . ' | TREC – The Ripple Effect Consult')
+@section('meta_desc', Str::limit($post->excerpt ?? $post->title, 155))
+@section('meta_keywords', 'TREC, The Ripple Effect Consult, Ripple Effect, TSCC, ' . ($post->category ?? 'mental health') . ', school counselling Nigeria, personal counselling, organisational wellbeing, mental health insights, counselling blog Nigeria')
+@section('og_title', $post->title . ' – TREC Insights')
+@section('og_desc', Str::limit($post->excerpt ?? $post->title, 200))
 @section('og_type', 'article')
+@section('og_image', $post->image_url ? url($post->image_url) : url('tscc-images/trec-og-image.png'))
 @section('breadcrumb_title', $post->title)
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "BlogPosting",
+  "headline": "{{ addslashes($post->title) }}",
+  "description": "{{ addslashes(Str::limit($post->excerpt ?? $post->title, 200)) }}",
+  "url": "{{ url()->current() }}",
+  "datePublished": "{{ $post->published_at?->toIso8601String() }}",
+  "dateModified": "{{ $post->updated_at?->toIso8601String() }}",
+  "author": {
+    "@@type": "Organization",
+    "name": "TREC – The Ripple Effect Consult",
+    "url": "https://trecnigeria.com"
+  },
+  "publisher": {
+    "@@type": "Organization",
+    "name": "TREC – The Ripple Effect Consult",
+    "logo": {
+      "@@type": "ImageObject",
+      "url": "https://trecnigeria.com/tscc-images/logo.png"
+    }
+  },
+  "image": "{{ $post->image_url ? url($post->image_url) : url('tscc-images/trec-og-image.png') }}",
+  "mainEntityOfPage": "{{ url()->current() }}",
+  "keywords": "TREC, The Ripple Effect Consult, {{ $post->category ?? 'counselling' }}, school counselling Nigeria, mental health Nigeria"
+}
+</script>
+@endpush
 
 @section('styles')
 <style>
