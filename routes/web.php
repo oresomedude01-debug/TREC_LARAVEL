@@ -40,6 +40,9 @@ Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
 Route::get('/insights', [PageController::class, 'blog'])->name('blog');
 Route::get('/insights/{slug}', [PageController::class, 'showBlog'])->name('blog.show');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/terms-and-conditions', [PageController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
+Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
 
 // Contact form submission
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

@@ -498,7 +498,7 @@ h2.stitle.wh{color:#fff}
 /* ── FOOTER ── */
 footer{background:var(--black);padding:5rem 2rem 0}
 .ft-inner{max-width:1200px;margin:0 auto}
-.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(255,255,255,.07)}
 .ft-brand p{font-size:13px;color:rgba(255,255,255,.4);font-weight:300;line-height:1.9;margin-top:1.25rem;max-width:270px}
 .ft-socials{display:flex;gap:.75rem;margin-top:1.5rem}
 .ft-social-link{
@@ -1047,10 +1047,22 @@ footer{background:var(--black);padding:5rem 2rem 0}
         <a href="mailto:rippleeffectconsult@gmail.com">rippleeffectconsult@gmail.com</a>
         <a href="#">11 Raji Crescent, Baruwa, Ipaja</a>
       </div>
+      <div class="ft-col">
+        <h4>Legal</h4>
+        <a href="{{ route('terms') }}">Terms &amp; Conditions</a>
+        <a href="{{ route('privacy') }}">Privacy Policy</a>
+        <a href="{{ route('pricing') }}">Pricing &amp; Fees</a>
+        <a href="{{ route('contact') }}">Contact Us</a>
+      </div>
     </div>
     <div class="ft-bottom">
-      <p>© 2025 The Ripple Effect Consult. All rights reserved.</p>
-      <div class="ft-tagline">People. Purpose. Impact.</div>
+      <p>© {{ date('Y') }} The Ripple Effect Consult. All rights reserved.</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+        <a href="{{ route('terms') }}" style="font-size:12px;color:rgba(255,255,255,.35);font-weight:300;transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,.75)'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Terms &amp; Conditions</a>
+        <a href="{{ route('privacy') }}" style="font-size:12px;color:rgba(255,255,255,.35);font-weight:300;transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,.75)'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Privacy Policy</a>
+        <a href="{{ route('pricing') }}" style="font-size:12px;color:rgba(255,255,255,.35);font-weight:300;transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,.75)'" onmouseout="this.style.color='rgba(255,255,255,.35)'">Pricing &amp; Fees</a>
+        <div class="ft-tagline">People. Purpose. Impact.</div>
+      </div>
     </div>
   </div>
 </footer>

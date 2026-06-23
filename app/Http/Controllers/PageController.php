@@ -204,6 +204,21 @@ class PageController extends Controller
         return view('pages.contact');
     }
 
+    public function terms(): View
+    {
+        return view('pages.terms');
+    }
+
+    public function privacy(): View
+    {
+        return view('pages.privacy');
+    }
+
+    public function pricing(): View
+    {
+        return view('pages.pricing');
+    }
+
     public function sendTestEmail(): \Illuminate\Http\RedirectResponse
     {
         $email = request('email');

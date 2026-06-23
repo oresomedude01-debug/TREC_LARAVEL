@@ -2490,6 +2490,20 @@ h1.hero-headline .hl-green { color: var(--green); -webkit-text-fill-color: var(-
   </div>
 </section>
 
+<!-- ══ COMPLIANCE SECTION ══ -->
+<section class="compliance-sec" style="background:var(--light);padding:3rem 2rem;text-align:center;border-top:1px solid var(--mid)">
+  <div class="wrap" style="max-width:700px">
+    <div class="eyebrow" style="justify-content:center;color:var(--charcoal)">Pricing Transparency</div>
+    <p style="font-size:14px;color:var(--charcoal);line-height:1.7;margin-top:1rem">
+      Ticket prices are displayed clearly on individual event pages.<br>
+      Any applicable service fees or taxes are shown before payment is completed.
+    </p>
+    <div style="margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem">
+      <a href="{{ route('pricing') }}" style="font-size:13px;font-weight:600;color:var(--red);text-decoration:underline">Read Pricing Policy</a>
+    </div>
+  </div>
+</section>
+
 @endsection
 
 @section('scripts')

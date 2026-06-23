@@ -1279,6 +1279,35 @@ $testimonials = [
             @endif
             @endif
           </div>
+
+          {{-- Compliance: Service Fee & Total Payable Breakdown --}}
+          @if((float)$ticket->price > 0)
+          @php
+            $serviceFee = 500; // Example fixed platform/service fee
+            $totalPayable = (float)$ticket->price + $serviceFee;
+          @endphp
+          <div class="mt-4 pt-4 border-t {{ $isVip ? 'border-white/20' : 'border-slate-200' }}">
+            <div class="flex justify-between items-center text-sm mb-1.5 {{ $isVip ? 'text-white/80' : 'text-slate-500' }}">
+              <span>Base Price:</span>
+              <span class="font-medium">₦{{ number_format((float)$ticket->price) }}</span>
+            </div>
+            <div class="flex justify-between items-center text-sm mb-2 {{ $isVip ? 'text-white/80' : 'text-slate-500' }}">
+              <span>Service Fee:</span>
+              <span class="font-medium">₦{{ number_format($serviceFee) }}</span>
+            </div>
+            <div class="flex justify-between items-center text-base font-bold {{ $isVip ? 'text-white' : 'text-slate-900' }}">
+              <span>Total Payable:</span>
+              <span>₦{{ number_format($totalPayable) }}</span>
+            </div>
+          </div>
+          @else
+          <div class="mt-4 pt-4 border-t border-slate-200">
+            <div class="flex justify-between items-center text-base font-bold text-green-600">
+              <span>Total Payable:</span>
+              <span>₦0 (Free)</span>
+            </div>
+          </div>
+          @endif
           @if($ticket->team_size)
           <p class="text-xs {{ $isVip ? 'text-white/60' : 'text-slate-400' }} mt-1">Per team of {{ $ticket->team_size }} members</p>
           @endif
