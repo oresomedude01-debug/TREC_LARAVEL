@@ -2119,13 +2119,17 @@ document.addEventListener('DOMContentLoaded', function () {
 // Meta Pixel — Event Ticket Page Events
 document.addEventListener('DOMContentLoaded', function () {
 
+  const ticketValue = {{ isset($activeTicket) && $activeTicket ? $activeTicket->price : 0 }};
+
   // Fire ViewContent when the ticket section is visible
   if (typeof fbq === 'function') {
     fbq('track', 'ViewContent', {
       content_name: '{{ addslashes($event->name) }}',
       content_category: 'Event Ticket',
       content_ids: ['{{ $event->slug }}'],
-      content_type: 'product'
+      content_type: 'product',
+      value: ticketValue,
+      currency: 'NGN'
     });
   }
 
@@ -2138,6 +2142,7 @@ document.addEventListener('DOMContentLoaded', function () {
           content_category: 'Event Ticket',
           content_ids: ['{{ $event->slug }}'],
           content_type: 'product',
+          value: ticketValue,
           currency: 'NGN'
         });
       }
