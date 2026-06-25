@@ -2113,3 +2113,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });</script>
 @endsection
+
+@push('scripts')
+<script>
+// Meta Pixel — Event Ticket Page Events
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Fire ViewContent when the ticket section is visible
+  if (typeof fbq === 'function') {
+    fbq('track', 'ViewContent', {
+      content_name: '{{ addslashes($event->name) }}',
+      content_category: 'Event Ticket',
+      content_ids: ['{{ $event->slug }}'],
+      content_type: 'product'
+    });
+  }
+
+  // Fire InitiateCheckout when any ticket CTA is clicked
+  document.querySelectorAll('a[href*="selar.com"]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+          content_name: '{{ addslashes($event->name) }}',
+          content_category: 'Event Ticket',
+          content_ids: ['{{ $event->slug }}'],
+          content_type: 'product',
+          currency: 'NGN'
+        });
+      }
+    });
+  });
+
+});
+</script>
+@endpush
