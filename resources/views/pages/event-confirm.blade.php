@@ -160,3 +160,42 @@
 </section>
 @endsection
 
+
+@push('scripts')
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// META PIXEL — CONFIRMATION PAGE
+// Tracks: Purchase (paid tickets) | Lead (free/waitlist registrations)
+// ─────────────────────────────────────────────────────────────────────────────
+(function () {
+  if (typeof fbq !== 'function') return;
+
+  @if($registration->payment_status === 'paid')
+  // ── Purchase ──────────────────────────────────────────────────────────────
+  // Fires once on successful paid payment confirmation
+  fbq('track', 'Purchase', {
+    content_name:     '{{ addslashes($event->name) }}',
+    content_category: 'Event Ticket',
+    content_ids:      ['{{ $event->slug }}'],
+    content_type:     'product',
+    value:            {{ (float)$registration->amount_paid }},
+    currency:         'NGN',
+    num_items:        1,
+    order_id:         '{{ $registration->registration_number }}'
+  });
+
+  @elseif($registration->payment_status === 'free' || $registration->status === 'waitlisted')
+  // ── Lead ──────────────────────────────────────────────────────────────────
+  // Fires for free registrations and waitlist sign-ups
+  fbq('track', 'Lead', {
+    content_name:     '{{ addslashes($event->name) }}',
+    content_category: '{{ $registration->status === "waitlisted" ? "Waitlist" : "Free Registration" }}',
+    content_ids:      ['{{ $event->slug }}'],
+    value:            0,
+    currency:         'NGN'
+  });
+  @endif
+
+})();
+</script>
+@endpush

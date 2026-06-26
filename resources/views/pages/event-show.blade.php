@@ -2116,38 +2116,77 @@ document.addEventListener('DOMContentLoaded', function () {
 
 @push('scripts')
 <script>
-// Meta Pixel — Event Ticket Page Events
+// ─────────────────────────────────────────────────────────────────────────────
+// META PIXEL — EVENT TICKET PAGE
+// Tracks: ViewContent, InitiateCheckout
+// ─────────────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
 
-  const ticketValue = {{ isset($activeTicket) && $activeTicket ? $activeTicket->price : 0 }};
+  // Pull active ticket price from PHP (0 if free/unavailable)
+  var ticketValue   = {{ isset($activeTicket) && $activeTicket ? (float)$activeTicket->price : 0 }};
+  var ticketName    = '{{ isset($activeTicket) && $activeTicket ? addslashes($activeTicket->name) : '' }}';
+  var eventName     = '{{ addslashes($event->name) }}';
+  var eventSlug     = '{{ $event->slug }}';
 
-  // Fire ViewContent when the ticket section is visible
+  // ── 1. ViewContent ──────────────────────────────────────────────────────────
+  // Fires when the user lands on this event page — tells Meta which event was seen
   if (typeof fbq === 'function') {
     fbq('track', 'ViewContent', {
-      content_name: '{{ addslashes($event->name) }}',
+      content_name:     eventName,
       content_category: 'Event Ticket',
-      content_ids: ['{{ $event->slug }}'],
-      content_type: 'product',
-      value: ticketValue,
-      currency: 'NGN'
+      content_ids:      [eventSlug],
+      content_type:     'product',
+      value:            ticketValue,
+      currency:         'NGN'
     });
   }
 
-  // Fire InitiateCheckout when any ticket CTA is clicked
+  // ── 2. InitiateCheckout ─────────────────────────────────────────────────────
+  // Fires when any "Register" / "Get Ticket" / "Proceed to Selar" button is clicked
+
+  // (a) Selar redirect buttons
   document.querySelectorAll('a[href*="selar.com"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       if (typeof fbq === 'function') {
         fbq('track', 'InitiateCheckout', {
-          content_name: '{{ addslashes($event->name) }}',
+          content_name:     eventName,
           content_category: 'Event Ticket',
-          content_ids: ['{{ $event->slug }}'],
-          content_type: 'product',
-          value: ticketValue,
-          currency: 'NGN'
+          content_ids:      [eventSlug],
+          content_type:     'product',
+          value:            ticketValue,
+          currency:         'NGN',
+          num_items:        1
         });
       }
     });
   });
+
+  // (b) Internal Paystack registration form submit button
+  var regForm = document.getElementById('registration-form');
+  if (regForm) {
+    regForm.addEventListener('submit', function () {
+      if (typeof fbq === 'function') {
+        // Get selected ticket value from the chosen radio if available
+        var selectedTicketInput = document.querySelector('input[name="ticket_type_id"]:checked');
+        var selectedValue = selectedTicketInput
+          ? parseFloat(selectedTicketInput.dataset.price || ticketValue)
+          : ticketValue;
+        var selectedName = selectedTicketInput
+          ? (selectedTicketInput.dataset.name || ticketName)
+          : ticketName;
+
+        fbq('track', 'InitiateCheckout', {
+          content_name:     eventName + ' – ' + selectedName,
+          content_category: 'Event Ticket',
+          content_ids:      [eventSlug],
+          content_type:     'product',
+          value:            selectedValue,
+          currency:         'NGN',
+          num_items:        1
+        });
+      }
+    });
+  }
 
 });
 </script>
